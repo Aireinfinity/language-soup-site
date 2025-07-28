@@ -1,723 +1,259 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Clemo – Free HTML5 Multipurpose Portfolio Page Template</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script type="text/javascript" src="assets/js/script.js" ></script>
+    <title>WOW - Home</title>
+</head>
+<body>
+<!-- div used to make the body blur -->
+    <div class="overlay" id="overlay" onclick="closeNav()"></div>
 
-
-        <!--Google fonts links-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-
-
-        <link rel="stylesheet" href="assets/css/fonticons.css">
-        <link rel="stylesheet" href="assets/css/slider-pro.css">
-        <!--<link rel="stylesheet" href="assets/css/stylesheet.css">-->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-
-        <!--For Plugins external css-->
-        <link rel="stylesheet" href="assets/css/plugins.css" />
-
-        <!--Theme custom css -->
-        <link rel="stylesheet" href="assets/css/style.css">
-
-        <!--Theme Responsive css-->
-        <link rel="stylesheet" href="assets/css/responsive.css" />
-
-        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    </head>
-    <body data-spy="scroll" data-target=".navbar-collapse">
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div class='preloader'><div class='loaded'>&nbsp;</div></div>
-        <header id="main_menu" class="header navbar-fixed-top">            
-            <div class="main_menu_bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="nave_menu">
-                            <nav class="navbar navbar-default" id="navmenu">
-                                <div class="container-fluid">
-                                    <!-- Brand and toggle get grouped for better mobile display -->
-                                    <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                            <span class="sr-only">Toggle navigation</span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                        </button>
-                                        <a class="navbar-brand" href="index.html">
-                                            <img src="assets/images/logo.png"/>
-                                        </a>
-                                    </div>
-
-                                    <!-- Collect the nav links, forms, and other content for toggling -->
-
-
-
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                        <ul class="nav navbar-nav navbar-right">
-                                            <li><a href="aboutus.html">about us</a></li>
-                                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">services</a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="service.html">service page</a></li>
-                                                    <li><a href="service1.html">service page two</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">works</a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="work.html">work page</a></li>
-                                                    <li><a href="work1.html">work page Two</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">blog</a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="blog.html">blog page</a></li>
-                                                    <li><a href="bloginner.html">singleblog page</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">contact</a></li>
-                                        </ul>    
-                                    </div>
-
-                                </div>
-                            </nav>
-                        </div>	
-                    </div>
-
+    <section class="head index-part-1">
+        <div class="head-bar">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6">
+                    <a href="index.html"><img class="img-responsive" src="assets/img/logo.png"></a>
                 </div>
-
+                <div class="col-lg-6 col-xs-6 col-sm-6 col-md-6 text-right">
+                    <div id="mySidenav" class="sidenav text-center">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
+                        <a href="index.html">Home</a><hr>
+                        <a href="generic.html">Generic</a><hr>
+                        <a href="element.html">Element</a>              
+                    </div>
+                    <div class="main" id="main">
+                      <a href="#" onclick="openNav()">MENU &#9776;</a>
+                    </div>
+                </div>
+              </div>
+              <hr>
+          </div>
+          </div>
+          <div class="wow">
+          <div class="container">
+            <div class="row">
+               <div class="wow-logo">
+                  <img class="img-responsive img-logo" src="assets/img/wow_logo.png">
+               </div> 
+               <div class="font-1 helmet text-center">
+                 <p>An <strong>immersive</strong> vertual reality helmet.</p>
+               </div>
+               <div class="wow-btn text-center">
+                     <a class="btn btn-default wow-button" href="#">GET WOW NOW</a>
+               </div>
             </div>
-        </header> <!--End of header -->
-
-
-
-
-        <!-- Home Section -->
-        <section id="home" class="home">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 ">
-                        <div class="main_home_slider text-center">
-
-
-                            <div class="single_home_slider">
-                                <div class="home-overlay"></div>
-                                <div class="main_home wow fadeInUp" data-wow-duration="700ms"> 
-
-                                    <h2> Welcome to Language Soup</h2>
-                                    <div class="separator"></div>
-                                    <p class="subtitle">The Language Learning Journal <br />
-                                       </p>
-                                    <div class="home_btn">
-                                        <a href="" class="btn">View Product</a>
-                                    </div>
-                                </div>
-                            </div><!-- End of single_home_slider -->
-
-                            <div class="single_home_slider">
-                                <div class="home-overlay"></div>
-                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
-                                    <h2>we are clemo.</h2>
-                                    <div class="separator"></div>
-                                    <p class="subtitle">professionals <br />
-                                        in the creative industries</p>
-                                    <div class="home_btn">
-                                        <a href="" class="btn">Learn More</a>
-                                    </div>
-                                </div>
-                            </div><!-- End of single_home_slider -->
-
-                            <div class="single_home_slider">
-                                <div class="home-overlay"></div>
-                                <div class="main_home wow fadeInUp" data-wow-duration="700ms">
-                                    <h2>we are clemo.</h2>
-                                    <div class="separator"></div>
-                                    <p class="subtitle">professionals <br />
-                                        in the creative industries</p>
-                                    <div class="home_btn">
-                                        <a href="" class="btn">Learn More</a>
-                                    </div>
-                                </div>
-                            </div><!-- End of single_home_slider -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section><!-- End of Home Section -->
-
-
-
-
-        <!-- Service Section -->
-        <section id="service" class="service sections lightbg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="head_title text-center">
-                            <h1>what we do?</h1>
-                        </div><!-- End of head title -->
-
-                        <div class="main_service_area"> 
-                            <div class="single_service_area">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="signle_service_left">
-                                            <img src="assets/images/service0.png" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 col-sm-push-1">
-                                        <div class="single_service">
-                                            <h3>creative</h3>
-                                            <h2>kitchen</h2>
-                                            <div class="separator2"></div>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  </p>
-
-                                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-                                                sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-
-                                            <a href="https://bootstrapthemes.co" class="btn btn-default">learn more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- End of single service area -->
-
-                            <div class="single_service_area  margin-top-80">
-                                <div class="row">
-
-                                    <div class="col-sm-6 col-sm-push-6">
-                                        <div class="signle_service_left">
-                                            <img src="assets/images/service2.png" alt="" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-5 col-sm-pull-6">
-                                        <div class="single_service">
-                                            <h3>art</h3>
-                                            <h2>installation</h2>
-                                            <div class="separator2"></div>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  </p>
-
-                                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-                                                sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-
-                                            <a href="https://bootstrapthemes.co" class="btn btn-default">learn more</a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!-- End of single service area -->
-
-                            <div class="single_service_area margin-top-80">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="signle_service_left">
-                                            <img src="assets/images/service3.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5 col-sm-push-1">
-                                        <div class="single_service">
-                                            <h3>print</h3>
-                                            <h2>design</h2>
-                                            <div class="separator2"></div>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  </p>
-
-                                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-                                                sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-
-                                            <a href="https://bootstrapthemes.co" class="btn btn-default">learn more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- End of single service area -->
-                        </div>
-                    </div><!-- End of col-sm-12 -->
-                </div><!-- End of row -->
-            </div><!-- End of Container -->
-        </section><!-- End of Service Section -->
-
-        <!-- Work Section -->
-        <section id="work" class="work sections">
-            <div class="container">
-                <div class="row">
-                    <div class="main_mix_content text-center">
-                        <div class="head_title">
-                            <h1>our best work</h1>
-                        </div><!-- End of head title -->
-
-                        <div id="mixcontent" class="mixcontent text-center">
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="single_mixi_portfolio">
-                                    <img src="assets/images/pf01.png" alt="" />
-                                    <div class="single_work_overlay">
-                                        <h4>golfino
-                                            awards</h4>
-                                        <div class="separator"></div>
-                                        <p>print design</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="single_mixi_portfolio">
-                                    <img src="assets/images/pf02.png" alt="" />
-                                    <div class="single_work_overlay single_work_overlay2">
-                                        <h4>golfino
-                                            awards</h4>
-                                        <div class="separator"></div>
-                                        <p>print design</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="single_mixi_portfolio">
-                                    <img src="assets/images/pf3.png" alt="" />
-                                    <div class="single_work_overlay">
-                                        <h4>golfino
-                                            awards</h4>
-                                        <div class="separator"></div>
-                                        <p>print design</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="single_mixi_portfolio">
-                                    <img src="assets/images/pf4.png" alt="" />
-                                    <div class="single_work_overlay single_work_overlay2">
-                                        <h4>golfino
-                                            awards</h4>
-                                        <div class="separator"></div>
-                                        <p>print design</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="single_mixi_portfolio">
-                                    <img src="assets/images/pf6.png" alt="" />
-                                    <div class="single_work_overlay single_work_overlay2">
-                                        <h4>golfino
-                                            awards</h4>
-                                        <div class="separator"></div>
-                                        <p>print design</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-xs-12">
-                                <div class="single_mixi_portfolio">
-                                    <img src="assets/images/pf5.png" alt="" />
-                                    <div class="single_work_overlay">
-                                        <h4>golfino
-                                            awards</h4>
-                                        <div class="separator"></div>
-                                        <p>print design</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <a href="https://bootstrapthemes.co" class="btn">learn more</a>
-                    </div>                     
-                </div><!-- End of row -->
-            </div><!-- End of Contaier -->
-        </section><!-- End of portfolio Section -->        
-
-
-
-        <!-- Team Section -->
-        <section id="team" class="team colorsbg sections">
-            <div class="container">
-                <div class="row">
-                    <div class="main_team_area">
-                        <div class="head_title text-center">
-                            <h1>best team</h1>
-                        </div><!-- End of head title -->
-
-                        <div class="main_team text-center">
-                            <div class="single_team">
-                                <div class="col-sm-10 col-sm-offset-1">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="team">
-                                                <img class="img-circle" src="assets/images/team1.jpg" alt="" />
-                                                <h4>paul hall</h4>
-                                                <div class="separator"></div>
-                                                <p>art director</p>
-                                            </div>
-                                        </div> <!-- End of col-sm-4 --> 
-                                        <div class="col-sm-4">
-                                            <div class="team">
-                                                <img class="img-circle" src="assets/images/team2.jpg" alt="" />
-                                                <h4>joshua spencer</h4>
-                                                <div class="separator"></div>
-                                                <p>founder</p>
-                                            </div>
-                                        </div> <!-- End of col-sm-4 --> 
-                                        <div class="col-sm-4">
-                                            <div class="team">
-                                                <img class="img-circle" src="assets/images/team3.jpg" alt="" />
-                                                <h4>diane lewis</h4>
-                                                <div class="separator"></div>
-                                                <p>artist, designer</p>
-                                            </div>
-                                        </div><!-- End of col-sm-4 -->  
-                                    </div>
-                                </div><!-- End of col-sm-10 -->
-                            </div>
-                            <div class="single_team">
-                                <div class="col-sm-10 col-sm-offset-1">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="team">
-                                                <img class="img-circle" src="assets/images/team1.jpg" alt="" />
-                                                <h4>paul hall</h4>
-                                                <div class="separator"></div>
-                                                <p>art director</p>
-                                            </div>
-                                        </div> <!-- End of col-sm-4 --> 
-                                        <div class="col-sm-4">
-                                            <div class="team">
-                                                <img class="img-circle" src="assets/images/team1.jpg" alt="" />
-                                                <h4>joshua spencer</h4>
-                                                <div class="separator"></div>
-                                                <p>founder</p>
-                                            </div>
-                                        </div><!-- End of col-sm-4 -->  
-                                        <div class="col-sm-4">
-                                            <div class="team">
-                                                <img class="img-circle" src="assets/images/team1.jpg" alt="" />
-                                                <h4>diane lewis</h4>
-                                                <div class="separator"></div>
-                                                <p>artist, designer</p>
-                                            </div>
-                                        </div> <!-- End of col-sm-4 --> 
-                                    </div>
-                                </div><!-- End of col-sm-10 -->
-                            </div>
-                            <div class="single_team">
-                                <div class="col-sm-10 col-sm-offset-1">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="team">
-                                                <img class="img-circle" src="assets/images/team1.jpg" alt="" />
-                                                <h4>paul hall</h4>
-                                                <div class="separator"></div>
-                                                <p>art director</p>
-                                            </div>
-                                        </div><!-- End of col-sm-4 -->  
-                                        <div class="col-sm-4">
-                                            <div class="team">
-                                                <img class="img-circle" src="assets/images/team1.jpg" alt="" />
-                                                <h4>joshua spencer</h4>
-                                                <div class="separator"></div>
-                                                <p>founder</p>
-                                            </div>
-                                        </div> <!-- End of col-sm-4 --> 
-                                        <div class="col-sm-4">
-                                            <div class="team">
-                                                <img class="img-circle" src="assets/images/team1.jpg" alt="" />
-                                                <h4>diane lewis</h4>
-                                                <div class="separator"></div>
-                                                <p>artist, designer</p>
-                                            </div>
-                                        </div><!-- End of col-sm-4 -->  
-                                    </div>
-                                </div><!-- End of col-sm-10 -->
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- End of row -->
-            </div><!-- End of Contaier -->
-        </section><!-- End of portfolio Section --> 
-
-
-
-        <!-- Clients Section -->
-        <section id="clients" class="clients sections">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="main_clients_area text-center">
-                            <div class="head_title">
-                                <h1>clients say’s</h1>
-                            </div><!-- End of head title -->
-
-                            <div id="example3" class="slider-pro">
-                                <div class="sp-slides sps_slider">
-                                    <div class="sp-slide">
-                                        <div class="col-sm-12">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-xs-6">
-                                                    <div class="single_left_text text-right">
-                                                        <h4 class="sp-layer" 
-                                                            data-horizontal="right" data-vertical="0" data-width="81%"
-                                                            data-show-transition="left" data-show-delay="200">
-                                                            frank sims
-                                                        </h4>
-
-                                                        <div class="separator sp-layer sp-black" data-horizontal="340" data-vertical="70"></div>
-
-                                                        <p class="sp-layer" 
-                                                           data-horizontal="right" data-vertical="100" data-width="81%" 
-                                                           data-show-transition="left" data-show-delay="400">
-                                                            photographer
-                                                        </p>
-
-                                                    </div>
-                                                </div><!-- End of col-sm-6 -->
-                                                <div class="col-sm-6 col-xs-6">
-                                                    <div class="single_right_text text-left">
-                                                        <p class="sp-layer right_sp_layer" data-width="100%">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                                                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                                                    </div>
-                                                </div><!-- End of col-sm-6 -->
-                                            </div>
-                                        </div><!-- End of col-sm-12 -->
-                                    </div>
-                                    <div class="sp-slide">
-                                        <div class="col-sm-12">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-xs-6">
-                                                    <div class="single_left_text text-right">
-                                                        <h4 class="sp-layer" 
-                                                            data-horizontal="right" data-vertical="0" data-width="81%"
-                                                            data-show-transition="left" data-show-delay="200">
-                                                            frank sims
-                                                        </h4>
-
-                                                        <div class="separator sp-layer sp-black" data-horizontal="340" data-vertical="70"></div>
-
-                                                        <p class="sp-layer" 
-                                                           data-horizontal="right" data-vertical="100" data-width="81%" 
-                                                           data-show-transition="left" data-show-delay="400">
-                                                            photographer
-                                                        </p>
-
-                                                    </div>
-                                                </div><!-- End of col-sm-6 -->
-                                                <div class="col-sm-6 col-xs-6">
-                                                    <div class="single_right_text text-left">
-                                                        <p class="sp-layer right_sp_layer" data-width="100%">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                                                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                                                    </div>
-                                                </div><!-- End of col-sm-6 -->
-                                            </div>
-                                        </div><!-- End of col-sm-12 -->
-                                    </div>
-                                    <div class="sp-slide">
-                                        <div class="col-sm-12">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-xs-6">
-                                                    <div class="single_left_text text-right">
-                                                        <h4 class="sp-layer" 
-                                                            data-horizontal="right" data-vertical="0" data-width="81%"
-                                                            data-show-transition="left" data-show-delay="200">
-                                                            frank sims
-                                                        </h4>
-
-                                                        <div class="separator sp-layer sp-black" data-horizontal="340" data-vertical="70"></div>
-
-                                                        <p class="sp-layer" 
-                                                           data-horizontal="right" data-vertical="100" data-width="81%" 
-                                                           data-show-transition="left" data-show-delay="400">
-                                                            photographer
-                                                        </p>
-
-                                                    </div>
-                                                </div><!-- End of col-sm-6 -->
-                                                <div class="col-sm-6 col-xs-6">
-                                                    <div class="single_right_text text-left">
-                                                        <p class="sp-layer right_sp_layer" data-width="100%">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                                                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                                                    </div>
-                                                </div><!-- End of col-sm-6 -->
-                                            </div>
-                                        </div><!-- End of col-sm-12 -->
-                                    </div>
-                                    <div class="sp-slide">
-                                        <div class="col-sm-12">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-xs-6">
-                                                    <div class="single_left_text text-right">
-                                                        <h4 class="sp-layer" 
-                                                            data-horizontal="right" data-vertical="0" data-width="81%"
-                                                            data-show-transition="left" data-show-delay="200">
-                                                            frank sims
-                                                        </h4>
-
-                                                        <div class="separator sp-layer sp-black" data-horizontal="340" data-vertical="70"></div>
-
-                                                        <p class="sp-layer" 
-                                                           data-horizontal="right" data-vertical="100" data-width="81%" 
-                                                           data-show-transition="left" data-show-delay="400">
-                                                            photographer
-                                                        </p>
-
-                                                    </div>
-                                                </div><!-- End of col-sm-6 -->
-                                                <div class="col-sm-6 col-xs-6">
-                                                    <div class="single_right_text text-left">
-                                                        <p class="sp-layer right_sp_layer" data-width="100%">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                                                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                                                    </div>
-                                                </div><!-- End of col-sm-6 -->
-                                            </div>
-                                        </div><!-- End of col-sm-12 -->
-                                    </div>
-                                </div>
-
-                                <div class="sp-thumbnails">
-                                    <img class="sp-thumbnail" src="assets/images/c1.png"/>
-                                    <img class="sp-thumbnail" src="assets/images/c1.png"/>
-                                    <img class="sp-thumbnail" src="assets/images/c1.png"/>
-                                    <img class="sp-thumbnail" src="assets/images/c1.png"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End of col-sm-12 -->
-                </div><!-- End of row -->
-            </div><!-- End of Contaier -->
-        </section><!-- End of portfolio Section --> 
-
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="main_contact sections">
-                            <div class="head_title text-center whitetext">
-                                <h1>get in touch</h1>
-                            </div><!-- End of head title -->
-
-                            <div class="row">
-                                <div class="contact_contant">
-                                    <div class="col-sm-6 col-xs-12">
-                                        <div class="single_message_right_info whitetext">
-                                            <ul>
-                                                <li><i class="fa fa-map-marker"></i> <span>23 Mulholland Drive, Suite 721. Los Angeles 10010
-                                                        100 S. Main Street. Los Angeles 90012</span></li>
-
-                                                <li><i class="fa fa-mobile-phone"></i> <span>+1-670-567-5590</span></li>
-
-                                                <li><i class="fa fa-envelope-o"></i> <span>hello@clemocreative.com</span></li>
-                                            </ul>
-
-                                            <div class="contact_socail transition">
-                                                <a href=""><i class="fa fa-facebook img-circle"></i></a>
-                                                <a href=""><i class="fa fa-twitter img-circle"></i></a>
-                                                <a href=""><i class="fa fa-google-plus img-circle"></i></a>
-                                                <a href=""><i class="fa fa-pinterest img-circle"></i></a>
-                                                <a href=""><i class="fa fa-instagram img-circle"></i></a>
-                                            </div>
-                                        </div>
-                                    </div><!-- End of col-sm-6 -->
-
-                                    <div class="col-sm-6 col-xs-12">
-                                        <div class="single_contant_left margin-top-60">
-                                            <form action="#" id="formid">
-                                                <!--<div class="col-lg-8 col-md-8 col-sm-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">-->
-
-                                                <div class="form-group">
-                                                    <label>name</label>
-                                                    <input type="text" class="form-control" name="name" required="">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>e-mail</label>
-                                                    <input type="email" class="form-control" name="email" required="">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label>your message</label>
-                                                    <textarea class="form-control" name="message" rows="8"></textarea>
-                                                </div>
-
-                                                <div class="">
-                                                    <input type="submit" value="submit" class="btn btn-default">
-                                                </div>
-                                                <!--</div>--> 
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div> <!-- End of messsage contant-->
-                            </div>
-                        </div>
-                    </div><!-- End of col-sm-12 -->
-                </div><!-- End of row -->
-            </div><!-- End of Contaier -->
-        </section><!-- End of portfolio Section --> 
-
-
-
-        <!-- footer Section -->
-        <footer id="footer" class="footer">
-            <div class="container">
-                <div class="main_footer">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="copyright_text text-center">
-                                <p class=" wow fadeInRight" data-wow-duration="1s">Made with <i class="fa fa-heart"></i> by <a target="_blank" href="https://bootstrapthemes.co">Bootstrap Themes</a>2016. All Rights Reserved</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End of container -->
-        </footer><!-- End of footer -->
-
-
-
-        <!-- START SCROLL TO TOP  -->
-
-        <div class="scrollup">
-            <a href="#"><i class="fa fa-chevron-up"></i></a>
+          </div>
         </div>
+    </section>
+ 
+    <section class="index-part-2">
+         <div class="container">
 
-        <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-        <script src="assets/js/vendor/bootstrap.min.js"></script>
+            <div class="row">
+               <div class="text-center">
+                 <h2>Features</h2>
+               </div>
+               <hr class="hr-mid">
+               <div class="sub-text text-center">
+                     <p class="font-1">
+                        Sed varius suspendisse dictum leo ipsum amet pellentesque
+                        fusce ac hendrerit consectetur tempor lorem ipsum
+                     </p>
+               </div>
+           </div>
 
-        <script src="assets/js/jquery.easing.1.3.js"></script>
-        <script src="assets/js/masonry/masonry.min.js"></script>
-        <script type="text/javascript">
-            $('.mixcontent').masonry();
-        </script>
+            <div class="row">
 
-        <script src="assets/js/jquery.sliderPro.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function ($) {
-                $('#example3').sliderPro({
-                    width: 960,
-                    height: 200,
-                    fade: true,
-                    arrows: false,
-                    buttons: true,
-                    fullScreen: false,
-                    shuffle: true,
-                    smallSize: 500,
-                    mediumSize: 1000,
-                    largeSize: 3000,
-                    thumbnailArrows: true,
-                    autoplay: false,
-                    thumbnailsContainerSize: 960
+                <div class="col-xs-12 col-lg-6 col-sm-6 col-md-6 col-block">
+                      <div class="block text-center block-first">
+                                 <div class="icon">
+                                    <i class="fa fa-diamond fa-2x"></i>
+                                 </div>  
+                                   <h4>Supreme comfort</h4>
+                                   <p class="font-2">Lorem ipsum dolor sit amet, consectetur
+                                   adipisicing elit, sed do eiusmod tempor
+                                   incididunt ut labore et.</p>
+                        </div>   
+                </div>
+                <div class="col-xs-12 col-lg-6 col-sm-6 col-md-6 col-block">
+                      <div class="block text-center block-second">
+                             <div class="icon">
+                                  <i class="fa fa-camera fa-2x"></i>
+                             </div>  
+                              <h4>Immersive experince</h4>
+                              <p class="font-2">Lorem ipsum dolor sit amet, consectetur
+                                  adipisicing elit, sed do eiusmod tempor
+                                  incididunt ut labore et.</p>                                       
+                      </div>
+                </div>
+            </div>
 
-                });
-            });
-        </script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
+            <div class="row">
+                <div class="col-xs-12 col-lg-6 col-sm-6 col-md-6 col-block">
+                    <div class="block text-center block-third">
+                                 <div class="icon">
+                                     <i class="fa fa-eye fa-2x"></i>
+                                 </div>  
+                                   <h4>complete focus</h4>
+                                   <p class="font-2">Lorem ipsum dolor sit amet, consectetur
+                                   adipisicing elit, sed do eiusmod tempor
+                                   incididunt ut labore et.</p>
+                    </div>   
+                </div>
+                <div class="col-xs-12 col-lg-6 col-sm-6 col-md-6 col-block">
+                    <div class="block text-center block-last">
+                            <div class="icon">
+                                 <i class="fa fa-sliders fa-2x"></i>
+                            </div>  
+                            <h4>Convenient control</h4>
+                            <p class="font-2">Lorem ipsum dolor sit amet, consectetur
+                                  adipisicing elit, sed do eiusmod tempor
+                                  incididunt ut labore et.</p>                                        
+                      </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 
-    </body>
+    <section class="index-part-3">
+        <div class="container">
+                <div class="row why-div">
+                  <div class="text-center">
+                         <h2>Why wow</h2>
+                  </div>
+                       <hr class="hr-mid">
+                       <div class="sub-text text-center">
+                             <p class="font-1">
+                                Sed varius suspendisse dictum leo ipsum amet pellentesque
+                                fusce ac hendrerit consectetur tempor lorem ipsum
+                             </p>
+                       </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-9 col-sm-12 col-md-9 col-xs-12">
+                     <div class="holder-para">
+                      <h3>Comfortable stap holder</h3>
+                      <hr class="hr-short">
+                      <p class="font-2">
+                            The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed 
+                            is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother’s keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I 
+                      </p>
+                     </div>
+                    </div>
+                    <div class="col-lg-3 col-xs-12 col-sm-12 col-md-3">
+                            <div class="holder-img">
+                              <img class="round-img img-responsive center-block" src="assets/img/2.jpg">
+                            </div>
+                    </div>
+                </div>
+
+                <hr class="line-full">
+                
+                <div class="row"> 
+                    <div class="col-lg-9 col-xs-12 col-sm-12 col-md-9 col-md-push-3">
+                     <div class="holder-para">
+                      <h3>Tracking with controler</h3>
+                      <hr class="hr-short">
+                      <p class="font-2">
+                        The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed 
+                        is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother’s keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I 
+                      </p>
+                     </div>
+                    </div>
+                    <div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 col-md-pull-9">
+                            <div class="holder-img">
+                              <img class="round-img img-responsive center-block" src="assets/img/3.jpg">
+                            </div>
+                    </div> 
+                </div>
+
+                <hr class="line-full">
+                
+                <div class="row">
+                    <div class="col-lg-9 col-xs-12 col-sm-12 col-md-9">
+                     <div class="holder-para">
+                      <h3>Foam cushing</h3>
+                      <hr class="hr-short">
+                      <p class="font-2">
+                            The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed 
+                            is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother’s keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I  
+                      </p>
+                     </div>
+                    </div>
+                    <div class="col-lg-3 col-xs-12 col-sm-12 col-md-3">
+                            <div class="holder-img">
+                              <img class="round-img img-responsive center-block" src="assets/img/2.jpg">
+                            </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+                
+    <section class="index-part-4">
+         <div class="container">
+                
+                <div class="row">
+                       <div class="text-center">
+                         <h2>Step in wow</h2>
+                       </div>
+                       <hr class="hr-mid">
+                       <div class="sub-text text-center">
+                             <p class="font-1">
+                                Sed varius suspendisse dictum leo ipsum amet pellentesque
+                                fusce ac hendrerit consectetur tempor lorem ipsum
+                             </p>
+                       </div>
+                </div>
+
+                <div class="row text-center">
+                     <a class="btn btn-default wow-button" href="#">BUY WOW NOW</a>
+                </div>
+          </div>
+    </section>
+
+    <section class="social">
+      <ul>
+        <li><a href="#" class="fa fa-pinterest fa-2x" aria-hidden="true"></a></li>
+        <li><a href="#" class="fa fa-twitter fa-2x" aria-hidden="true"></a></li>
+        <li><a href="#" class="fa fa-linkedin fa-2x" aria-hidden="true"></a></li>
+        <li><a href="#" class="fa fa-stumbleupon fa-2x" aria-hidden="true"></a></li>  
+      </ul>
+    </section>
+
+    <section class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <div class="footer-p1">
+                    <p class="font-2">Copy right 2016 by wow technology</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <img class="img-responsive foot-img" src="assets/img/footer-logo.png">
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <div class="footer-p2" >
+                     <p class="font-2">Made with  <i class="fa fa-heart" aria-hidden="true" ></i> by <a href="https://themewagon.com/themes/" target="_blank">themewagon</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+</body>
 </html>
+
+
