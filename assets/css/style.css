@@ -14,7 +14,7 @@ body{
   width: 0%;
   height: 0%;
   z-index: 9;
-  background-color: rgba(0,0,0,0.5); /*dim the background*/
+  background-color: #FDF5E6; /*dim the background*/
 }
 .sidenav {
     height: 100%;
@@ -81,7 +81,7 @@ body{
     list-style-type: none;
 }
 body {
-    background-color: #fefefe;
+    background-color: #FDF5E6;
     transition: background-color .5s;
     font-family: monospace; 
 }
@@ -91,20 +91,26 @@ body {
 }
 .wow-logo{
     padding-bottom: 2vh;
-    padding-top:10vh;
+    padding-top: 2.5vh;
 }
 .img-logo{
-    max-height: 15vh;
+    max-height: 50vh;
     margin-left: auto;
     margin-right: auto;
-    display: block;
-    width: max-content;
-    text-align: center;
+    width: 80%;
+    max-width: 800vh
 }
 .helmet{
     max-height: 5vh;
 }
-.head{
+
+.product-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    filter: contrast(1.05) saturate(1.05);
+    backface-visibility: hidden;
+}
+/*.head{
     min-height: 100vh;
     background-image: url('../img/1.jpg');
     position: relative;
@@ -142,11 +148,11 @@ body {
 }
 .wow-button:hover{
     color: #ffffff;
-    background-color: #2d2d2d;
+    background-color: #00adef;
     transition: .5s;
 }
 .font-1{
-    font-family: 'Lora', serif;
+    font-family: 'Source Serif Variable', serif;
     font-style: italic;
     font-size: 21px;
 }
@@ -159,14 +165,16 @@ body {
     padding-bottom: 60px;
 }
 .index-part-2,.index-part-4{
-    background-color: #f7f7f7;
+    background-color: #FDF5E6;
 }
 hr{
-    background-color: #c7c7c7; height: 1px; border: 0;
+    background-color: #ec008b; 
+    height: 2px;
     margin-top: 1vh;
+    border: none;
 }
 h1,h2,h4,h3,h5,a,button{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Source Serif Variable', serif;
 }
 h1{
     font-size: 55px;
@@ -235,7 +243,7 @@ i{
         
 }
 .font-2{
-    font-family: 'Crimson Text', serif;
+    font-family: 'Source Serif Variable', serif;
     font-size: 16px;
     line-height: 30px;
 }
