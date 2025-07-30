@@ -87,8 +87,8 @@ body {
     font-family: monospace; 
 }
 .head-bar{
-    padding-top: 1vh;
-    max-height: 10vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .wow-logo{
     padding-bottom: 2vh;
