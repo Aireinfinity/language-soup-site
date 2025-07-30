@@ -227,8 +227,10 @@ h6{
     background-color: #FDF5E6;
     color: #ec008b;
     display: table;
-    width: 60px;
-    height: 60px;
+    max-width: 60px;
+    width: 100%;
+    max-height: 60px;
+    height: 100%;
     border-radius: 100%;
     margin-right: auto;
     margin-left: auto;
@@ -250,7 +252,8 @@ i{
 }
 .round-img{
     display: table;
-    width: 250px;
+    max-width: 250px;
+    width: 100%;
     height: 250px;
     border-radius: 100%;
 }
@@ -328,15 +331,49 @@ i.fa-heart{
 .element-full{
     background-color: #FDF5E6; 
 }
-.element-page{
-    padding-top: 25px;
+.element-page {
+    padding: 60px;
+  }
+  
+  .element-heading {
+    padding: 35px;
+    background-color: #FDF5E6;
+    text-align: center;
+  }
+  
+.element-heading-para{
+    padding: 60px 20px;
+    background-color: #FDF5E6;
+    text-align: left;
 }
-.Element-heading{
-    padding-top: 15px;
-}
-.Element-heading-para{
-    padding-right: 380px;
-}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .about-text-only {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto 40px auto;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .about-photo img {
+    max-width: 250px; /* or whatever size looks best */
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
 .call-btn-1{
     border:1px solid black;
     border-radius: 30px;
@@ -441,8 +478,8 @@ textarea{
     margin-right: auto;
 }
 .blockquote-row{
- padding-left:2%;
- padding-right: 18%;
+ padding-left:20%;
+ padding-right: 20%;
 }
 .blockquote-side{
      border-left:thick solid black;padding-top:8px;
@@ -459,24 +496,22 @@ textarea{
 }
 @media screen and (min-width: 481px) and (max-width: 1200px) {
 
-   .block{
+.block{
     padding-top: 30px;
     padding-bottom: 15px;
     padding-left: 30px;
     padding-right: 30px;
-   }
-   .Element-heading-para{
-    padding-right: 80px;
-   }
-   .footer-p1,.footer-p2{
+}
+   
+.footer-p1,.footer-p2{
     padding-top: 0px;
     font-size: 10px; 
     }
-    .footer{
+.footer{
         padding-top: 15px;
         padding-bottom: 25px;
     }
-    .footer-p2 a{
+.footer-p2 a{
     font-size: 12px;
     }
 }
@@ -492,9 +527,6 @@ textarea{
     padding-left: 40px;
     padding-right: 40px;
    }*/
-   .Element-heading-para{
-    padding-right: 60px;
-  }
     .footer-p1 p,.footer-p2 p{
     padding-top: 0px;
     font-size: 12px;
