@@ -86,10 +86,18 @@ body {
     transition: background-color .5s;
     font-family: monospace; 
 }
-.head-bar{
+.head-bar {
     padding-top: 10px;
     padding-bottom: 10px;
-}
+  }
+  
+  /* Mobile-friendly adjustment */
+  @media (max-width: 768px) {
+    .head-bar {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
 .wow-logo{
     padding-bottom: 2vh;
     padding-top: 2.5vh;
