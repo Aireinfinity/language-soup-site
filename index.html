@@ -2,27 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Language Soup</title>
 
-  <!-- Link to stylesheet -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Favicon in browser tab -->
+  <!-- Favicon -->
   <link rel="icon" href="icon.png" type="image/png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    #zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  cursor: zoom-out;
+}
+
+#zoom-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+    .gallery img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+      cursor: zoom-in;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <!-- Logo shown on the page -->
     <img src="ls-logo.png" alt="Language Soup logo" class="logo" />
-    
     <h1>The Language Learning Journal</h1>
-    <p>A French learning journal for people who love paper more than apps.</p>
+    <p class="tagline">The first premium language learning journal. <br><br><em>Who said pen and paper was dead? Probably someone monolingual.</em></p>
+
+    <a class="btn" href="https://buy.stripe.com/9B66oI5SH8OU81S5G4dQQ00" target="_blank">Buy Now – $40</a>
+
+    <div class="section">
+      <h2>What's Inside</h2>
+      <div class="gallery">
+        <img src="cover-front.jpg" alt="Front cover of the journal">
+        <img src="cover-back.jpg" alt="Back cover of the journal">
+        <img src="inthisjournal.jpg" alt="Intro and table of contents">
+        <img src="ch1.jpg" alt="Chapter sample page">
+        <img src="vocab-page.jpg" alt="Vocabulary tracking page">
+        <img src="practice-highlighted.jpg" alt="Practice page with highlights">
+        <img src="contents-first-page.jpg" alt="Another intro view">
+        <img src="hungarian-marked.JPG" alt="Marked-up homework sample">
+      </div>
+      <ul>
+        <li>96+ thoughtfully designed pages</li>
+        <li>4 chapters that guide your learning method</li>
+        <li>Tri-lingual vocabulary templates</li>
+        <li>42 empty pages to centralize your language journey</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Who It's For</h2>
+      <p>This journal is for French learners—from total beginners to confident intermediates. Whether you're starting with "baguette" or tackling the subjunctive, this is your language sidekick.</p>
+    </div>
+
+    <div class="section">
+      <h2>Why People Love It ❤️</h2>
+      <ul>
+        <li>Clean, beautiful design that’s easy to use</li>
+        <li>Makes studying feel personal, meaningful, and tactile</li>
+        <li>Helps you visually track your progress</li>
+        <li>Created by language lovers, for language learners</li>
+        <li>First product of its kind on the market</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>FAQs</h2>
+      <ul>
+        <li><strong>Can I use it for Spanish or another language?</strong> – Yes! While designed with French in mind, the structure works for any language.</li>
+        <li><strong>How fast will it ship?</strong> – Orders ship in 1–2 business days.</li>
+        <li><strong>Is it beginner-friendly?</strong> – Totally. It’s built to support you no matter where you're starting from.</li>
+      </ul>
+    </div>
+
+    <a class="btn" href="https://buy.stripe.com/9B66oI5SH8OU81S5G4dQQ00" target="_blank">Buy Now</a>
 
     <div class="links">
       <a href="https://instagram.com/LanguageSoup" target="_blank">Instagram</a>
       <a href="https://tiktok.com/@language.soup" target="_blank">TikTok</a>
     </div>
+
+    <footer>
+      &copy; 2025 Language Soup · Apps are cute. Fluency is cuter.
+    </footer>
   </div>
+
+  <!-- Zoom Overlay -->
+  <div id="zoom-overlay" style="display:none;">
+    <img id="zoomed-img" src="" alt="">
+  </div>
+
+  <script>
+    const overlay = document.getElementById('zoom-overlay');
+    const zoomedImg = document.getElementById('zoomed-img');
+    const galleryImages = document.querySelectorAll('.gallery img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        zoomedImg.src = img.src;
+        zoomedImg.alt = img.alt;
+        overlay.style.display = 'flex';
+      });
+    });
+
+    overlay.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        overlay.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
