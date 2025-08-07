@@ -12,67 +12,65 @@
   <link rel="icon" href="icon.png" type="image/png" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <style>
-    #zoom-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  cursor: zoom-out;
-}
-
-#zoom-overlay img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-}
-
-    .gallery img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      transition: transform 0.3s ease;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-bottom: 1.5rem;
-      cursor: zoom-in;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
     <img src="ls-logo.png" alt="Language Soup logo" class="logo" />
     <h1>The Language Learning Journal</h1>
-    <p class="tagline">The first premium language learning journal. <br><br><em>Who said pen and paper was dead? Probably someone monolingual.</em></p>
+    <p class="tagline">
+      The first premium language learning journal.<br /><br />
+      <em>Who said pen and paper was dead? Probably someone monolingual.</em>
+    </p>
 
     <a class="btn" href="https://buy.stripe.com/9B66oI5SH8OU81S5G4dQQ00" target="_blank">Buy Now – $40</a>
 
     <div class="section">
       <h2>What's Inside</h2>
-      <div class="gallery">
-        <img src="cover-front.jpg" alt="Front cover of the journal">
-        <img src="cover-back.jpg" alt="Back cover of the journal">
-        <img src="inthisjournal.jpg" alt="Intro and table of contents">
-        <img src="ch1.jpg" alt="Chapter sample page">
-        <img src="vocab-page.jpg" alt="Vocabulary tracking page">
-        <img src="practice-highlighted.jpg" alt="Practice page with highlights">
-        <img src="contents-first-page.jpg" alt="Another intro view">
-        <img src="hungarian-marked.JPG" alt="Marked-up homework sample">
+
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="cover-front.jpg" alt="Front cover of the journal" />
+        </div>
+        <div class="mySlides fade">
+          <img src="cover-back.jpg" alt="Back cover of the journal" />
+        </div>
+        <div class="mySlides fade">
+          <img src="inthisjournal.jpg" alt="Intro and table of contents" />
+        </div>
+        <div class="mySlides fade">
+          <img src="ch1.jpg" alt="Chapter sample page" />
+        </div>
+        <div class="mySlides fade">
+          <img src="vocab-page.jpg" alt="Vocabulary tracking page" />
+        </div>
+        <div class="mySlides fade">
+          <img src="practice-highlighted.jpg" alt="Practice page with highlights" />
+        </div>
+        <div class="mySlides fade">
+          <img src="contents-first-page.jpg" alt="Another intro view" />
+        </div>
+        <div class="mySlides fade">
+          <img src="hungarian-marked.JPG" alt="Marked-up homework sample" />
+        </div>
+
+        <!-- Navigation Arrows -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
       </div>
+
+      <!-- Dots for navigation -->
+      <div class="dots-container" style="text-align:center; margin-top: 1rem;">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+        <span class="dot" onclick="currentSlide(8)"></span>
+      </div>
+
       <ul>
         <li>96+ thoughtfully designed pages</li>
         <li>4 chapters that guide your learning method</li>
@@ -83,7 +81,10 @@
 
     <div class="section">
       <h2>Who It's For</h2>
-      <p>This journal is for French learners—from total beginners to confident intermediates. Whether you're starting with "baguette" or tackling the subjunctive, this is your language sidekick.</p>
+      <p>
+        This journal is for French learners—from total beginners to confident intermediates.
+        Whether you're starting with "baguette" or tackling the subjunctive, this is your language sidekick.
+      </p>
     </div>
 
     <div class="section">
@@ -118,33 +119,42 @@
     </footer>
   </div>
 
-  <!-- Zoom Overlay -->
-  <div id="zoom-overlay" style="display:none;">
-    <img id="zoomed-img" src="" alt="">
-  </div>
-
   <script>
-    const overlay = document.getElementById('zoom-overlay');
-    const zoomedImg = document.getElementById('zoomed-img');
-    const galleryImages = document.querySelectorAll('.gallery img');
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("mySlides");
+    const dots = document.getElementsByClassName("dot");
 
-    galleryImages.forEach(img => {
-      img.addEventListener('click', () => {
-        zoomedImg.src = img.src;
-        zoomedImg.alt = img.alt;
-        overlay.style.display = 'flex';
-      });
-    });
+    function showSlides(n) {
+      if (n >= slides.length) slideIndex = 0;
+      if (n < 0) slideIndex = slides.length - 1;
 
-    overlay.addEventListener('click', () => {
-      overlay.style.display = 'none';
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        overlay.style.display = 'none';
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        dots[i].classList.remove("active");
       }
-    });
+
+      slides[slideIndex].style.display = "block";
+      dots[slideIndex].classList.add("active");
+    }
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n - 1);
+    }
+
+    function autoShowSlides() {
+      slideIndex++;
+      if (slideIndex >= slides.length) slideIndex = 0;
+      showSlides(slideIndex);
+      setTimeout(autoShowSlides, 4000); // Change slide every 4 seconds
+    }
+
+    // Initialize slideshow
+    showSlides(slideIndex);
+    autoShowSlides();
   </script>
 </body>
 </html>

@@ -56,25 +56,97 @@ ul li {
   margin-bottom: 0.75rem;
 }
 
-/* Gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.gallery img {
-  width: 100%;
-  height: auto;
+/* Slideshow Container */
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto 2rem auto;
+  overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  background: #fff;
 }
 
-.gallery img:hover {
-  transform: scale(1.02);
+/* Slides */
+.mySlides {
+  display: none;
+  width: 100%;
+  border-radius: 12px;
+  animation: fade 1s ease forwards;
+}
+
+.mySlides img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Fade Animation */
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Arrows */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin-top: -1.5rem;
+  background: #FDF5E6;
+  color: #000000;
+  font-weight: 800;
+  font-size: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.prev:hover, .next:hover {
+  background: #f0e9d2;
+  color: #333;
+}
+
+.prev {
+  left: 1rem;
+}
+
+.next {
+  right: 1rem;
+}
+
+/* Dots Container */
+.dots-container {
+  text-align: center;
+  padding: 1rem 0;
+  user-select: none;
+}
+
+/* Dots */
+.dot {
+  cursor: pointer;
+  height: 14px;
+  width: 14px;
+  margin: 0 6px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.dot:hover {
+  background-color: #999;
+}
+
+.dot.active {
+  background-color: #111;
 }
 
 /* Button */
@@ -94,7 +166,7 @@ ul li {
 }
 
 .btn:hover {
-  background: #333;
+  background: #00adef;
 }
 
 /* Social Links */
@@ -111,7 +183,7 @@ ul li {
 }
 
 .links a:hover {
-  color: #111;
+  color: #00adef;
 }
 
 /* Footer */
@@ -131,5 +203,18 @@ footer {
   .btn {
     font-size: 1rem;
     padding: 0.8rem 1.5rem;
+  }
+
+  .prev, .next {
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1.5rem;
+    margin-top: -1.2rem;
+  }
+
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
   }
 }
