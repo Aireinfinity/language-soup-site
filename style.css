@@ -148,6 +148,11 @@ ul li {
 .dot.active {
   background-color: #111;
 }
+.stripe-button-wrapper {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
 
 /* Button */
 .btn {
