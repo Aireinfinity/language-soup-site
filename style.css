@@ -14,6 +14,59 @@ body {
   margin: auto;
   padding: 2rem 1rem;
 }
+/* Video Container for responsiveness */
+.video-wrapper {
+  max-width: 100%;
+  margin: 2rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.instagram-media {
+  background-color: #fef6e4 !important; /* cream background */
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+  max-width: 400px !important;   /* smaller max width */
+  min-width: 280px !important;   /* smaller min width */
+  margin: 1.5rem auto !important; /* less margin */
+  padding: 0 !important;
+  width: 100% !important;
+  display: block !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.instagram-media > div {
+  padding: 12px !important;  /* less padding */
+}
+
+@media (max-width: 600px) {
+  .instagram-media {
+    min-width: 260px !important;
+    max-width: 350px !important;
+    margin: 1rem auto !important;
+  }
+}
+/* Make video responsive */
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Optional: style controls on some browsers */
+.video-wrapper video::-webkit-media-controls {
+  border-radius: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .video-wrapper {
+    margin: 1.5rem 0;
+  }
+}
+
 
 /* Logo */
 .logo {
