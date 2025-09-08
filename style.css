@@ -203,10 +203,15 @@ ul li {
   background-color: #111;
 }
 .stripe-button-wrapper {
-  text-align: center;
-  margin: 2.5rem 0;
+  display: flex;              /* use flex layout */
+  gap: 1rem;                  /* space between buttons */
+  justify-content: center;    /* center horizontally */
+  flex-wrap: wrap;
 }
-
+.stripe-button-wrapper stripe-buy-button {
+  flex: 1 1 200px;            /* flexible width, min 200px */
+  max-width: 300px;           /* optional max width */
+}
 
 /* Button */
 .btn {
