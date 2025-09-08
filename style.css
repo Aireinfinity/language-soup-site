@@ -91,6 +91,7 @@ h1 {
 }
 
 h2 {
+  text-align: center;
   font-size: 1.75rem;
   margin-bottom: 1rem;
   color: #111;
@@ -275,4 +276,46 @@ footer {
     width: 12px;
     margin: 0 4px;
   }
+}
+/* Social Feeds Section */
+.social-feeds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.tiktok-feed, .instagram-feed {
+  flex: 1 1 350px;
+  max-width: 600px;
+}
+
+.social-feeds h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.preorder-button {
+  display: inline-block;
+  background-color: #19b091; /* warm coral-red */
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.75rem 2rem; /* a bit more horizontal padding for pill shape */
+  border-radius: 9999px; /* pill shape */
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.preorder-button:hover {
+  background-color: #00aedf;
+  transform: translateY(-2px);
+}
+
+.preorder-button:active {
+  background-color: #00aedf;
+  transform: translateY(0);
 }
