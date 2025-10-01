@@ -17,13 +17,18 @@
 <body>
   <div class="container">
     <img src="images/ls-logo.png" alt="Language Soup logo" class="logo" />
-    <h1>The Language Learning Journal</h1>
-    <h2>Write. Learn. Speak.</h1>
+    <div class="hero">
+      <h1>Language Soup</h1>
+      <h2>
+        A language learning <span class="accent"> journal </span> for beginners who want to cement their learning with <span class="accent">pen and paper</span>
       <p class="tagline">
-      The journal that makes language practice effective.<br />
-    <em>Pen and paper never looked this good.</em>
+        Pen and paper never looked this good.
       </p>
-  </div>
+    </div>
+
+
+
+
 <!-- Stripe Buy Button Script -->
 
   <div class="stripe-button-wrapper">
@@ -46,6 +51,16 @@
     </div>
   </div>
 
+  <section id="contact" class="contact-section">
+  <h2>Curious to learn more?</h2>
+  <form name="contact" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="contact">
+      <label> Email: <input type="email" name="email" required></label>
+    </p>
+      <button type="submit">I'm curious</button>
+    </p>
+  </form>
+</section>
 
     <!-- Stripe script for embedded buy button -->
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
@@ -66,6 +81,8 @@
       <script async src="https://www.tiktok.com/embed.js"></script>
     </div>
 
+
+    
     <!-- Instagram Feed -->
     <div class="instagram-feed">
       <h2>Follow us on Instagram</h2>
