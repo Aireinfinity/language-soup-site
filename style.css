@@ -335,7 +335,7 @@ footer {
   max-width: 600px;
   margin: 3rem auto;
   padding: 2rem;
-  background: #19b091;
+  background: #fef6e4;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
@@ -377,8 +377,8 @@ footer {
 }
 
 .contact-section button {
-  background-color: #00aedf;
-  color: #fff;
+  background-color: #fef6e4;
+  color: #000000;
   font-size: 1.1rem;
   font-weight: 600;
   padding: 0.75rem 2rem;
@@ -390,13 +390,12 @@ footer {
 }
 
 .contact-section button:hover {
-  background-color: #fef6e4;
+  background-color: #00aedf;
   transform: translateY(-2px);
-  color:#000000
 }
 
 .contact-section button:active {
-  background-color: #00aedf;
+  background-color: #fef6e4;
   transform: translateY(0);
 }
 
