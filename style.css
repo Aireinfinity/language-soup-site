@@ -216,6 +216,7 @@ ul li {
 .stripe-button-wrapper stripe-buy-button {
   flex: 1 1 200px;            /* flexible width, min 200px */
   max-width: 300px;           /* optional max width */
+  margin: 0 auto;
 }
 
 /* Button */
