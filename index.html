@@ -210,12 +210,12 @@
     <div class="inventory-counter">🗒️ <strong>8</strong> remaining</div>
 
     <!-- Optional: progress bar version -->
-    <!--
+    
     <div class="progress-bar">
       <div class="progress-fill" style="width:68%;"></div>
     </div>
     <p class="progress-text">17 of 25 sold</p>
-    -->
+    
   </div>
 
   <div class="scarcity-cta">
@@ -347,36 +347,3 @@
       </footer>
     </div>
   </body>
-
-  <script>
-    let slideIndex = 0;
-    const slides = document.getElementsByClassName("mySlides");
-    const dots = document.getElementsByClassName("dot");
-
-    function showSlides(n) {
-      if (n >= slides.length) slideIndex = 0;
-      if (n < 0) slideIndex = slides.length - 1;
-
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-        dots[i].classList.remove("active");
-      }
-
-      slides[slideIndex].style.display = "block";
-      dots[slideIndex].classList.add("active");
-    }
-
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-      showSlides(slideIndex = n - 1);
-    }
-
-    // Initialize slideshow
-    showSlides(slideIndex);
-    autoShowSlides();
-  </script>
-</body>
-</html>
