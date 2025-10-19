@@ -48,10 +48,7 @@
 
 <div class="section">
   <h2>What's Inside</h2>
-
-
         <div class="slideshow-container">
-
           <div class="mySlides fade">
             <img src="images/cover-front.JPG" alt="Front cover of the journal" />
           </div>
@@ -88,8 +85,36 @@
           <span class="dot" onclick="currentSlide(5)"></span>
           <span class="dot" onclick="currentSlide(6)"></span>
           <span class="dot" onclick="currentSlide(7)"></span>
-          <span class="dot" onclick="currentSlide(8)"></span>
         </div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  const slides = document.getElementsByClassName("mySlides");
+  const dots = document.getElementsByClassName("dot");
+  if (n > slides.length) { slideIndex = 1; }
+  if (n < 1) { slideIndex = slides.length; }
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
+</script>
+
 </div>
   <p class="button-subtext">Only 8 left in stock | Ships within 2 days </p>
 
