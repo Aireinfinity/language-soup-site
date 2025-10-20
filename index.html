@@ -51,77 +51,17 @@
       <div class="hero-cta">
         <a href="https://buy.stripe.com/9B66oI5SH8OU81S5G4dQQ00" class="btn">Get Your Journal - $40</a>
         <a href="https://buy.stripe.com/6oUcN64OD7KQaa0fgEdQQ02" class="btn btn-outline">Try $5 Sample</a>
+        <a href="https://buy.stripe.com/6oUcN64OD7KQaa0fgEdQQ02" class="sticky-button">Try $5 Sample</a>
       </div>
     </section>
 
+
 <div class="section">
-  <h2>What's Inside</h2>
-        <div class="slideshow-container">
-          <div class="mySlides fade">
-            <img src="images/cover-front.JPG" alt="Front cover of the journal" />
-          </div>
-          <div class="mySlides fade">
-            <img src="images/first-page.JPG" alt="First page of the journal" />
-          </div>
-          <div class="mySlides fade">
-            <img src="images/ch1.jpg" alt="Chapter sample page" />
-          </div>
-          <div class="mySlides fade">
-            <img src="images/ch3.JPG" alt="Chapter sample page" />
-          </div>
-          <div class="mySlides fade">
-            <img src="images/vocab-page.JPG" alt="Sample vocabulary page" />
-          </div>
-          <div class="mySlides fade">
-            <img src="images/french-page.JPG" alt="Sample practice page" />
-          </div>
-          <div class="mySlides fade">
-            <img src="images/cover-back.jpg" alt="Back cover of the journal" />
-          </div>
+  <h2>Fluency Starts with a Cup of Coffee</h2>
+      <div class="responsive-image">
+  <img src="images/cafe-journal.jpg" alt="Description of image">
+</div>
 
-          <!-- Navigation Arrows -->
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-        </div>
-        <!-- Dots for navigation -->
-        <div class="dots-container" style="text-align:center; margin-top: 1rem;">
-          <span class="dot" onclick="currentSlide(1)"></span>
-          <span class="dot" onclick="currentSlide(2)"></span>
-          <span class="dot" onclick="currentSlide(3)"></span>
-          <span class="dot" onclick="currentSlide(4)"></span>
-          <span class="dot" onclick="currentSlide(5)"></span>
-          <span class="dot" onclick="currentSlide(6)"></span>
-          <span class="dot" onclick="currentSlide(7)"></span>
-        </div>
-
-<script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  const slides = document.getElementsByClassName("mySlides");
-  const dots = document.getElementsByClassName("dot");
-  if (n > slides.length) { slideIndex = 1; }
-  if (n < 1) { slideIndex = slides.length; }
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (let i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-}
-</script>
 
 </div>
   <p class="button-subtext">Only 8 left in stock | Ships within 2 days | Arrives within 5-7 days </p>

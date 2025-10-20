@@ -726,6 +726,45 @@ ul li {
   margin-bottom: 0.75rem;
 }
 
+.sticky-button {
+  position: fixed;
+  bottom: 20px;            
+  right: 20px;             
+  background: #00aedf;
+  color: #fff;
+  padding: 0.9rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  font-family: 'Source Serif Variable', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: block;
+  width: fit-content;
+  transition: background 0.3s ease, transform 0.2s ease, opacity 0.2s ease;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent; /* removes dark tap highlight on mobile */
+}
+
+.sticky-button:hover,
+.sticky-button:focus,
+.sticky-button:active {
+  background: #19b091;  /* keeps your hover color even when clicked */
+  transform: scale(1.05);
+  opacity: 0.95;
+  color: #fff; /* ensures text stays white */
+  outline: none; /* removes blue border in some browsers */
+}
+
+.sticky-button:visited {
+  color: #fff;
+  background: #00aedf; /* same turquoise as normal */
+  border-radius: 10px; /* keeps your rounded shape consistent */
+}
+
+
 /* Slideshow Container */
 .slideshow-container {
   position: relative;
@@ -736,6 +775,22 @@ ul li {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background: #fff;
 }
+
+.responsive-image {
+  width: 90%;            /* slightly smaller than full width */
+  max-width: 500px;      /* tighter on large screens */
+  margin: 2rem auto;     /* centers and adds breathing room */
+  padding: 0.5rem;
+}
+
+.responsive-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* optional for subtle depth */
+}
+
 
 /* Slides */
 .mySlides {
@@ -831,6 +886,51 @@ ul li {
 }
 
 /* Button */
+.btn {
+  display: block;
+  width: fit-content;
+  background: #00aedf;
+  color: #fff;
+  padding: 0.9rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  margin: 2.5rem auto;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #19b091;
+}
+
+/* base state: hidden and not sticky */
+#scrollButton {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;  /* not fixed yet */
+  transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+/* visible sticky state */
+#scrollButton.show {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  opacity: 1;
+  pointer-events: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transform: translateY(0);
+}
+
+#scrollButton.show:hover {
+  background: #19b091;
+  transform: scale(1.05);
+}
+
+/* your existing button style */
 .btn {
   display: block;
   width: fit-content;
