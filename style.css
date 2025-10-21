@@ -78,7 +78,7 @@ body {
 /* Headings + Tagline */
 h1 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
 }
@@ -530,7 +530,7 @@ h3 {
 }
 
 .hero h1 {
-  font-size: 2rem;
+  font-size: 3rem;
   color: #111;
   margin-bottom: 1.25rem;
 }
@@ -989,7 +989,7 @@ footer {
 /* Responsive */
 @media (max-width: 600px) {
   h1 {
-    font-size: 2rem;
+    font-size: 4rem;
   }
 
   .btn {
