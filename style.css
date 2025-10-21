@@ -78,7 +78,7 @@ body {
 /* Headings + Tagline */
 h1 {
   text-align: center;
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
 }
@@ -525,11 +525,11 @@ h3 {
 }
 
 .hero {
-  background-image: url("images/cover-front.jpg");
-  background-size: cover;         /* fills the section */
+  background-image: url("images/canva-mockup.png");
+  background-size: contain;         /* fills the section */
   background-position: center;    /* keeps image centered */
   background-repeat: no-repeat;
-  color: white;
+  color: #fef6e4;
   text-align: center;
   padding: 6rem 1.5rem;
   position: relative;
@@ -537,6 +537,7 @@ h3 {
   margin-left: calc(50% - 50vw);  /* makes image go edge-to-edge */
   box-sizing: border-box;
   overflow: hidden;
+  background-color: #fef6e4;
 }
 
 /* dark overlay for text readability */
@@ -547,8 +548,8 @@ h3 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.45);  /* adjust opacity for brightness */
   z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .hero-content {
@@ -556,6 +557,20 @@ h3 {
   z-index: 2;    /* ensures text is above the overlay */
   max-width: 700px;
   margin: 0 auto;
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;  /* centers the buttons */
+  align-items: center;
+  gap: 1rem;                /* space between buttons */
+  flex-wrap: wrap;          /* makes them stack on small screens */
+  margin-top: 2rem;
+}
+
+.hero-cta .btn {
+  min-width: 180px;         /* consistent button width */
+  text-align: center;
 }
 
 
