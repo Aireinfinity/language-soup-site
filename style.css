@@ -526,7 +526,7 @@ h3 {
 
 .hero {
   background-image: url("images/canva-mockup.png");
-  background-size: contain;         /* fills the section */
+  background-size: cover;         /* fills the section */
   background-position: center;    /* keeps image centered */
   background-repeat: no-repeat;
   color: #fef6e4;
