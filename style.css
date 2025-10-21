@@ -78,7 +78,7 @@ body {
 /* Headings + Tagline */
 h1 {
   text-align: center;
-  font-size: 3rem;
+  font-size: 3.4rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
 }
@@ -525,7 +525,7 @@ h3 {
 }
 
 .hero {
-  background-image: url("images/canva-mockup.png");
+  background-image: url("images/hero-picture.png");
   background-size: cover;         /* fills the section */
   background-position: center;    /* keeps image centered */
   background-repeat: no-repeat;
