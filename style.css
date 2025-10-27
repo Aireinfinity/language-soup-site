@@ -1,4 +1,59 @@
-/* style.css - playful, challenging vibe */
+.timeline {
+  margin-top: 60px;
+  text-align: center;
+  font-family: 'Source Serif Variable', serif;
+  padding: 30px 0;
+  background: none;
+}
+
+.timeline h3 {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #ffb400;
+  text-shadow: 0 0 6px rgba(255, 102, 0, 0.6);
+  margin-bottom: 10px;
+}
+
+.timeline-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.day-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #3b3b4f;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.day-dot.active {
+  background-color: #ff0000;
+  box-shadow: 0 0 12px 2px rgba(255, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.day-dot.complete {
+  background-color: #ff9500;
+  box-shadow: 0 0 10px 2px rgba(255, 149, 0, 0.7);
+}
+
+.countdown {
+  font-size: 1rem;
+  margin-top: 12px;
+  color: #fef6e4;
+  text-shadow: 0 0 4px rgba(255, 149, 0, 0.4);
+  animation: flicker 2s infinite ease-in-out;
+}
+
+/* flickering text effect for countdown */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
 
 * {
   box-sizing: border-box;
@@ -13,14 +68,18 @@ body, html {
 }
 
 body {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;   /* centers vertically */
+  align-items: center;       /* centers horizontally */
   text-align: center;
   background: linear-gradient(160deg, #1b1b2f, #2c2c3e);
   color: #fef6e4;
-  padding: 20px;
+  padding: 40px 20px;
 }
+
+
 
 .container {
   max-width: 600px;
