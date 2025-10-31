@@ -50,7 +50,7 @@
       timelineTitle.textContent = `Day ${Math.min(diffDays, totalDays)} of ${totalDays}`;
     } else {
       timelineTitle.textContent = "✅ Challenge complete!";
-      const nextStart = new Date(startDate.getTime() + (14 * 24 * 60 * 60 * 1000)); // next challenge = 7 days after finish
+      const nextStart = new Date(startDate.getTime() + (12 * 24 * 60 * 60 * 1000)); // next challenge = 5 days after finish
 
       function updateCountdown() {
         const now = new Date();
