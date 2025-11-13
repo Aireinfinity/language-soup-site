@@ -1,73 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="images/png" href="images/icon.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Scared to Speak French? DAILY FRENCH CHALLENGE</title>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Variable:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Language Soup Challenges</title>
+  <link rel="icon" type="image/png" href="images/icon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Variable:wght@400;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Scared to speak French?</h1>
-    <p>
-      Join our <span class="highlight">FREE</span> WhatsApp group for 
-      <span class="highlight">10-seconds</span> of daily French speaking practice. 
-      Challenges are <span class="highlight">once a day</span> at a <span class="highlight">random time</span>. 
-      Good luck et bon courage 👻
-    </p>
-    <a href="https://chat.whatsapp.com/B5E2qNGVPl68IZWMIBFrmr" class="cta-button" target="_blank">CHALLENGE ME</a>
-  </div>
-  <!-- Challenge Timeline -->
-  <div class="timeline">
-    <h3 id="timeline-title"></h3>
-    <div class="timeline-bar" id="timeline-bar"></div>
-    <div class="countdown" id="countdown"></div>
+  <div class="chat-container">
+    <!-- Hero Section -->
+    <div class="system-intro">
+      <h1>BeReal for Language Learning</h1>
+      <p>Daily voice memo challenges to get you *actually speaking* your new language.</p>
     </div>
 
+    <!-- Chat Window -->
+    <div class="chat-window">
+      <div class="chat-message friend">
+        <div class="profile-pic">🇫🇷</div>
+        <div class="bubble">
+          <p>Hey! Ready to speak French today? 🥐</p>
+          <div class="audio-bar">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-message friend">
+        <div class="profile-pic">🇭🇺</div>
+        <div class="bubble">
+          <p>Or maybe Hungarian? It’s brutal but fun. 😈</p>
+          <div class="audio-bar">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-message friend">
+        <div class="profile-pic">🇪🇸</div>
+        <div class="bubble">
+          <p>Spanish is live too! 🇪🇸🔥</p>
+          <div class="audio-bar">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-message friend">
+        <div class="profile-pic">🇵🇹</div>
+        <div class="bubble">
+          <p>Portuguese coming soon! 👀</p>
+          <div class="audio-bar">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-message user">
+        <div class="bubble">
+          <p>So what exactly *is* the challenge?</p>
+        </div>
+      </div>
+
+      <div class="chat-message friend">
+        <div class="profile-pic">🧠</div>
+        <div class="bubble">
+          <p>Once a day, at a random time, we send a short voice prompt in your target language. You respond in 10 seconds or less 🎤✨</p>
+        </div>
+      </div>
+
+      <div class="chat-message friend">
+        <div class="profile-pic">🌍</div>
+        <div class="bubble">
+          <p>It’s free, friendly, and helps you actually speak instead of just “studying.”</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Join Challenge Form (outside chat) -->
+    <div class="join-form">
+      <h2>Join a Challenge 🚀</h2>
+      <form action="https://formspree.io/f/movyvdop" method="POST">
+        <label for="tel">WhatsApp Number</label>
+        <input type="tel" name="whatsapp" id="email" placeholder="+42 123 456 789" required />
+        <label for="language"></br> Pick your language 🌎</label>
+        <select name="language" id="language" required>
+          <option value="">Choose...</option>
+          <option value="French">French 🇫🇷</option>
+          <option value="Hungarian">Hungarian 🇭🇺</option>
+          <option value="Spanish">Spanish 🇪🇸</option>
+          <option value="Portuguese">Portuguese 🇵🇹 (coming soon)</option>
+        </select>
+        <button type="submit">Join Challenge 🚀</button>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="chat-footer">
+      <p>Follow us on Instagram <a href="https://instagram.com/languagesoup" target="_blank">@languagesoup</a> </p>
+    </footer>
+  </div>
+
   <script>
-    // Set your challenge start date (year, month-1, day)
-    const startDate = new Date(2025, 9, 22); // Example: Oct 20, 2025
-    const today = new Date();
-    const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
-    const timelineTitle = document.getElementById("timeline-title");
-    const timelineBar = document.getElementById("timeline-bar");
-    const countdownEl = document.getElementById("countdown");
-
-    const totalDays = 7;
-
-    // Build the timeline dots
-    for (let i = 1; i <= totalDays; i++) {
-      const dot = document.createElement("div");
-      dot.classList.add("day-dot");
-      if (i < diffDays) dot.classList.add("complete");
-      else if (i === diffDays) dot.classList.add("active");
-      timelineBar.appendChild(dot);
-    }
-
-    if (diffDays <= totalDays) {
-      timelineTitle.textContent = `Day ${Math.min(diffDays, totalDays)} of ${totalDays}`;
-    } else {
-      timelineTitle.textContent = "✅ Challenge complete!";
-      const nextStart = new Date(startDate.getTime() + (12 * 24 * 60 * 60 * 1000)); // next challenge = 5 days after finish
-
-      function updateCountdown() {
-        const now = new Date();
-        const diff = nextStart - now;
-        if (diff <= 0) {
-          countdownEl.textContent = "Next challenge starts soon!";
-          return;
-        }
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        countdownEl.textContent = `Next challenge starts in ${days}d ${hours}h ${minutes}m`;
-      }
-
-      updateCountdown();
-      setInterval(updateCountdown, 60000);
-    }
+    // Animate messages appearing sequentially
+    const messages = document.querySelectorAll(".chat-message");
+    messages.forEach((msg, i) => {
+      msg.style.opacity = 0;
+      setTimeout(() => {
+        msg.style.opacity = 1;
+        msg.classList.add("visible");
+      }, i * 600);
+    });
   </script>
 </body>
 </html>
