@@ -404,6 +404,131 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
+
+        /* Demo section */
+        .demo-section {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .demo-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .voice-demo {
+            background: #2c2c3e;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .voice-demo:last-child {
+            margin-bottom: 0;
+        }
+
+        .voice-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .profile-emoji {
+            width: 36px;
+            height: 36px;
+            background: #fef6e4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+
+        .voice-info {
+            flex: 1;
+        }
+
+        .voice-name {
+            color: #fef6e4;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+
+        .voice-time {
+            color: #fef6e4;
+            opacity: 0.6;
+            font-size: 0.75em;
+        }
+
+        .voice-message {
+            background: #00aedf;
+            border-radius: 16px;
+            padding: 12px;
+            color: #fef6e4;
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .voice-player {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fef6e4;
+            border-radius: 30px;
+            padding: 8px 12px;
+        }
+
+        .play-button {
+            width: 32px;
+            height: 32px;
+            background: #00aedf;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            flex-shrink: 0;
+        }
+
+        .waveform {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            height: 24px;
+        }
+
+        .wave-bar {
+            width: 3px;
+            background: #00aedf;
+            border-radius: 2px;
+            animation: wave 1.2s ease-in-out infinite;
+        }
+
+        .wave-bar:nth-child(1) { height: 8px; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 16px; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 12px; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 20px; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 10px; animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { height: 16px; animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { height: 14px; animation-delay: 0.6s; }
+        .wave-bar:nth-child(8) { height: 18px; animation-delay: 0.7s; }
+
+        @keyframes wave {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1); }
+        }
+
+        .voice-duration {
+            color: #2c2c3e;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -437,6 +562,86 @@
             <h2>here's the deal</h2>
             <p class="how-it-works">join groups for ur languages (french, spanish, hungarian, portuguese, etc). daily challenges get u speaking - voice notes while ur literally just living ur life.</p>
             <p class="how-it-works"><strong>not a classroom. just vibes 😎</strong></p>
+        </div>
+
+        <!-- Demo Section -->
+        <div class="demo-section">
+            <h2>lemme just show u how it works</h2>
+            
+            <div class="voice-demo">
+                <div class="voice-header">
+                    <div class="profile-emoji">🇫🇷</div>
+                    <div class="voice-info">
+                        <div class="voice-name">daily challenge</div>
+                        <div class="voice-time">today at 2:47 PM</div>
+                    </div>
+                </div>
+                <div class="voice-message">
+                    describe what ur doing right now in french! 10 seconds max 🎤
+                </div>
+                <div class="voice-player">
+                    <div class="play-button">▶</div>
+                    <div class="waveform">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <div class="voice-duration">0:09</div>
+                </div>
+            </div>
+
+            <div class="voice-demo">
+                <div class="voice-header">
+                    <div class="profile-emoji">😊</div>
+                    <div class="voice-info">
+                        <div class="voice-name">sarah</div>
+                        <div class="voice-time">today at 2:52 PM</div>
+                    </div>
+                </div>
+                <div class="voice-player">
+                    <div class="play-button">▶</div>
+                    <div class="waveform">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <div class="voice-duration">0:08</div>
+                </div>
+            </div>
+
+            <div class="voice-demo">
+                <div class="voice-header">
+                    <div class="profile-emoji">🔥</div>
+                    <div class="voice-info">
+                        <div class="voice-name">marcus</div>
+                        <div class="voice-time">today at 3:04 PM</div>
+                    </div>
+                </div>
+                <div class="voice-player">
+                    <div class="play-button">▶</div>
+                    <div class="waveform">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <div class="voice-duration">0:07</div>
+                </div>
+            </div>
         </div>
 
         <!-- Guidelines -->
