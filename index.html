@@ -1,132 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Open Graph / LinkedIn Preview Tags -->
-  <meta property="og:title" content="Language Soup - BeReal for Language Learning" />
-  <meta property="og:description" content="Short voice memo challenges to get you actually speaking your new language. Join group chats with native speakers: no tutors, no classrooms." />
-  <meta property="og:image" content="https://www.language-soup.com/images/preview.jpg" />
-  <meta property="og:url" content="https://www.language-soup.com/" />
-  <meta property="og:type" content="website" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Language Soup Challenges</title>
-  <link rel="icon" type="image/png" href="images/icon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Variable:wght@400;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+    <meta property="og:title" content="Language Soup 🍜 - Actually Speak Languages" />
+    <meta property="og:description" content="Join 100+ language learners in daily voice challenges. Fun, casual, and you actually SPEAK. Not a classroom." />
+    <meta property="og:image" content="https://www.language-soup.com/images/preview.jpg" />
+    <meta property="og:url" content="https://www.language-soup.com/" />
+    <meta property="og:type" content="website" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Language Soup 🍜</title>
+    <link rel="icon" type="image/png" href="images/icon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #fef6e4;
+            min-height: 100vh;
+            padding: 16px 12px;
+            color: #2c2c3e;
+        }
+
+        .container {
+            max-width: 420px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 24px 16px;
+        }
+
+        .hero h1 {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 3em;
+            margin-bottom: 4px;
+            font-weight: 700;
+            color: #2c2c3e;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .tagline {
+            font-size: 1em;
+            color: #2c2c3e;
+            margin-bottom: 16px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .hero .stats {
+            background: #00aedf;
+            color: #fef6e4;
+            padding: 10px 18px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 0.85em;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .quick-join {
+            background: #19b091;
+            color: #fef6e4;
+            padding: 12px 24px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 800;
+            font-size: 0.95em;
+            box-shadow: 0 3px 12px rgba(25, 176, 145, 0.3);
+            margin-top: 16px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-family: 'Nunito', sans-serif;
+            text-transform: lowercase;
+        }
+
+        .quick-join:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 16px rgba(25, 176, 145, 0.4);
+        }
+
+        .quick-join:active {
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Chat-style sections */
+        .chat-bubble {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            animation: slideUp 0.5s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-bubble::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 24px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            transform: rotate(45deg);
+            border-radius: 3px;
+        }
+
+        h2 {
+            font-size: 1.3em;
+            margin-bottom: 14px;
+            color: #2c2c3e;
+            font-weight: 800;
+            text-transform: lowercase;
+            letter-spacing: -0.01em;
+        }
+
+        .love-list {
+            background: #fef6e4;
+            padding: 16px;
+            border-radius: 16px;
+            border-left: 3px solid #00aedf;
+        }
+
+        .love-list ul {
+            list-style: none;
+        }
+
+        .love-list li {
+            margin-bottom: 12px;
+            padding-left: 8px;
+            line-height: 1.4;
+            color: #2c2c3e;
+            font-size: 0.95em;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .love-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .emoji {
+            font-size: 1.4em;
+            flex-shrink: 0;
+        }
+
+        /* How it works */
+        .how-it-works {
+            line-height: 1.6;
+            color: #2c2c3e;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .how-it-works strong {
+            color: #00aedf;
+            font-weight: 800;
+        }
+
+        /* Guidelines */
+        .guidelines {
+            background: #fef6e4;
+            padding: 16px;
+            border-radius: 16px;
+        }
+
+        .guidelines h3 {
+            color: #2c2c3e;
+            margin-bottom: 10px;
+            font-size: 1em;
+            font-weight: 800;
+            text-transform: lowercase;
+        }
+
+        .guidelines ul {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+
+        .guidelines ul:last-child {
+            margin-bottom: 0;
+        }
+
+        .guidelines li {
+            margin-bottom: 8px;
+            padding-left: 28px;
+            position: relative;
+            line-height: 1.4;
+            color: #2c2c3e;
+            font-size: 0.9em;
+        }
+
+        .guidelines li:last-child {
+            margin-bottom: 0;
+        }
+
+        .guidelines li:before {
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .must li:before {
+            content: "✅";
+        }
+
+        .not-allowed li:before {
+            content: "❌";
+        }
+
+        /* Form Section - turquoise bubble */
+        .form-bubble {
+            background: #00aedf;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0, 174, 223, 0.3);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .form-bubble::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            right: 24px;
+            width: 16px;
+            height: 16px;
+            background: #00aedf;
+            transform: rotate(45deg);
+            border-radius: 3px;
+        }
+
+        .form-bubble h2 {
+            color: #fef6e4;
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 1.4em;
+        }
+
+        .form-bubble h3 {
+            color: #fef6e4;
+            margin-bottom: 14px;
+            font-size: 0.95em;
+            font-weight: 600;
+            text-transform: lowercase;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #fef6e4;
+            font-size: 0.85em;
+            text-transform: lowercase;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: none;
+            border-radius: 14px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background-color: #fef6e4;
+            color: #2c2c3e;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(254, 246, 228, 0.4);
+            transform: scale(1.01);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #2c2c3e;
+            opacity: 0.5;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 70px;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%232c2c3e' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+        }
+
+        .join-button {
+            width: 100%;
+            padding: 14px;
+            background: #19b091;
+            color: #fef6e4;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.05em;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+            box-shadow: 0 3px 10px rgba(25, 176, 145, 0.3);
+            text-transform: lowercase;
+        }
+
+        .join-button:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 5px 14px rgba(25, 176, 145, 0.4);
+        }
+
+        .join-button:active {
+            transform: translateY(0) scale(0.99);
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            text-align: center;
+            color: #2c2c3e;
+            font-size: 0.85em;
+        }
+
+        footer p {
+            margin-bottom: 6px;
+            text-transform: lowercase;
+        }
+
+        footer a {
+            color: #00aedf;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 8px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .chat-bubble, .form-bubble {
+                padding: 18px;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Staggered animations */
+        .chat-bubble:nth-child(2) { animation-delay: 0.1s; }
+        .chat-bubble:nth-child(3) { animation-delay: 0.2s; }
+        .chat-bubble:nth-child(4) { animation-delay: 0.3s; }
+        .form-bubble { animation-delay: 0.4s; }
+
+        /* Fun loading state */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
 </head>
 <body>
-  <div class="chat-container">
-    <!-- Hero Section -->
-    <div class="system-intro">
-      <h1>BeReal for Language Learning</h1>
-      <p>Daily voice memo challenges to get you *actually speaking* your new language.</p>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Language Soup 🍜</h1>
+            <p class="tagline">messy fun community where u actually SPEAK</p>
+            <div class="stats">
+                100+ ppl • daily vibes • real convos
+            </div>
+            <br>
+            <button class="quick-join" onclick="document.getElementById('joinForm').scrollIntoView({behavior: 'smooth', block: 'center'})">join now ↓</button>
+        </div>
+
+        <!-- What Members Love -->
+        <div class="chat-bubble">
+            <h2>why ppl love it here</h2>
+            <div class="love-list">
+                <ul>
+                    <li><span class="emoji">😎</span> <span>no boring classroom energy</span></li>
+                    <li><span class="emoji">🚀</span> <span>community actually keeps u going</span></li>
+                    <li><span class="emoji">💬</span> <span>small groups = no overwhelm</span></li>
+                    <li><span class="emoji">🔔</span> <span>pick ur languages, mute the rest</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="chat-bubble">
+            <h2>here's the deal</h2>
+            <p class="how-it-works">join groups for ur languages (french, spanish, hungarian, portuguese, etc). daily challenges get u speaking - voice notes while ur literally just living ur life.</p>
+            <p class="how-it-works"><strong>not a classroom. just vibes 😎</strong></p>
+        </div>
+
+        <!-- Guidelines -->
+        <div class="chat-bubble">
+            <h2>the rules (they're chill)</h2>
+            <div class="guidelines">
+                <h3>what we need from u:</h3>
+                <ul class="must">
+                    <li>intro urself when u join (in BOTH languages - messy is fine!)</li>
+                    <li>engage once a week minimum (voice notes, hype ppl up, whatever)</li>
+                    <li>keep notifs on - no silent lurkers sorry</li>
+                </ul>
+
+                <h3>what's not cool:</h3>
+                <ul class="not-allowed">
+                    <li>spam or trying to sell stuff</li>
+                    <li>just reading and never participating (this isn't ur soup 🍜)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Join Form -->
+        <div class="form-bubble">
+            <h2>ok let's do this 🚀</h2>
+            <h3>quick intro:</h3>
+            <form id="joinForm">
+                <div class="form-group">
+                    <label for="source">how'd u find us?</label>
+                    <select id="source" required>
+                        <option value="">pick one...</option>
+                        <option value="Friend">friend told me (drop their name below!)</option>
+                        <option value="Instagram">instagram</option>
+                        <option value="LinkedIn">linkedin</option>
+                        <option value="Podcast">podcast</option>
+                        <option value="Other">somewhere else</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="details">more details (if applicable):</label>
+                    <input type="text" id="details" placeholder="friend's name or how u stumbled here">
+                </div>
+
+                <div class="form-group">
+                    <label for="languages">what language(s) r u learning?</label>
+                    <input type="text" id="languages" placeholder="spanish, french, etc" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="level">ur level rn?</label>
+                    <select id="level" required>
+                        <option value="">pick one...</option>
+                        <option value="Beginner">beginner (just started)</option>
+                        <option value="Intermediate">intermediate (getting there)</option>
+                        <option value="Advanced">advanced (put me with native speakers!)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="studying">what r u using to study rn?</label>
+                    <textarea id="studying" placeholder="duolingo? netflix? tutor? tell us" required></textarea>
+                </div>
+
+                <button type="submit" class="join-button">join the soup 🍜</button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>follow us <a href="https://instagram.com/languagesoup" target="_blank">@languagesoup</a></p>
+            <p>made by noah • changing how we learn languages</p>
+        </footer>
     </div>
 
-    <!-- Chat Window -->
-    <div class="chat-window">
-      <div class="chat-message friend">
-        <div class="profile-pic">🇫🇷</div>
-        <div class="bubble">
-          <p>Hey! Ready to speak French today? 🥐</p>
-          <div class="audio-bar">
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-          </div>
-        </div>
-      </div>
+    <script>
+        document.getElementById('joinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const source = document.getElementById('source').value;
+            const details = document.getElementById('details').value;
+            const languages = document.getElementById('languages').value;
+            const level = document.getElementById('level').value;
+            const studying = document.getElementById('studying').value;
 
-      <div class="chat-message friend">
-        <div class="profile-pic">🇭🇺</div>
-        <div class="bubble">
-          <p>Or maybe Hungarian? It’s brutal but fun. 😈</p>
-          <div class="audio-bar">
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-          </div>
-        </div>
-      </div>
+            // Build the message
+            let message = `Hi! I'd like to join Language Soup 🍜\n\n`;
+            message += `How I heard about it: ${source}`;
+            if (details) {
+                message += ` (${details})`;
+            }
+            message += `\n`;
+            message += `Language(s) learning: ${languages}\n`;
+            message += `Level: ${level}\n`;
+            message += `Currently studying with: ${studying}`;
 
-      <div class="chat-message friend">
-        <div class="profile-pic">🇪🇸</div>
-        <div class="bubble">
-          <p>Spanish is live too! 🇪🇸🔥</p>
-          <div class="audio-bar">
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="chat-message friend">
-        <div class="profile-pic">🇵🇹</div>
-        <div class="bubble">
-          <p>Portuguese coming soon! 👀</p>
-          <div class="audio-bar">
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="chat-message user">
-        <div class="bubble">
-          <p>So what exactly *is* the challenge?</p>
-        </div>
-      </div>
-
-      <div class="chat-message friend">
-        <div class="profile-pic">🧠</div>
-        <div class="bubble">
-          <p>Once a day, at a random time, we send a short voice prompt in your target language. You respond in 10 seconds or less 🎤✨</p>
-        </div>
-      </div>
-
-      <div class="chat-message friend">
-        <div class="profile-pic">🌍</div>
-        <div class="bubble">
-          <p>It’s free, friendly, and helps you actually speak instead of just “studying.”</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Join Challenge Form (outside chat) -->
-    <div class="join-form">
-      <h2>Join a Challenge 🚀</h2>
-      <form action="https://formspree.io/f/movyvdop" method="POST">
-        <label for="tel">WhatsApp Number</label>
-        <input type="tel" name="whatsapp" id="email" placeholder="+42 123 456 789" required />
-        <label for="language"></br> Pick your language 🌎</label>
-        <select name="language" id="language" required>
-          <option value="">Choose...</option>
-          <option value="French">French 🇫🇷</option>
-          <option value="Hungarian">Hungarian 🇭🇺</option>
-          <option value="Spanish">Spanish 🇪🇸</option>
-          <option value="Portuguese">Portuguese 🇵🇹 (coming soon)</option>
-        </select>
-        <button type="submit">Join Challenge 🚀</button>
-      </form>
-    </div>
-
-    <!-- Footer -->
-    <footer class="chat-footer">
-      <p>Follow us on Instagram <a href="https://instagram.com/languagesoup" target="_blank">@languagesoup</a> </p>
-    </footer>
-  </div>
-
-  <script>
-    // Animate messages appearing sequentially
-    const messages = document.querySelectorAll(".chat-message");
-    messages.forEach((msg, i) => {
-      msg.style.opacity = 0;
-      setTimeout(() => {
-        msg.style.opacity = 1;
-        msg.classList.add("visible");
-      }, i * 600);
-    });
-  </script>
+            // Encode for WhatsApp URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://chat.whatsapp.com/JeG6Mx0hpwcFqFSQ24xqpV`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
 </body>
 </html>
