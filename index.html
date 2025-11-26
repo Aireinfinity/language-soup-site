@@ -716,8 +716,18 @@
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        document.getElementById('joinForm').addEventListener('submit', function(e) {
+        // ============================================
+        // SUPABASE CONFIG - INSERT YOUR CREDENTIALS HERE
+        // ============================================
+        const SUPABASE_URL = 'https://uspegyneclgkscxwmomn.supabase.co'; // e.g., 'https://xxxxx.supabase.co'
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzcGVneW5lY2xna3NjeHdtb21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3ODgwNzQsImV4cCI6MjA3OTM2NDA3NH0.FcJ_eSzkWCX-2b5kGHv8AcBvhcZe6aAAP6vG9vubiew'; // Your public/anon key
+        
+        // Initialize Supabase client
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        document.getElementById('joinForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const source = document.getElementById('source').value;
@@ -726,23 +736,55 @@
             const level = document.getElementById('level').value;
             const studying = document.getElementById('studying').value;
 
-            // Build the message
-            let message = `Hi! I'd like to join Language Soup 🍜\n\n`;
-            message += `How I heard about it: ${source}`;
-            if (details) {
-                message += ` (${details})`;
-            }
-            message += `\n`;
-            message += `Language(s) learning: ${languages}\n`;
-            message += `Level: ${level}\n`;
-            message += `Currently studying with: ${studying}`;
+            // Disable button while submitting
+            const submitButton = e.target.querySelector('.join-button');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'submitting...';
+            submitButton.disabled = true;
 
-            // Encode for WhatsApp URL
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://chat.whatsapp.com/JeG6Mx0hpwcFqFSQ24xqpV`;
-            
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
+            try {
+                // Save to Supabase
+                const { data, error } = await supabase
+                    .from('signups') // Change table name if you want
+                    .insert([
+                        {
+                            source: source,
+                            source_details: details || null,
+                            languages: languages,
+                            level: level,
+                            studying_with: studying,
+                            submitted_at: new Date().toISOString()
+                        }
+                    ]);
+
+                if (error) {
+                    console.error('Error saving to Supabase:', error);
+                    alert('Oops! Something went wrong. Please try again or message us on Instagram.');
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                    return;
+                }
+
+                // Success! Now open WhatsApp
+                const whatsappURL = `https://chat.whatsapp.com/JeG6Mx0hpwcFqFSQ24xqpV`;
+                window.open(whatsappURL, '_blank');
+
+                // Show success message
+                submitButton.textContent = '✅ submitted! check whatsapp';
+                
+                // Reset form after a delay
+                setTimeout(() => {
+                    e.target.reset();
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }, 3000);
+
+            } catch (err) {
+                console.error('Unexpected error:', err);
+                alert('Something went wrong. Please try again!');
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
         });
     </script>
 </body>
