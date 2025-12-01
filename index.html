@@ -655,6 +655,44 @@
             transform: translateY(0) scale(0.99);
         }
 
+        /* Fallback WhatsApp link */
+        .whatsapp-fallback {
+            display: none;
+            margin-top: 16px;
+            padding: 16px;
+            background: #fef6e4;
+            border-radius: 14px;
+            text-align: center;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .whatsapp-fallback.show {
+            display: block;
+        }
+
+        .whatsapp-fallback p {
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: #2c2c3e;
+        }
+
+        .whatsapp-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #19b091;
+            color: #fef6e4;
+            text-decoration: none;
+            border-radius: 14px;
+            font-weight: 800;
+            transition: all 0.2s;
+            text-transform: lowercase;
+        }
+
+        .whatsapp-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(25, 176, 145, 0.3);
+        }
+
         /* Footer */
         footer {
             padding: 20px;
@@ -961,6 +999,11 @@
 
                 <button type="submit" class="join-button">join the soup 🍜</button>
             </form>
+            
+            <div class="whatsapp-fallback" id="whatsappFallback">
+                <p>whatsapp didn't open? no worries!</p>
+                <a href="https://chat.whatsapp.com/JeG6Mx0hpwcFqFSQ24xqpV" target="_blank" class="whatsapp-link">click here to join →</a>
+            </div>
         </div>
 
         <!-- Footer -->
@@ -1050,17 +1093,15 @@
                     return;
                 }
 
-                // Success - open WhatsApp
+                // Success - redirect to WhatsApp
                 const whatsappURL = `https://chat.whatsapp.com/JeG6Mx0hpwcFqFSQ24xqpV`;
-                window.open(whatsappURL, '_blank');
-
-                submitButton.textContent = '✅ done! check whatsapp';
                 
+                submitButton.textContent = '✅ taking you to whatsapp...';
+                
+                // Redirect after short delay so they see the success message
                 setTimeout(() => {
-                    e.target.reset();
-                    submitButton.textContent = originalText;
-                    submitButton.disabled = false;
-                }, 3000);
+                    window.location.href = whatsappURL;
+                }, 1000);
 
             } catch (err) {
                 console.error('Error:', err);
