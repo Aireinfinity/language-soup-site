@@ -31,19 +31,19 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 20px;
         }
 
-        /* Hero Section */
+        /* Hero Section - WHAT IT IS */
         .hero {
             text-align: center;
-            padding: 24px 16px;
+            padding: 20px 16px 24px;
         }
 
         .hero h1 {
             font-family: 'Source Serif Pro', serif;
             font-size: 3em;
-            margin-bottom: 4px;
+            margin-bottom: 12px;
             font-weight: 700;
             color: #2c2c3e;
             line-height: 1;
@@ -51,11 +51,24 @@
         }
 
         .hero .tagline {
-            font-size: 1em;
+            font-size: 1.15em;
             color: #2c2c3e;
             margin-bottom: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .hero .tagline .highlight {
+            color: #00aedf;
+            position: relative;
+        }
+
+        .hero .subtitle {
+            font-size: 0.95em;
+            color: #2c2c3e;
+            opacity: 0.75;
+            margin-bottom: 16px;
             font-weight: 400;
-            opacity: 0.8;
         }
 
         .hero .stats {
@@ -68,33 +81,7 @@
             font-size: 0.85em;
             box-shadow: 0 3px 10px rgba(0,0,0,0.12);
             animation: float 3s ease-in-out infinite;
-        }
-
-        .quick-join {
-            background: #19b091;
-            color: #fef6e4;
-            padding: 12px 24px;
-            border-radius: 30px;
-            display: inline-block;
-            font-weight: 800;
-            font-size: 0.95em;
-            box-shadow: 0 3px 12px rgba(25, 176, 145, 0.3);
-            margin-top: 16px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
-            font-family: 'Nunito', sans-serif;
-            text-transform: lowercase;
-        }
-
-        .quick-join:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 16px rgba(25, 176, 145, 0.4);
-        }
-
-        .quick-join:active {
-            transform: translateY(0);
+            margin-bottom: 16px;
         }
 
         @keyframes float {
@@ -102,14 +89,13 @@
             50% { transform: translateY(-5px); }
         }
 
-        /* Chat-style sections */
-        .chat-bubble {
+        /* Video/Demo Section - SHOW WHAT IT IS */
+        .video-section {
             background: white;
             border-radius: 24px;
             padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
             animation: slideUp 0.5s ease-out;
-            position: relative;
         }
 
         @keyframes slideUp {
@@ -123,151 +109,468 @@
             }
         }
 
-        .chat-bubble::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: 24px;
-            width: 16px;
-            height: 16px;
-            background: white;
-            transform: rotate(45deg);
-            border-radius: 3px;
-        }
-
-        h2 {
+        .video-section h2 {
             font-size: 1.3em;
             margin-bottom: 14px;
             color: #2c2c3e;
             font-weight: 800;
+            text-align: center;
             text-transform: lowercase;
-            letter-spacing: -0.01em;
         }
 
-        .love-list {
-            background: #fef6e4;
-            padding: 16px;
-            border-radius: 16px;
-            border-left: 3px solid #00aedf;
+        /* Video controls - Instagram style */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
         }
 
-        .love-list ul {
-            list-style: none;
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            display: block;
         }
 
-        .love-list li {
-            margin-bottom: 12px;
-            padding-left: 8px;
-            line-height: 1.4;
-            color: #2c2c3e;
-            font-size: 0.95em;
+        .video-controls {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
             display: flex;
-            align-items: flex-start;
             gap: 8px;
+            z-index: 10;
         }
 
-        .love-list li:last-child {
+        .video-control-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+
+        .video-control-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        .video-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Instagram embed container */
+        .video-container {
+            position: relative;
+            width: 100%;
             margin-bottom: 0;
         }
 
-        .emoji {
-            font-size: 1.4em;
+        /* Make Instagram embed responsive and full */
+        .video-container blockquote {
+            margin: 0 !important;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 9/16;
+            background: #00aedf;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fef6e4;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .video-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        .video-placeholder .play-icon {
+            font-size: 4em;
+            margin-bottom: 12px;
+        }
+
+        .video-placeholder .play-text {
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        /* Embedded iframe - uncomment and add your Instagram embed URL */
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Step-by-step styles */
+        .step-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .step {
+            background: #fef6e4;
+            border-radius: 20px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-left: 5px solid #00aedf;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: #00aedf;
+            color: #fef6e4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 800;
             flex-shrink: 0;
         }
 
-        /* How it works */
-        .how-it-works {
-            line-height: 1.6;
-            color: #2c2c3e;
-            margin-bottom: 12px;
-            font-size: 0.95em;
+        .step-content {
+            flex: 1;
         }
 
-        .how-it-works strong {
-            color: #00aedf;
+        .step-title {
             font-weight: 800;
-        }
-
-        /* Guidelines */
-        .guidelines {
-            background: #fef6e4;
-            padding: 16px;
-            border-radius: 16px;
-        }
-
-        .guidelines h3 {
+            font-size: 1.05em;
             color: #2c2c3e;
-            margin-bottom: 10px;
-            font-size: 1em;
-            font-weight: 800;
+            margin-bottom: 4px;
             text-transform: lowercase;
         }
 
-        .guidelines ul {
-            list-style: none;
-            margin-bottom: 16px;
+        .step-desc {
+            font-size: 0.9em;
+            color: #2c2c3e;
+            opacity: 0.75;
+            line-height: 1.4;
+        }
+        .demo-examples {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            animation: slideUp 0.5s ease-out;
+            animation-delay: 0.1s;
         }
 
-        .guidelines ul:last-child {
+        .demo-examples h2 {
+            font-size: 1.3em;
+            margin-bottom: 16px;
+            color: #2c2c3e;
+            font-weight: 800;
+            text-align: center;
+            text-transform: lowercase;
+        }
+
+        /* Voice Examples Section */
+        .voice-examples {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            animation: slideUp 0.5s ease-out;
+            animation-delay: 0.15s;
+        }
+
+        .voice-examples h2 {
+            font-size: 1.3em;
+            margin-bottom: 16px;
+            color: #2c2c3e;
+            font-weight: 800;
+            text-align: center;
+            text-transform: lowercase;
+        }
+
+        .voice-demo {
+            background: #2c2c3e;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 12px;
+            animation: popIn 0.4s ease-out backwards;
+        }
+
+        .voice-examples .voice-demo:nth-child(2) { animation-delay: 0.3s; }
+        .voice-examples .voice-demo:nth-child(3) { animation-delay: 0.9s; }
+        .voice-examples .voice-demo:nth-child(4) { animation-delay: 1.5s; }
+        .voice-examples .voice-demo:nth-child(5) { animation-delay: 2.1s; }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
+            60% {
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .voice-demo {
+            background: #2c2c3e;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .voice-demo:last-child {
             margin-bottom: 0;
         }
 
-        .guidelines li {
-            margin-bottom: 8px;
-            padding-left: 28px;
-            position: relative;
-            line-height: 1.4;
-            color: #2c2c3e;
+        .voice-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .profile-emoji {
+            width: 36px;
+            height: 36px;
+            background: #fef6e4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            flex-shrink: 0;
+        }
+
+        .voice-info {
+            flex: 1;
+        }
+
+        .voice-name {
+            color: #fef6e4;
+            font-weight: 700;
             font-size: 0.9em;
         }
 
-        .guidelines li:last-child {
-            margin-bottom: 0;
+        .voice-time {
+            color: #fef6e4;
+            opacity: 0.6;
+            font-size: 0.75em;
         }
 
-        .guidelines li:before {
-            position: absolute;
-            left: 0;
-            font-size: 1.2em;
+        .voice-message {
+            background: #00aedf;
+            border-radius: 16px;
+            padding: 12px;
+            color: #fef6e4;
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin-bottom: 10px;
         }
 
-        .must li:before {
-            content: "✅";
+        .voice-player {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fef6e4;
+            border-radius: 30px;
+            padding: 8px 12px;
         }
 
-        .not-allowed li:before {
-            content: "❌";
+        .play-button {
+            width: 32px;
+            height: 32px;
+            background: #00aedf;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            flex-shrink: 0;
         }
 
-        /* Form Section - turquoise bubble */
-        .form-bubble {
+        .waveform {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            height: 24px;
+        }
+
+        .wave-bar {
+            width: 3px;
+            background: #00aedf;
+            border-radius: 2px;
+            animation: wave 1.2s ease-in-out infinite;
+        }
+
+        .wave-bar:nth-child(1) { height: 8px; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 16px; animation-delay: 0.05s; }
+        .wave-bar:nth-child(3) { height: 12px; animation-delay: 0.1s; }
+        .wave-bar:nth-child(4) { height: 20px; animation-delay: 0.15s; }
+        .wave-bar:nth-child(5) { height: 10px; animation-delay: 0.2s; }
+        .wave-bar:nth-child(6) { height: 16px; animation-delay: 0.25s; }
+        .wave-bar:nth-child(7) { height: 14px; animation-delay: 0.3s; }
+        .wave-bar:nth-child(8) { height: 18px; animation-delay: 0.35s; }
+        .wave-bar:nth-child(9) { height: 11px; animation-delay: 0.4s; }
+        .wave-bar:nth-child(10) { height: 15px; animation-delay: 0.45s; }
+        .wave-bar:nth-child(11) { height: 13px; animation-delay: 0.5s; }
+        .wave-bar:nth-child(12) { height: 19px; animation-delay: 0.55s; }
+        .wave-bar:nth-child(13) { height: 9px; animation-delay: 0.6s; }
+        .wave-bar:nth-child(14) { height: 17px; animation-delay: 0.65s; }
+        .wave-bar:nth-child(15) { height: 12px; animation-delay: 0.7s; }
+        .wave-bar:nth-child(16) { height: 20px; animation-delay: 0.75s; }
+        .wave-bar:nth-child(17) { height: 14px; animation-delay: 0.8s; }
+        .wave-bar:nth-child(18) { height: 16px; animation-delay: 0.85s; }
+        .wave-bar:nth-child(19) { height: 10px; animation-delay: 0.9s; }
+        .wave-bar:nth-child(20) { height: 18px; animation-delay: 0.95s; }
+
+        @keyframes wave {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1); }
+        }
+
+        .voice-duration {
+            color: #2c2c3e;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        /* Quick benefits */
+        .benefits {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            animation: slideUp 0.5s ease-out;
+            animation-delay: 0.6s;
+        }
+
+        .benefits h2 {
+            font-size: 1.3em;
+            margin-bottom: 14px;
+            color: #2c2c3e;
+            font-weight: 800;
+            text-align: center;
+            text-transform: lowercase;
+        }
+
+        .benefit-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .benefit-item {
+            background: #fef6e4;
+            padding: 14px;
+            border-radius: 16px;
+            border-left: 4px solid #00aedf;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .benefit-emoji {
+            font-size: 1.8em;
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            font-size: 0.95em;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        /* CTA Section - GET THEM TO SIGN UP */
+        .cta-section {
+            background: #19b091;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 6px 20px rgba(25, 176, 145, 0.4);
+            animation: slideUp 0.5s ease-out;
+            animation-delay: 0.65s;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: #fef6e4;
+            font-size: 1.5em;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            color: #fef6e4;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 16px;
+            background: #fef6e4;
+            color: #19b091;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.15em;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            text-transform: lowercase;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Form Modal/Section */
+        .form-modal {
+            display: none;
             background: #00aedf;
             border-radius: 24px;
             padding: 24px;
             box-shadow: 0 4px 16px rgba(0, 174, 223, 0.3);
-            animation: slideUp 0.5s ease-out;
+            animation: slideUp 0.3s ease-out;
+            margin-top: 16px;
         }
 
-        .form-bubble::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            right: 24px;
-            width: 16px;
-            height: 16px;
-            background: #00aedf;
-            transform: rotate(45deg);
-            border-radius: 3px;
+        .form-modal.active {
+            display: block;
         }
 
-        .form-bubble h2 {
+        .form-modal h2 {
             color: #fef6e4;
             text-align: center;
             margin-bottom: 16px;
             font-size: 1.4em;
+            font-weight: 800;
+            text-transform: lowercase;
         }
 
-        .form-bubble h3 {
+        .form-modal h3 {
             color: #fef6e4;
             margin-bottom: 14px;
             font-size: 0.95em;
@@ -340,6 +643,7 @@
             margin-top: 8px;
             box-shadow: 0 3px 10px rgba(25, 176, 145, 0.3);
             text-transform: lowercase;
+            font-family: 'Nunito', sans-serif;
         }
 
         .join-button:hover {
@@ -384,7 +688,7 @@
                 font-size: 2.5em;
             }
 
-            .chat-bubble, .form-bubble {
+            .video-section, .demo-examples, .benefits, .cta-section, .form-modal {
                 padding: 18px;
             }
 
@@ -392,181 +696,73 @@
                 font-size: 1.2em;
             }
         }
-
-        /* Staggered animations */
-        .chat-bubble:nth-child(2) { animation-delay: 0.1s; }
-        .chat-bubble:nth-child(3) { animation-delay: 0.2s; }
-        .chat-bubble:nth-child(4) { animation-delay: 0.3s; }
-        .form-bubble { animation-delay: 0.4s; }
-
-        /* Fun loading state */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Demo section */
-        .demo-section {
-            background: white;
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            animation: slideUp 0.5s ease-out;
-        }
-
-        .demo-section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .voice-demo {
-            background: #2c2c3e;
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-
-        .voice-demo:last-child {
-            margin-bottom: 0;
-        }
-
-        .voice-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .profile-emoji {
-            width: 36px;
-            height: 36px;
-            background: #fef6e4;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2em;
-        }
-
-        .voice-info {
-            flex: 1;
-        }
-
-        .voice-name {
-            color: #fef6e4;
-            font-weight: 700;
-            font-size: 0.9em;
-        }
-
-        .voice-time {
-            color: #fef6e4;
-            opacity: 0.6;
-            font-size: 0.75em;
-        }
-
-        .voice-message {
-            background: #00aedf;
-            border-radius: 16px;
-            padding: 12px;
-            color: #fef6e4;
-            font-size: 0.9em;
-            line-height: 1.4;
-            margin-bottom: 10px;
-        }
-
-        .voice-player {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #fef6e4;
-            border-radius: 30px;
-            padding: 8px 12px;
-        }
-
-        .play-button {
-            width: 32px;
-            height: 32px;
-            background: #00aedf;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-            flex-shrink: 0;
-        }
-
-        .waveform {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            height: 24px;
-        }
-
-        .wave-bar {
-            width: 3px;
-            background: #00aedf;
-            border-radius: 2px;
-            animation: wave 1.2s ease-in-out infinite;
-        }
-
-        .wave-bar:nth-child(1) { height: 8px; animation-delay: 0s; }
-        .wave-bar:nth-child(2) { height: 16px; animation-delay: 0.1s; }
-        .wave-bar:nth-child(3) { height: 12px; animation-delay: 0.2s; }
-        .wave-bar:nth-child(4) { height: 20px; animation-delay: 0.3s; }
-        .wave-bar:nth-child(5) { height: 10px; animation-delay: 0.4s; }
-        .wave-bar:nth-child(6) { height: 16px; animation-delay: 0.5s; }
-        .wave-bar:nth-child(7) { height: 14px; animation-delay: 0.6s; }
-        .wave-bar:nth-child(8) { height: 18px; animation-delay: 0.7s; }
-
-        @keyframes wave {
-            0%, 100% { transform: scaleY(0.5); }
-            50% { transform: scaleY(1); }
-        }
-
-        .voice-duration {
-            color: #2c2c3e;
-            font-size: 0.75em;
-            font-weight: 600;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Hero Section -->
+        <!-- 1. WHAT IT IS -->
         <div class="hero">
             <h1>Language Soup 🍜</h1>
-            <p class="tagline">messy fun community where u actually SPEAK</p>
+            <p class="tagline">whatsapp community with <span class="highlight">daily voice challenges</span>.<br>no classroom. just vibes.</p>
             <div class="stats">
-                100+ ppl • daily vibes • real convos
-            </div>
-            <br>
-            <button class="quick-join" onclick="document.getElementById('joinForm').scrollIntoView({behavior: 'smooth', block: 'center'})">join now ↓</button>
-        </div>
-
-        <!-- What Members Love -->
-        <div class="chat-bubble">
-            <h2>why ppl love it here</h2>
-            <div class="love-list">
-                <ul>
-                    <li><span class="emoji">😎</span> <span>no boring classroom energy</span></li>
-                    <li><span class="emoji">🚀</span> <span>community actually keeps u going</span></li>
-                    <li><span class="emoji">💬</span> <span>small groups = no overwhelm</span></li>
-                    <li><span class="emoji">🔔</span> <span>pick ur languages, mute the rest</span></li>
-                </ul>
+                100+ learners • daily challenges • actually speaking
             </div>
         </div>
 
-        <!-- How It Works -->
-        <div class="chat-bubble">
-            <h2>here's the deal</h2>
-            <p class="how-it-works">join groups for ur languages (french, spanish, hungarian, portuguese, etc). daily challenges get u speaking - voice notes while ur literally just living ur life.</p>
-            <p class="how-it-works"><strong>not a classroom. just vibes 😎</strong></p>
+        <!-- 2. SHOW WHAT IT IS - Video -->
+        <h2 style="font-size: 1.3em; margin-bottom: 14px; color: #2c2c3e; font-weight: 800; text-align: center; text-transform: lowercase;">watch how it works ↓</h2>
+        <div class="video-wrapper">
+            <video 
+                id="demoVideo"
+                autoplay 
+                muted 
+                loop 
+                playsinline
+            >
+                <source src="videos/challengevideo.mp4" type="video/mp4">
+                <source src="videos/challengevideo.mov" type="video/quicktime">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-controls">
+                <button class="video-control-btn" id="playPauseBtn" onclick="togglePlayPause()" title="Play/Pause">⏸</button>
+                <button class="video-control-btn" id="muteBtn" onclick="toggleMute()" title="Mute/Unmute">🔇</button>
+            </div>
         </div>
 
-        <!-- Demo Section -->
-        <div class="demo-section">
-            <h2>lemme just show u how it works</h2>
+        <!-- 2b. HOW IT WORKS - 3 STEPS -->
+        <div class="demo-examples">
+            <h2>here's what u actually do:</h2>
+            
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">wait for daily challenge</div>
+                        <div class="step-desc">shows up in your whatsapp group every day</div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">record your response</div>
+                        <div class="step-desc">say it in your target language + english</div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">send & listen to others</div>
+                        <div class="step-desc">hear how everyone else did it!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voice Memo Examples -->
+        <div class="voice-examples">
+            <h2>what it looks like in action 🎤</h2>
             
             <div class="voice-demo">
                 <div class="voice-header">
@@ -577,27 +773,15 @@
                     </div>
                 </div>
                 <div class="voice-message">
-                    describe what ur doing right now in french! 10 seconds max 🎤
-                </div>
-                <div class="voice-player">
-                    <div class="play-button">▶</div>
-                    <div class="waveform">
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                    </div>
-                    <div class="voice-duration">0:09</div>
+                    <strong>#challenge</strong><br><br>
+                    what are three things you would bring with you on a desert island?<br><br>
+                    qu'est-ce que c'est trois choses que tu apporteras à une île deserte?
                 </div>
             </div>
 
             <div class="voice-demo">
                 <div class="voice-header">
-                    <div class="profile-emoji">😊</div>
+                    <div class="profile-emoji">🇧🇷</div>
                     <div class="voice-info">
                         <div class="voice-name">sarah</div>
                         <div class="voice-time">today at 2:52 PM</div>
@@ -614,6 +798,18 @@
                         <div class="wave-bar"></div>
                         <div class="wave-bar"></div>
                         <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
                     </div>
                     <div class="voice-duration">0:08</div>
                 </div>
@@ -621,7 +817,7 @@
 
             <div class="voice-demo">
                 <div class="voice-header">
-                    <div class="profile-emoji">🔥</div>
+                    <div class="profile-emoji">🇺🇸</div>
                     <div class="voice-info">
                         <div class="voice-name">marcus</div>
                         <div class="voice-time">today at 3:04 PM</div>
@@ -638,41 +834,99 @@
                         <div class="wave-bar"></div>
                         <div class="wave-bar"></div>
                         <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
                     </div>
                     <div class="voice-duration">0:07</div>
                 </div>
             </div>
-        </div>
 
-        <!-- Guidelines -->
-        <div class="chat-bubble">
-            <h2>the rules (they're chill)</h2>
-            <div class="guidelines">
-                <h3>what we need from u:</h3>
-                <ul class="must">
-                    <li>intro urself when u join (in BOTH languages - messy is fine!)</li>
-                    <li>engage once a week minimum (voice notes, hype ppl up, whatever)</li>
-                    <li>keep notifs on - no silent lurkers sorry</li>
-                </ul>
-
-                <h3>what's not cool:</h3>
-                <ul class="not-allowed">
-                    <li>spam or trying to sell stuff</li>
-                    <li>just reading and never participating (this isn't ur soup 🍜)</li>
-                </ul>
+            <div class="voice-demo">
+                <div class="voice-header">
+                    <div class="profile-emoji">🇫🇷</div>
+                    <div class="voice-info">
+                        <div class="voice-name">alex</div>
+                        <div class="voice-time">today at 3:15 PM</div>
+                    </div>
+                </div>
+                <div class="voice-player">
+                    <div class="play-button">▶</div>
+                    <div class="waveform">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <div class="voice-duration">0:11</div>
+                </div>
             </div>
         </div>
 
-        <!-- Join Form -->
-        <div class="form-bubble">
-            <h2>ok let's do this 🚀</h2>
-            <h3>quick intro:</h3>
+        <!-- Quick Benefits -->
+        <div class="benefits">
+            <h2>why it works</h2>
+            <div class="benefit-grid">
+                <div class="benefit-item">
+                    <div class="benefit-emoji">💬</div>
+                    <div class="benefit-text">speak every day (not just study)</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-emoji">👥</div>
+                    <div class="benefit-text">small groups = no overwhelm</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-emoji">🔥</div>
+                    <div class="benefit-text">community keeps u consistent</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-emoji">😎</div>
+                    <div class="benefit-text">zero classroom energy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. GET THEM TO SIGN UP -->
+        <div class="cta-section">
+            <h2>ready to actually speak? 🚀</h2>
+            <p>join 100+ people practicing daily. takes 30 seconds.</p>
+            <button class="cta-button" onclick="showForm()">yes, let's go →</button>
+        </div>
+
+        <!-- Form (appears after CTA click) -->
+        <div class="form-modal" id="formModal">
+            <h2>quick info & ur in 🎯</h2>
             <form id="joinForm">
                 <div class="form-group">
                     <label for="source">how'd u find us?</label>
                     <select id="source" required>
                         <option value="">pick one...</option>
-                        <option value="Friend">friend told me (drop their name below!)</option>
+                        <option value="Friend">friend (drop their name below!)</option>
                         <option value="Instagram">instagram</option>
                         <option value="LinkedIn">linkedin</option>
                         <option value="Podcast">podcast</option>
@@ -681,28 +935,28 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="details">more details (if applicable):</label>
-                    <input type="text" id="details" placeholder="friend's name or how u stumbled here">
+                    <label for="details">details (optional):</label>
+                    <input type="text" id="details" placeholder="friend's name or how u found us">
                 </div>
 
                 <div class="form-group">
-                    <label for="languages">what language(s) r u learning?</label>
+                    <label for="languages">what language(s)?</label>
                     <input type="text" id="languages" placeholder="spanish, french, etc" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="level">ur level rn?</label>
+                    <label for="level">ur level?</label>
                     <select id="level" required>
                         <option value="">pick one...</option>
                         <option value="Beginner">beginner (just started)</option>
-                        <option value="Intermediate">intermediate (getting there)</option>
-                        <option value="Advanced">advanced (put me with native speakers!)</option>
+                        <option value="Intermediate">intermediate (conversational)</option>
+                        <option value="Advanced">advanced (fluent-ish)</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="studying">what r u using to study rn?</label>
-                    <textarea id="studying" placeholder="duolingo? netflix? tutor? tell us" required></textarea>
+                    <textarea id="studying" placeholder="duolingo? netflix? tutor? other?" required></textarea>
                 </div>
 
                 <button type="submit" class="join-button">join the soup 🍜</button>
@@ -718,15 +972,48 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // ============================================
-        // SUPABASE CONFIG - INSERT YOUR CREDENTIALS HERE
-        // ============================================
-        const SUPABASE_URL = 'https://uspegyneclgkscxwmomn.supabase.co'; // e.g., 'https://xxxxx.supabase.co'
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzcGVneW5lY2xna3NjeHdtb21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3ODgwNzQsImV4cCI6MjA3OTM2NDA3NH0.FcJ_eSzkWCX-2b5kGHv8AcBvhcZe6aAAP6vG9vubiew'; // Your public/anon key
+        // Video play/pause toggle
+        function togglePlayPause() {
+            const video = document.getElementById('demoVideo');
+            const btn = document.getElementById('playPauseBtn');
+            
+            if (video.paused) {
+                video.play();
+                btn.textContent = '⏸';
+            } else {
+                video.pause();
+                btn.textContent = '▶';
+            }
+        }
+
+        // Video mute/unmute toggle
+        function toggleMute() {
+            const video = document.getElementById('demoVideo');
+            const btn = document.getElementById('muteBtn');
+            
+            if (video.muted) {
+                video.muted = false;
+                btn.textContent = '🔊';
+            } else {
+                video.muted = true;
+                btn.textContent = '🔇';
+            }
+        }
+
+        // Supabase config
+        const SUPABASE_URL = 'https://uspegyneclgkscxwmomn.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzcGVneW5lY2xna3NjeHdtb21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3ODgwNzQsImV4cCI6MjA3OTM2NDA3NH0.FcJ_eSzkWCX-2b5kGHv8AcBvhcZe6aAAP6vG9vubiew';
         
-        // Initialize Supabase client
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+        // Show form when CTA is clicked
+        function showForm() {
+            const formModal = document.getElementById('formModal');
+            formModal.classList.add('active');
+            formModal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Form submission
         document.getElementById('joinForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -736,16 +1023,14 @@
             const level = document.getElementById('level').value;
             const studying = document.getElementById('studying').value;
 
-            // Disable button while submitting
             const submitButton = e.target.querySelector('.join-button');
             const originalText = submitButton.textContent;
             submitButton.textContent = 'submitting...';
             submitButton.disabled = true;
 
             try {
-                // Save to Supabase
                 const { data, error } = await supabase
-                    .from('signups') // Change table name if you want
+                    .from('signups')
                     .insert([
                         {
                             source: source,
@@ -758,21 +1043,19 @@
                     ]);
 
                 if (error) {
-                    console.error('Error saving to Supabase:', error);
-                    alert('Oops! Something went wrong. Please try again or message us on Instagram.');
+                    console.error('Error:', error);
+                    alert('Oops! Something went wrong. DM us on Instagram @languagesoup');
                     submitButton.textContent = originalText;
                     submitButton.disabled = false;
                     return;
                 }
 
-                // Success! Now open WhatsApp
+                // Success - open WhatsApp
                 const whatsappURL = `https://chat.whatsapp.com/JeG6Mx0hpwcFqFSQ24xqpV`;
                 window.open(whatsappURL, '_blank');
 
-                // Show success message
-                submitButton.textContent = '✅ submitted! check whatsapp';
+                submitButton.textContent = '✅ done! check whatsapp';
                 
-                // Reset form after a delay
                 setTimeout(() => {
                     e.target.reset();
                     submitButton.textContent = originalText;
@@ -780,8 +1063,8 @@
                 }, 3000);
 
             } catch (err) {
-                console.error('Unexpected error:', err);
-                alert('Something went wrong. Please try again!');
+                console.error('Error:', err);
+                alert('Something went wrong. Try again!');
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
             }
