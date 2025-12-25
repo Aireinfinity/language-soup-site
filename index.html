@@ -1199,11 +1199,20 @@
                 submitButton.textContent = '✅ success!';
 
                 // Determine app link based on device
-                const appLink = device === 'iOS'
-                    ? 'https://testflight.apple.com/join/N7UnDFv5'
-                    : 'https://play.google.com/store/apps/details?id=com.aireinfinity.languagesoup';
+                if (device === 'iOS') {
+                    document.getElementById('appLink').href = 'https://testflight.apple.com/join/N7UnDFv5';
+                    document.getElementById('appLink').textContent = 'Download iOS App →';
+                } else {
+                    // Android - coming soon
+                    document.getElementById('appLink').href = '#';
+                    document.getElementById('appLink').textContent = 'Android Coming Soon! 🤖';
+                    document.getElementById('appLink').style.opacity = '0.6';
+                    document.getElementById('appLink').onclick = (e) => {
+                        e.preventDefault();
+                        alert('Android app launching soon! Check back in 24 hours or DM @languagesoup on Instagram.');
+                    };
+                }
 
-                document.getElementById('appLink').href = appLink;
                 document.getElementById('appInfo').style.display = 'block';
                 document.getElementById('appInfo').scrollIntoView({ behavior: 'smooth', block: 'center' });
 
