@@ -1154,11 +1154,18 @@
 
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // Show form when CTA is clicked
+        // Show form when CTA is clicked - v2.0
         function showForm() {
+            console.log('showForm called');
             const formModal = document.getElementById('formModal');
-            formModal.classList.add('active');
-            formModal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            console.log('formModal element:', formModal);
+            if (formModal) {
+                formModal.classList.add('active');
+                formModal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                console.log('Form should be visible now');
+            } else {
+                console.error('formModal element not found!');
+            }
         }
 
         // Form submission
