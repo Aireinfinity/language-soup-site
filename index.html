@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta property="og:title" content="Language Soup 🍜 - Actually Speak Languages" />
-    <meta property="og:description" content="Join 100+ language learners in daily voice challenges. Fun, casual, and you actually SPEAK. Not a classroom." />
+    <meta property="og:description"
+        content="Join 100+ language learners in daily voice challenges. Fun, casual, and you actually SPEAK. Not a classroom." />
     <meta property="og:image" content="https://www.language-soup.com/images/preview.jpg" />
     <meta property="og:url" content="https://www.language-soup.com/" />
     <meta property="og:type" content="website" />
@@ -10,7 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Language Soup 🍜</title>
     <link rel="icon" type="image/png" href="images/icon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -79,14 +83,21 @@
             display: inline-block;
             font-weight: 700;
             font-size: 0.85em;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
             animation: float 3s ease-in-out infinite;
             margin-bottom: 16px;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
         /* Video/Demo Section - SHOW WHAT IT IS */
@@ -94,7 +105,7 @@
             background: white;
             border-radius: 24px;
             padding: 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
             animation: slideUp 0.5s ease-out;
         }
 
@@ -103,6 +114,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -130,7 +142,7 @@
             width: 100%;
             height: auto;
             border-radius: 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
             display: block;
         }
 
@@ -263,11 +275,12 @@
             opacity: 0.75;
             line-height: 1.4;
         }
+
         .demo-examples {
             background: white;
             border-radius: 24px;
             padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             animation: slideUp 0.5s ease-out;
             animation-delay: 0.1s;
         }
@@ -286,7 +299,7 @@
             background: white;
             border-radius: 24px;
             padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             animation: slideUp 0.5s ease-out;
             animation-delay: 0.15s;
         }
@@ -308,19 +321,32 @@
             animation: popIn 0.4s ease-out backwards;
         }
 
-        .voice-examples .voice-demo:nth-child(2) { animation-delay: 0.3s; }
-        .voice-examples .voice-demo:nth-child(3) { animation-delay: 0.9s; }
-        .voice-examples .voice-demo:nth-child(4) { animation-delay: 1.5s; }
-        .voice-examples .voice-demo:nth-child(5) { animation-delay: 2.1s; }
+        .voice-examples .voice-demo:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .voice-examples .voice-demo:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        .voice-examples .voice-demo:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+        .voice-examples .voice-demo:nth-child(5) {
+            animation-delay: 2.1s;
+        }
 
         @keyframes popIn {
             0% {
                 opacity: 0;
                 transform: scale(0.8) translateY(20px);
             }
+
             60% {
                 transform: scale(1.05);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1) translateY(0);
@@ -419,30 +445,116 @@
             animation: wave 1.2s ease-in-out infinite;
         }
 
-        .wave-bar:nth-child(1) { height: 8px; animation-delay: 0s; }
-        .wave-bar:nth-child(2) { height: 16px; animation-delay: 0.05s; }
-        .wave-bar:nth-child(3) { height: 12px; animation-delay: 0.1s; }
-        .wave-bar:nth-child(4) { height: 20px; animation-delay: 0.15s; }
-        .wave-bar:nth-child(5) { height: 10px; animation-delay: 0.2s; }
-        .wave-bar:nth-child(6) { height: 16px; animation-delay: 0.25s; }
-        .wave-bar:nth-child(7) { height: 14px; animation-delay: 0.3s; }
-        .wave-bar:nth-child(8) { height: 18px; animation-delay: 0.35s; }
-        .wave-bar:nth-child(9) { height: 11px; animation-delay: 0.4s; }
-        .wave-bar:nth-child(10) { height: 15px; animation-delay: 0.45s; }
-        .wave-bar:nth-child(11) { height: 13px; animation-delay: 0.5s; }
-        .wave-bar:nth-child(12) { height: 19px; animation-delay: 0.55s; }
-        .wave-bar:nth-child(13) { height: 9px; animation-delay: 0.6s; }
-        .wave-bar:nth-child(14) { height: 17px; animation-delay: 0.65s; }
-        .wave-bar:nth-child(15) { height: 12px; animation-delay: 0.7s; }
-        .wave-bar:nth-child(16) { height: 20px; animation-delay: 0.75s; }
-        .wave-bar:nth-child(17) { height: 14px; animation-delay: 0.8s; }
-        .wave-bar:nth-child(18) { height: 16px; animation-delay: 0.85s; }
-        .wave-bar:nth-child(19) { height: 10px; animation-delay: 0.9s; }
-        .wave-bar:nth-child(20) { height: 18px; animation-delay: 0.95s; }
+        .wave-bar:nth-child(1) {
+            height: 8px;
+            animation-delay: 0s;
+        }
+
+        .wave-bar:nth-child(2) {
+            height: 16px;
+            animation-delay: 0.05s;
+        }
+
+        .wave-bar:nth-child(3) {
+            height: 12px;
+            animation-delay: 0.1s;
+        }
+
+        .wave-bar:nth-child(4) {
+            height: 20px;
+            animation-delay: 0.15s;
+        }
+
+        .wave-bar:nth-child(5) {
+            height: 10px;
+            animation-delay: 0.2s;
+        }
+
+        .wave-bar:nth-child(6) {
+            height: 16px;
+            animation-delay: 0.25s;
+        }
+
+        .wave-bar:nth-child(7) {
+            height: 14px;
+            animation-delay: 0.3s;
+        }
+
+        .wave-bar:nth-child(8) {
+            height: 18px;
+            animation-delay: 0.35s;
+        }
+
+        .wave-bar:nth-child(9) {
+            height: 11px;
+            animation-delay: 0.4s;
+        }
+
+        .wave-bar:nth-child(10) {
+            height: 15px;
+            animation-delay: 0.45s;
+        }
+
+        .wave-bar:nth-child(11) {
+            height: 13px;
+            animation-delay: 0.5s;
+        }
+
+        .wave-bar:nth-child(12) {
+            height: 19px;
+            animation-delay: 0.55s;
+        }
+
+        .wave-bar:nth-child(13) {
+            height: 9px;
+            animation-delay: 0.6s;
+        }
+
+        .wave-bar:nth-child(14) {
+            height: 17px;
+            animation-delay: 0.65s;
+        }
+
+        .wave-bar:nth-child(15) {
+            height: 12px;
+            animation-delay: 0.7s;
+        }
+
+        .wave-bar:nth-child(16) {
+            height: 20px;
+            animation-delay: 0.75s;
+        }
+
+        .wave-bar:nth-child(17) {
+            height: 14px;
+            animation-delay: 0.8s;
+        }
+
+        .wave-bar:nth-child(18) {
+            height: 16px;
+            animation-delay: 0.85s;
+        }
+
+        .wave-bar:nth-child(19) {
+            height: 10px;
+            animation-delay: 0.9s;
+        }
+
+        .wave-bar:nth-child(20) {
+            height: 18px;
+            animation-delay: 0.95s;
+        }
 
         @keyframes wave {
-            0%, 100% { transform: scaleY(0.5); }
-            50% { transform: scaleY(1); }
+
+            0%,
+            100% {
+                transform: scaleY(0.5);
+            }
+
+            50% {
+                transform: scaleY(1);
+            }
         }
 
         .voice-duration {
@@ -456,7 +568,7 @@
             background: white;
             border-radius: 24px;
             padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             animation: slideUp 0.5s ease-out;
             animation-delay: 0.6s;
         }
@@ -532,14 +644,14 @@
             font-weight: 800;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             text-transform: lowercase;
             font-family: 'Nunito', sans-serif;
         }
 
         .cta-button:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
 
         .cta-button:active {
@@ -591,7 +703,9 @@
             text-transform: lowercase;
         }
 
-        input, select, textarea {
+        input,
+        select,
+        textarea {
             width: 100%;
             padding: 12px 14px;
             border: none;
@@ -603,13 +717,16 @@
             transition: all 0.2s;
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus,
+        select:focus,
+        textarea:focus {
             outline: none;
             box-shadow: 0 0 0 3px rgba(254, 246, 228, 0.4);
             transform: scale(1.01);
         }
 
-        input::placeholder, textarea::placeholder {
+        input::placeholder,
+        textarea::placeholder {
             color: #2c2c3e;
             opacity: 0.5;
         }
@@ -726,7 +843,11 @@
                 font-size: 2.5em;
             }
 
-            .video-section, .demo-examples, .benefits, .cta-section, .form-modal {
+            .video-section,
+            .demo-examples,
+            .benefits,
+            .cta-section,
+            .form-modal {
                 padding: 18px;
             }
 
@@ -736,33 +857,31 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- 1. WHAT IT IS -->
         <div class="hero">
             <h1>Language Soup 🍜</h1>
-            <p class="tagline">whatsapp community with <span class="highlight">daily voice challenges</span>.<br>no classroom. just vibes.</p>
+            <p class="tagline">we outgrew whatsapp! 🎉<br>join our <span class="highlight">beta app</span> instead.</p>
             <div class="stats">
                 100+ learners • daily challenges • actually speaking
             </div>
         </div>
 
         <!-- 2. SHOW WHAT IT IS - Video -->
-        <h2 style="font-size: 1.3em; margin-bottom: 14px; color: #2c2c3e; font-weight: 800; text-align: center; text-transform: lowercase;">watch how it works ↓</h2>
+        <h2
+            style="font-size: 1.3em; margin-bottom: 14px; color: #2c2c3e; font-weight: 800; text-align: center; text-transform: lowercase;">
+            watch how it works ↓</h2>
         <div class="video-wrapper">
-            <video 
-                id="demoVideo"
-                autoplay 
-                muted 
-                loop 
-                playsinline
-            >
+            <video id="demoVideo" autoplay muted loop playsinline>
                 <source src="videos/challengevideo.mp4" type="video/mp4">
                 <source src="videos/challengevideo.mov" type="video/quicktime">
                 Your browser does not support the video tag.
             </video>
             <div class="video-controls">
-                <button class="video-control-btn" id="playPauseBtn" onclick="togglePlayPause()" title="Play/Pause">⏸</button>
+                <button class="video-control-btn" id="playPauseBtn" onclick="togglePlayPause()"
+                    title="Play/Pause">⏸</button>
                 <button class="video-control-btn" id="muteBtn" onclick="toggleMute()" title="Mute/Unmute">🔇</button>
             </div>
         </div>
@@ -770,7 +889,7 @@
         <!-- 2b. HOW IT WORKS - 3 STEPS -->
         <div class="demo-examples">
             <h2>here's what u actually do:</h2>
-            
+
             <div class="step-container">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -801,7 +920,7 @@
         <!-- Voice Memo Examples -->
         <div class="voice-examples">
             <h2>what it looks like in action 🎤</h2>
-            
+
             <div class="voice-demo">
                 <div class="voice-header">
                     <div class="profile-emoji">🇫🇷</div>
@@ -951,8 +1070,8 @@
 
         <!-- 3. GET THEM TO SIGN UP -->
         <div class="cta-section">
-            <h2>ready to actually speak? 🚀</h2>
-            <p>join 100+ people practicing daily. takes 30 seconds.</p>
+            <h2>ready to join? 🚀</h2>
+            <p>download the app and start speaking today.</p>
             <button class="cta-button" onclick="showForm()">yes, let's go →</button>
         </div>
 
@@ -961,20 +1080,8 @@
             <h2>quick info & ur in 🎯</h2>
             <form id="joinForm">
                 <div class="form-group">
-                    <label for="source">how'd u find us?</label>
-                    <select id="source" required>
-                        <option value="">pick one...</option>
-                        <option value="Friend">friend (drop their name below!)</option>
-                        <option value="Instagram">instagram</option>
-                        <option value="LinkedIn">linkedin</option>
-                        <option value="Podcast">podcast</option>
-                        <option value="Other">somewhere else</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="details">details (optional):</label>
-                    <input type="text" id="details" placeholder="friend's name or how u found us">
+                    <label for="name">what's ur name?</label>
+                    <input type="text" id="name" placeholder="just first name" required>
                 </div>
 
                 <div class="form-group">
@@ -983,26 +1090,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="level">ur level?</label>
-                    <select id="level" required>
+                    <label for="device">what device?</label>
+                    <select id="device" required>
                         <option value="">pick one...</option>
-                        <option value="Beginner">beginner (just started)</option>
-                        <option value="Intermediate">intermediate (conversational)</option>
-                        <option value="Advanced">advanced (fluent-ish)</option>
+                        <option value="iOS">iOS (iPhone/iPad)</option>
+                        <option value="Android">Android</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="studying">what r u using to study rn?</label>
-                    <textarea id="studying" placeholder="duolingo? netflix? tutor? other?" required></textarea>
-                </div>
-
-                <button type="submit" class="join-button">join the soup 🍜</button>
+                <button type="submit" class="join-button">get the app 🍜</button>
             </form>
-            
-            <div class="whatsapp-fallback" id="whatsappFallback">
-                <p>whatsapp didn't open? no worries!</p>
-                <a href="https://chat.whatsapp.com/JeG6Mx0hpwcFqFSQ24xqpV" target="_blank" class="whatsapp-link">click here to join →</a>
+
+            <div id="appInfo"
+                style="display: none; margin-top: 16px; padding: 16px; background: #fef6e4; border-radius: 14px; text-align: center;">
+                <p style="margin-bottom: 10px; font-size: 0.9em; color: #2c2c3e; font-weight: 700;">📱 Download the app:
+                </p>
+                <p style="margin-bottom: 12px; font-size: 0.85em; color: #2c2c3e;">Support chat goes straight to Noah. I
+                    check it daily! 🥣</p>
+                <a id="appLink" href="#" target="_blank" class="whatsapp-link">Download Now →</a>
             </div>
         </div>
 
@@ -1019,7 +1124,7 @@
         function togglePlayPause() {
             const video = document.getElementById('demoVideo');
             const btn = document.getElementById('playPauseBtn');
-            
+
             if (video.paused) {
                 video.play();
                 btn.textContent = '⏸';
@@ -1033,7 +1138,7 @@
         function toggleMute() {
             const video = document.getElementById('demoVideo');
             const btn = document.getElementById('muteBtn');
-            
+
             if (video.muted) {
                 video.muted = false;
                 btn.textContent = '🔊';
@@ -1046,7 +1151,7 @@
         // Supabase config
         const SUPABASE_URL = 'https://uspegyneclgkscxwmomn.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzcGVneW5lY2xna3NjeHdtb21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3ODgwNzQsImV4cCI6MjA3OTM2NDA3NH0.FcJ_eSzkWCX-2b5kGHv8AcBvhcZe6aAAP6vG9vubiew';
-        
+
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Show form when CTA is clicked
@@ -1057,14 +1162,12 @@
         }
 
         // Form submission
-        document.getElementById('joinForm').addEventListener('submit', async function(e) {
+        document.getElementById('joinForm').addEventListener('submit', async function (e) {
             e.preventDefault();
-            
-            const source = document.getElementById('source').value;
-            const details = document.getElementById('details').value;
+
+            const name = document.getElementById('name').value;
             const languages = document.getElementById('languages').value;
-            const level = document.getElementById('level').value;
-            const studying = document.getElementById('studying').value;
+            const device = document.getElementById('device').value;
 
             const submitButton = e.target.querySelector('.join-button');
             const originalText = submitButton.textContent;
@@ -1076,11 +1179,10 @@
                     .from('signups')
                     .insert([
                         {
-                            source: source,
-                            source_details: details || null,
+                            name: name,
                             languages: languages,
-                            level: level,
-                            studying_with: studying,
+                            device: device,
+                            source: 'Website App Download',
                             submitted_at: new Date().toISOString()
                         }
                     ]);
@@ -1093,15 +1195,17 @@
                     return;
                 }
 
-                // Success - redirect to WhatsApp
-                const whatsappURL = `https://chat.whatsapp.com/JeG6Mx0hpwcFqFSQ24xqpV`;
-                
-                submitButton.textContent = '✅ taking you to whatsapp...';
-                
-                // Redirect after short delay so they see the success message
-                setTimeout(() => {
-                    window.location.href = whatsappURL;
-                }, 1000);
+                // Success - show app download link
+                submitButton.textContent = '✅ success!';
+
+                // Determine app link based on device
+                const appLink = device === 'iOS'
+                    ? 'https://testflight.apple.com/join/N7UnDFv5'
+                    : 'https://play.google.com/store/apps/details?id=com.aireinfinity.languagesoup';
+
+                document.getElementById('appLink').href = appLink;
+                document.getElementById('appInfo').style.display = 'block';
+                document.getElementById('appInfo').scrollIntoView({ behavior: 'smooth', block: 'center' });
 
             } catch (err) {
                 console.error('Error:', err);
@@ -1112,4 +1216,5 @@
         });
     </script>
 </body>
+
 </html>
