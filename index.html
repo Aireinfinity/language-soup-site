@@ -1090,6 +1090,23 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="source">how'd u find us?</label>
+                    <select id="source" required>
+                        <option value="">pick one...</option>
+                        <option value="Friend">friend</option>
+                        <option value="Instagram">instagram</option>
+                        <option value="LinkedIn">linkedin</option>
+                        <option value="TikTok">tiktok</option>
+                        <option value="Other">other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="studying">what r u using to study rn?</label>
+                    <input type="text" id="studying" placeholder="duolingo? netflix? tutor?" required>
+                </div>
+
+                <div class="form-group">
                     <label for="device">what device?</label>
                     <select id="device" required>
                         <option value="">pick one...</option>
@@ -1098,7 +1115,7 @@
                     </select>
                 </div>
 
-                <button type="submit" class="join-button">get the app 🍜</button>
+                <button type="submit" class="join-button">download the app 🍜</button>
             </form>
 
             <div id="appInfo"
@@ -1175,6 +1192,8 @@
 
             const name = document.getElementById('name').value;
             const languages = document.getElementById('languages').value;
+            const source = document.getElementById('source').value;
+            const studying = document.getElementById('studying').value;
             const device = document.getElementById('device').value;
 
             const submitButton = e.target.querySelector('.join-button');
@@ -1189,8 +1208,9 @@
                         {
                             name: name,
                             languages: languages,
+                            source: source,
+                            studying_with: studying,
                             device: device,
-                            source: 'Website App Download',
                             submitted_at: new Date().toISOString()
                         }
                     ]);
