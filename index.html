@@ -1107,6 +1107,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="email">email (so i can send u the app link)</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
                     <label for="device">what device?</label>
                     <select id="device" required>
                         <option value="">pick one...</option>
@@ -1194,6 +1199,7 @@
             const languages = document.getElementById('languages').value;
             const source = document.getElementById('source').value;
             const studying = document.getElementById('studying').value;
+            const email = document.getElementById('email').value;
             const device = document.getElementById('device').value;
 
             const submitButton = e.target.querySelector('.join-button');
@@ -1210,6 +1216,7 @@
                             languages: languages,
                             source: source,
                             studying_with: studying,
+                            email: email,
                             device: device,
                             submitted_at: new Date().toISOString()
                         }
@@ -1226,19 +1233,45 @@
                 // Success - show app download link
                 submitButton.textContent = '✅ success!';
 
+                // Send email notification for Android signups
+                if (device === 'Android') {
+                    // Send notification email using EmailJS (free service)
+                    // You'll need to set up EmailJS account - takes 2 minutes
+                    // For now, we'll use a simple fetch to a webhook service
+                    try {
+                        await fetch('https://ntfy.sh/languagesoup-android', {
+                            method: 'POST',
+                            body: `🤖 New Android Signup!\n\nName: ${name}\nEmail: ${email}\nLanguages: ${languages}\n\nAdd them to Play Console: https://play.google.com/console/u/0/developers/4951858078197663676/app/4973074958056204915/tracks/internal-testing`,
+                            headers: {
+                                'Title': '🤖 New Android Beta Signup',
+                                'Priority': 'high',
+                                'Tags': 'android,beta'
+                            }
+                        });
+                    } catch (e) {
+                        console.log('Notification failed, but signup succeeded:', e);
+                    }
+                }
+
                 // Determine app link based on device
                 if (device === 'iOS') {
                     document.getElementById('appLink').href = 'https://testflight.apple.com/join/N7UnDFv5';
                     document.getElementById('appLink').textContent = 'Download iOS App →';
                 } else {
-                    // Android - coming soon
-                    document.getElementById('appLink').href = '#';
-                    document.getElementById('appLink').textContent = 'Android Coming Soon! 🤖';
-                    document.getElementById('appLink').style.opacity = '0.6';
-                    document.getElementById('appLink').onclick = (e) => {
-                        e.preventDefault();
-                        alert('Android app launching soon! Check back in 24 hours or DM @languagesoup on Instagram.');
-                    };
+                    // Android - pending approval
+                    const appInfoDiv = document.getElementById('appInfo');
+                    appInfoDiv.innerHTML = `
+                        <p style="margin-bottom: 10px; font-size: 0.9em; color: #2c2c3e; font-weight: 700;">🤖 Android Beta Access</p>
+                        <p style="margin-bottom: 12px; font-size: 0.85em; color: #2c2c3e; line-height: 1.5;">
+                            You're on the list! I'll add you to the beta group manually and send you the download link within 24 hours.
+                        </p>
+                        <p style="margin-bottom: 12px; font-size: 0.85em; color: #2c2c3e; line-height: 1.5;">
+                            Check your email or DM me on Instagram <a href="https://instagram.com/languagesoup" target="_blank" style="color: #00aedf; font-weight: 700;">@languagesoup</a> if you don't hear from me!
+                        </p>
+                        <div style="padding: 12px; background: #00aedf; border-radius: 12px; color: #fef6e4; font-size: 0.85em; font-weight: 600;">
+                            💡 You'll get the official Play Store link once I add you to the beta group
+                        </div>
+                    `;
                 }
 
                 document.getElementById('appInfo').style.display = 'block';
