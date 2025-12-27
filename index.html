@@ -1235,15 +1235,13 @@
 
                 // Send email notification for Android signups
                 if (device === 'Android') {
-                    // Send notification email using EmailJS (free service)
-                    // You'll need to set up EmailJS account - takes 2 minutes
-                    // For now, we'll use a simple fetch to a webhook service
+                    // Send notification using ntfy.sh (free push notification service)
                     try {
                         await fetch('https://ntfy.sh/languagesoup-android', {
                             method: 'POST',
                             body: `🤖 New Android Signup!\n\nName: ${name}\nEmail: ${email}\nLanguages: ${languages}\n\nAdd them to Play Console: https://play.google.com/console/u/0/developers/4951858078197663676/app/4973074958056204915/tracks/internal-testing`,
                             headers: {
-                                'Title': '🤖 New Android Beta Signup',
+                                'Title': 'New Android Beta Signup',
                                 'Priority': 'high',
                                 'Tags': 'android,beta'
                             }
