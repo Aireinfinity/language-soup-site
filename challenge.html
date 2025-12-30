@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge from Language Soup</title>
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #fef6e4;
+            min-height: 100vh;
+            padding: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-top: 8px;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 8px;
+        }
+
+        .logo h2 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #2c2c3e;
+            margin: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c2c3e;
+            margin-bottom: 8px;
+        }
+
+        .countdown {
+            font-size: 36px;
+            font-weight: 800;
+            color: #00aedf;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .chat {
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .message-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .message-content {
+            flex: 1;
+            max-width: 85%;
+        }
+
+        .sender-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #2c2c3e;
+            margin-bottom: 4px;
+            padding-left: 4px;
+        }
+
+        .message {
+            background: white;
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .message-text {
+            font-size: 16px;
+            color: #2c2c3e;
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+
+        .voice-player {
+            background: #00aedf;
+            border-radius: 20px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .play-btn {
+            width: 36px;
+            height: 36px;
+            background: #fef6e4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .play-btn:active {
+            transform: scale(0.95);
+        }
+
+        .waveform {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 24px;
+            gap: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .wave-bar {
+            width: 3px;
+            background: rgba(254, 246, 228, 0.25);
+            border-radius: 1.5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .wave-bar.active {
+            background: rgba(254, 246, 228, 0.95);
+            transform: scaleY(1.08);
+        }
+
+        .wave-bar:hover {
+            background: rgba(254, 246, 228, 0.5);
+        }
+
+        .duration {
+            font-size: 11px;
+            color: rgba(254, 246, 228, 0.9);
+            font-weight: 600;
+            min-width: 35px;
+        }
+
+        .download {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .download h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: #2c2c3e;
+            font-weight: 800;
+        }
+
+        .platform-buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .platform-btn {
+            flex: 1;
+            padding: 16px;
+            background: #19b091;
+            color: #fef6e4;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .platform-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .android-form {
+            display: none;
+            background: #00aedf;
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .android-form.show {
+            display: block;
+        }
+
+        .android-form p {
+            color: #fef6e4;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .android-form input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            background: #fef6e4;
+            color: #2c2c3e;
+        }
+
+        .android-form button {
+            width: 100%;
+            padding: 12px;
+            background: #19b091;
+            color: #fef6e4;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .success-msg {
+            display: none;
+            background: #19b091;
+            color: #fef6e4;
+            padding: 16px;
+            border-radius: 16px;
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        .success-msg.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <img src="images/icon.png" alt="Language Soup">
+        <h2>Language Soup</h2>
+    </div>
+
+    <div class="header">
+        <h1 id="challenge-header">Loading...</h1>
+        <div class="countdown" id="countdown">--:--:--</div>
+    </div>
+
+    <div class="chat">
+        <!-- Challenge message -->
+        <div class="message-row">
+            <img id="avatar1" class="avatar" src="" alt="">
+            <div class="message-content">
+                <div class="sender-name" id="sender-name1">noah :)</div>
+                <div class="message">
+                    <div class="message-text" id="challenge-text">Loading challenge...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voice response -->
+        <div class="message-row">
+            <img id="avatar2" class="avatar" src="" alt="">
+            <div class="message-content">
+                <div class="sender-name" id="sender-name2">Loading...</div>
+                <div class="message">
+                    <div class="voice-player">
+                        <div class="play-btn" id="play-btn" onclick="toggleAudio()">▶️</div>
+                        <div class="waveform" id="waveform"></div>
+                        <div class="duration" id="duration">0:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="download">
+        <h2>Download the app to respond!</h2>
+
+        <div class="platform-buttons">
+            <button class="platform-btn" onclick="selectPlatform('ios')">📱 iOS</button>
+            <button class="platform-btn" onclick="selectPlatform('android')">🤖 Android</button>
+        </div>
+
+        <div class="android-form" id="android-form">
+            <p>You're on the list! I'll add you to the beta manually within 24 hours.</p>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="phone" placeholder="Phone (optional)">
+            <button onclick="submitAndroid()">Join Beta</button>
+        </div>
+
+        <div class="success-msg" id="success-msg">
+            ✅ You're on the list! Check your email or DM @languagesoup on Instagram if you don't hear from me!
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://uspegyneclgkscxwmomn.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzcGVneW5lY2xna3NjeHdtb21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3ODgwNzQsImV4cCI6MjA3OTM2NDA3NH0.FcJ_eSzkWCX-2b5kGHv8AcBvhcZe6aAAP6vG9vubiew';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const shareLinkId = urlParams.get('id') || 'hamza123';
+        let audioUrl = '';
+
+        let audioElement = null;
+        let isPlaying = false;
+        const WAVEFORM_BARS = 30;
+
+        async function loadChallenge() {
+            const { data } = await supabaseClient.rpc('get_challenge_share', { p_share_link_id: shareLinkId });
+
+            if (data && data[0]) {
+                const c = data[0];
+                document.getElementById('challenge-header').textContent =
+                    `🔥 ${c.sharer_name} challenged you in ${c.group_language} #${c.group_level}`;
+                document.getElementById('challenge-text').textContent =
+                    c.challenge_content || '#challenge\nwhen do you feel the most like yourself?\nquand est-ce que tu te sens la plus comme toi?';
+
+                // Fetch Noah's avatar from database for challenge sender
+                const { data: noahData } = await supabaseClient
+                    .from('app_users')
+                    .select('avatar_url')
+                    .ilike('display_name', 'noah :)')
+                    .limit(1)
+                    .single();
+
+                document.getElementById('avatar1').src = noahData?.avatar_url || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
+                document.getElementById('sender-name1').textContent = 'noah :)';
+                document.getElementById('avatar2').src = c.sharer_avatar || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
+                document.getElementById('sender-name2').textContent = c.sharer_name;
+
+                audioUrl = c.challenge_audio_url;
+                startCountdown(new Date(c.expires_at));
+                initWaveform();
+                initAudio();
+            }
+        }
+
+        function startCountdown(expiresAt) {
+            function updateTimer() {
+                const now = new Date();
+                const diff = Math.max(0, expiresAt - now);
+                const hours = Math.floor(diff / 3600000);
+                const mins = Math.floor((diff % 3600000) / 60000);
+                const secs = Math.floor((diff % 60000) / 1000);
+                document.getElementById('countdown').textContent =
+                    `${hours}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }
+
+            updateTimer(); // Run immediately
+            setInterval(updateTimer, 1000); // Update every second
+        }
+
+        function initWaveform() {
+            const waveform = document.getElementById('waveform');
+            waveform.innerHTML = '';
+            for (let i = 0; i < WAVEFORM_BARS; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'wave-bar';
+                const height = (Math.random() * 0.5 + 0.3) * 24;
+                bar.style.height = height + 'px';
+
+                // Add click handler for scrubbing
+                bar.addEventListener('click', (e) => {
+                    if (!audioElement || !audioElement.duration) return;
+                    const barIndex = i;
+                    const seekTime = (barIndex / WAVEFORM_BARS) * audioElement.duration;
+                    audioElement.currentTime = seekTime;
+                });
+
+                waveform.appendChild(bar);
+            }
+        }
+
+        function initAudio() {
+            if (!audioUrl) return;
+            audioElement = new Audio(audioUrl);
+
+            audioElement.addEventListener('loadedmetadata', () => {
+                document.getElementById('duration').textContent = formatDuration(audioElement.duration);
+            });
+
+            audioElement.addEventListener('timeupdate', () => {
+                if (!audioElement.duration) return;
+                const progress = audioElement.currentTime / audioElement.duration;
+                updateWaveform(progress);
+                document.getElementById('duration').textContent = formatDuration(audioElement.duration - audioElement.currentTime);
+            });
+
+            audioElement.addEventListener('ended', () => {
+                isPlaying = false;
+                document.getElementById('play-btn').textContent = '▶️';
+                document.getElementById('duration').textContent = formatDuration(audioElement.duration);
+                updateWaveform(0);
+            });
+        }
+
+        function toggleAudio() {
+            if (!audioElement) return;
+
+            if (isPlaying) {
+                audioElement.pause();
+                document.getElementById('play-btn').textContent = '▶️';
+            } else {
+                audioElement.play();
+                document.getElementById('play-btn').textContent = '⏸';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function updateWaveform(progress) {
+            const bars = document.querySelectorAll('.wave-bar');
+            bars.forEach((bar, index) => {
+                const barProgress = index / WAVEFORM_BARS;
+                if (progress > barProgress) {
+                    bar.classList.add('active');
+                } else {
+                    bar.classList.remove('active');
+                }
+            });
+        }
+
+        function formatDuration(seconds) {
+            if (!seconds || isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${String(secs).padStart(2, '0')}`;
+        }
+
+        function selectPlatform(platform) {
+            if (platform === 'ios') {
+                window.location.href = 'https://testflight.apple.com/join/N7UnDFv5';
+            } else {
+                document.getElementById('android-form').classList.add('show');
+            }
+        }
+
+        async function submitAndroid() {
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            await supabaseClient.from('android_beta_signups').insert({
+                email, phone, share_link_id: shareLinkId
+            });
+
+            // Send ntfy notification
+            try {
+                await fetch('https://ntfy.sh/languagesoup-android', {
+                    method: 'POST',
+                    body: `🤖 New Android Signup from Challenge Link!\\n\\nEmail: ${email}\\nPhone: ${phone || 'N/A'}\\nShare Link: ${shareLinkId}\\n\\nAdd them to Play Console: https://play.google.com/console/u/0/developers/4951858078197663676/app/4973074958056204915/tracks/internal-testing`,
+                    headers: {
+                        'Title': 'New Android Beta Signup',
+                        'Priority': 'high',
+                        'Tags': 'android,beta,challenge'
+                    }
+                });
+            } catch (e) {
+                console.log('Notification failed, but signup succeeded:', e);
+            }
+
+            document.getElementById('android-form').classList.remove('show');
+            document.getElementById('success-msg').classList.add('show');
+        }
+
+        loadChallenge();
+    </script>
+</body>
+
+</html>
