@@ -10,10 +10,10 @@ export default async (request, context) => {
     }
 
     try {
-        // Fetch challenge data from Supabase
+        // Fetch challenge data from Supabase using environment variables
         const supabase = createClient(
-            'https://uspegyneclgkscxwmomn.supabase.co',
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzcGVneW5lY2xna3NjeHdtb21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3ODgwNzQsImV4cCI6MjA3OTM2NDA3NH0.FcJ_eSzkWCX-2b5kGHv8AcBvhcZe6aAAP6vG9vubiew'
+            Deno.env.get('SUPABASE_URL'),
+            Deno.env.get('SUPABASE_ANON_KEY')
         );
 
         const { data, error } = await supabase.rpc('get_challenge_share', {
