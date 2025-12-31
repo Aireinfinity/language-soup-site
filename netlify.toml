@@ -1,3 +1,6 @@
 [[edge_functions]]
   path = "/c/*"
   function = "challenge-og"
+
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = "privacy.html"
