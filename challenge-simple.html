@@ -451,6 +451,7 @@
         let audioElement = null;
         let isPlaying = false;
         const WAVEFORM_BARS = 30;
+        let shareLinkId = ''; // Global scope for use in submitAndroid()
 
         // Initialize on page load
         (async function init() {
@@ -463,7 +464,7 @@
 
                 // Get ID from path (/c/e81f58ae) instead of query string
                 const path = window.location.pathname;
-                const shareLinkId = path.split('/c/')[1] || new URLSearchParams(window.location.search).get('id');
+                shareLinkId = path.split('/c/')[1] || new URLSearchParams(window.location.search).get('id');
 
                 console.log('Share link ID:', shareLinkId);
 
