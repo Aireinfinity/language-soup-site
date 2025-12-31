@@ -284,48 +284,27 @@
         }
 
         .social-section {
-            max-width: 500px;
             margin: 40px auto 20px;
             text-align: center;
-            padding: 24px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .social-section h3 {
-            font-size: 18px;
-            font-weight: 800;
-            color: #2c2c3e;
-            margin-bottom: 8px;
-        }
-
-        .social-section p {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 20px;
         }
 
         .social-links {
             display: flex;
-            flex-direction: column;
-            gap: 16px;
+            justify-content: center;
+            gap: 32px;
         }
 
         .social-link {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 16px;
-            padding: 16px;
-            background: #f8f8f8;
-            border-radius: 12px;
+            gap: 8px;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: transform 0.2s;
         }
 
         .social-link:hover {
-            transform: translateX(4px);
-            background: #f0f0f0;
+            transform: scale(1.1);
         }
 
         .social-icon {
@@ -336,7 +315,6 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            flex-shrink: 0;
         }
 
         .social-icon.instagram {
@@ -347,20 +325,8 @@
             background: #0077b5;
         }
 
-        .social-text {
-            flex: 1;
-            text-align: left;
-        }
-
-        .social-label {
-            font-size: 16px;
-            font-weight: 700;
-            color: #2c2c3e;
-            margin-bottom: 2px;
-        }
-
         .social-subtitle {
-            font-size: 13px;
+            font-size: 12px;
             color: #666;
         }
     </style>
@@ -425,17 +391,11 @@
         <div class="social-links">
             <a href="https://instagram.com/languagesoup" target="_blank" class="social-link">
                 <div class="social-icon instagram">📸</div>
-                <div class="social-text">
-                    <div class="social-label">Instagram</div>
-                    <div class="social-subtitle">follow for language memes</div>
-                </div>
+                <div class="social-subtitle">follow for language memes</div>
             </a>
             <a href="https://linkedin.com/in/noahaire" target="_blank" class="social-link">
                 <div class="social-icon linkedin">💼</div>
-                <div class="social-text">
-                    <div class="social-label">LinkedIn</div>
-                    <div class="social-subtitle">follow for business startup posts</div>
-                </div>
+                <div class="social-subtitle">follow for business startup posts</div>
             </a>
         </div>
     </div>
