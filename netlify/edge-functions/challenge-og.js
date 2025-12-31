@@ -31,7 +31,7 @@ export default async (request, context) => {
         let html = await response.text();
 
         // Inject dynamic OG tags
-        const ogTitle = `🔥 ${challenge.sharer_name} challenged you in ${challenge.group_language}!`;
+        const ogTitle = `🔥 ${challenge.sharer_name} challenged you in ${challenge.group_language.toLowerCase()}!`;
         const ogDescription = challenge.challenge_content || 'Join me on Language Soup and respond to this challenge!';
         const ogImage = challenge.sharer_avatar || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
 
