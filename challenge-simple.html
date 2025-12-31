@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge from Language Soup</title>
-    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="icon" type="image/png"
+        href="https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -270,7 +271,8 @@
 
 <body>
     <div class="logo">
-        <img src="images/icon.png" alt="Language Soup">
+        <img src="https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png"
+            alt="Language Soup">
         <h2>Language Soup</h2>
     </div>
 
@@ -332,42 +334,67 @@
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzcGVneW5lY2xna3NjeHdtb21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3ODgwNzQsImV4cCI6MjA3OTM2NDA3NH0.FcJ_eSzkWCX-2b5kGHv8AcBvhcZe6aAAP6vG9vubiew';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const shareLinkId = urlParams.get('id') || 'hamza123';
         let audioUrl = '';
-
         let audioElement = null;
         let isPlaying = false;
         const WAVEFORM_BARS = 30;
 
-        async function loadChallenge() {
-            const { data } = await supabaseClient.rpc('get_challenge_share', { p_share_link_id: shareLinkId });
+        // Initialize on page load
+        (async function init() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const shareLinkId = urlParams.get('id');
 
-            if (data && data[0]) {
-                const c = data[0];
-                document.getElementById('challenge-header').textContent =
-                    `🔥 ${c.sharer_name} challenged you in ${c.group_language} #${c.group_level}`;
-                document.getElementById('challenge-text').textContent =
-                    c.challenge_content || '#challenge\nwhen do you feel the most like yourself?\nquand est-ce que tu te sens la plus comme toi?';
-
-                // Fetch Noah's avatar from database for challenge sender
-                const { data: noahData } = await supabaseClient
-                    .from('app_users')
-                    .select('avatar_url')
-                    .ilike('display_name', 'noah :)')
-                    .limit(1)
-                    .single();
-
-                document.getElementById('avatar1').src = noahData?.avatar_url || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
-                document.getElementById('sender-name1').textContent = 'noah :)';
-                document.getElementById('avatar2').src = c.sharer_avatar || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
-                document.getElementById('sender-name2').textContent = c.sharer_name;
-
-                audioUrl = c.challenge_audio_url;
-                startCountdown(new Date(c.expires_at));
-                initWaveform();
-                initAudio();
+            if (!shareLinkId) {
+                document.getElementById('challenge-header').textContent = 'Invalid Link';
+                document.getElementById('challenge-text').textContent = 'This challenge link is invalid or expired.';
+                return;
             }
+
+            await loadChallenge(shareLinkId);
+        })();
+
+        async function loadChallenge(shareLinkId) {
+            const { data, error } = await supabaseClient.rpc('get_challenge_share', { p_share_link_id: shareLinkId });
+
+            if (error || !data || data.length === 0) {
+                document.getElementById('challenge-header').textContent = 'Challenge Not Found';
+                document.getElementById('challenge-text').textContent = 'This challenge link is invalid or has expired.';
+                return;
+            }
+
+            const c = data[0];
+
+            // Check if expired
+            if (c.is_expired) {
+                document.getElementById('challenge-header').textContent = 'Challenge Expired';
+                document.getElementById('challenge-text').textContent = 'This challenge has expired. Ask your friend to send you a new one!';
+                return;
+            }
+
+            document.getElementById('challenge-header').textContent =
+                `🔥 ${c.sharer_name} challenged you in ${c.group_name}`;
+            document.getElementById('challenge-text').textContent =
+                c.challenge_content || '#challenge\nwhen do you feel the most like yourself?\nquand est-ce que tu te sens la plus comme toi?';
+
+            // Challenge sender is noah :) - fetch their avatar from database
+            const { data: noahData } = await supabaseClient
+                .from('app_users')
+                .select('avatar_url')
+                .ilike('display_name', 'noah :)')
+                .limit(1)
+                .single();
+
+            document.getElementById('avatar1').src = noahData?.avatar_url || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
+            document.getElementById('sender-name1').textContent = 'noah :)';
+
+            // Voice response is from whoever shared the challenge (DYNAMIC)
+            document.getElementById('avatar2').src = c.sharer_avatar || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
+            document.getElementById('sender-name2').textContent = c.sharer_name;
+
+            audioUrl = c.challenge_audio_url;
+            startCountdown(new Date(c.expires_at));
+            initWaveform();
+            initAudio();
         }
 
         function startCountdown(expiresAt) {
