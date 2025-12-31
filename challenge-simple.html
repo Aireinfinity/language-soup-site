@@ -5,7 +5,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge from Language Soup</title>
+    <title>Language Soup Challenge</title>
+
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Language Soup Challenge 🔥">
+    <meta property="og:description" content="I'm challenging you to speak! Join me on Language Soup.">
+    <meta property="og:image"
+        content="https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png">
+    <meta property="og:url" content="https://language-soup.com">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Language Soup Challenge 🔥">
+    <meta name="twitter:description" content="I'm challenging you to speak! Join me on Language Soup.">
+    <meta name="twitter:image"
+        content="https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png"
         href="https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -437,60 +454,84 @@
 
         // Initialize on page load
         (async function init() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const shareLinkId = urlParams.get('id');
-
-            if (!shareLinkId) {
-                document.getElementById('challenge-header').textContent = 'Invalid Link';
-                document.getElementById('challenge-text').textContent = 'This challenge link is invalid or expired.';
-                return;
-            }
-
-            await loadChallenge(shareLinkId);
+            await loadChallenge();
         })();
 
-        async function loadChallenge(shareLinkId) {
-            const { data, error } = await supabaseClient.rpc('get_challenge_share', { p_share_link_id: shareLinkId });
+        async function loadChallenge() {
+            try {
+                console.log('Loading challenge...');
+                const urlParams = new URLSearchParams(window.location.search);
+                const shareLinkId = urlParams.get('id');
+                console.log('Share link ID:', shareLinkId);
 
-            if (error || !data || data.length === 0) {
-                document.getElementById('challenge-header').textContent = 'Challenge Not Found';
-                document.getElementById('challenge-text').textContent = 'This challenge link is invalid or has expired.';
-                return;
+                if (!shareLinkId) {
+                    document.getElementById('challenge-header').textContent = 'Invalid Link';
+                    document.getElementById('challenge-text').textContent = 'No challenge ID provided.';
+                    return;
+                }
+
+                console.log('Calling RPC...');
+                const { data, error } = await supabaseClient.rpc('get_challenge_share', {
+                    p_share_link_id: shareLinkId
+                });
+
+                console.log('RPC response:', { data, error });
+
+                if (error) {
+                    console.error('RPC error:', error);
+                    document.getElementById('challenge-header').textContent = 'Error';
+                    document.getElementById('challenge-text').textContent = 'Failed to load challenge. Please try again.';
+                    return;
+                }
+
+                if (!data || data.length === 0) {
+                    console.log('No data returned');
+                    document.getElementById('challenge-header').textContent = 'Challenge Not Found';
+                    document.getElementById('challenge-text').textContent = 'This challenge link is invalid or has expired.';
+                    return;
+                }
+
+                const c = data[0];
+                console.log('Challenge data:', c);
+
+                // Check if expired
+                if (c.is_expired) {
+                    document.getElementById('challenge-header').textContent = 'Challenge Expired';
+                    document.getElementById('challenge-text').textContent = 'This challenge has expired. Ask your friend to send you a new one!';
+                    return;
+                }
+
+                document.getElementById('challenge-header').textContent =
+                    `🔥 ${c.sharer_name} challenged you in ${c.group_name}`;
+                document.getElementById('challenge-text').textContent =
+                    c.challenge_content || '#challenge\\nwhen do you feel the most like yourself?\\nquand est-ce que tu te sens la plus comme toi?';
+
+                // Challenge sender is noah :) - fetch their avatar from database
+                const { data: noahData } = await supabaseClient
+                    .from('app_users')
+                    .select('avatar_url')
+                    .ilike('display_name', 'noah :)')
+                    .limit(1)
+                    .single();
+
+                document.getElementById('avatar1').src = noahData?.avatar_url || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
+                document.getElementById('sender-name1').textContent = 'noah :)';
+
+                // Voice response is from whoever shared the challenge (DYNAMIC)
+                document.getElementById('avatar2').src = c.sharer_avatar || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
+                document.getElementById('sender-name2').textContent = c.sharer_name;
+
+                audioUrl = c.challenge_audio_url;
+                console.log('Audio URL:', audioUrl);
+                startCountdown(new Date(c.expires_at));
+                initWaveform();
+                initAudio();
+                console.log('Challenge loaded successfully!');
+            } catch (err) {
+                console.error('Load challenge error:', err);
+                document.getElementById('challenge-header').textContent = 'Error';
+                document.getElementById('challenge-text').textContent = 'Something went wrong. Please try again.';
             }
-
-            const c = data[0];
-
-            // Check if expired
-            if (c.is_expired) {
-                document.getElementById('challenge-header').textContent = 'Challenge Expired';
-                document.getElementById('challenge-text').textContent = 'This challenge has expired. Ask your friend to send you a new one!';
-                return;
-            }
-
-            document.getElementById('challenge-header').textContent =
-                `🔥 ${c.sharer_name} challenged you in ${c.group_name}`;
-            document.getElementById('challenge-text').textContent =
-                c.challenge_content || '#challenge\nwhen do you feel the most like yourself?\nquand est-ce que tu te sens la plus comme toi?';
-
-            // Challenge sender is noah :) - fetch their avatar from database
-            const { data: noahData } = await supabaseClient
-                .from('app_users')
-                .select('avatar_url')
-                .ilike('display_name', 'noah :)')
-                .limit(1)
-                .single();
-
-            document.getElementById('avatar1').src = noahData?.avatar_url || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
-            document.getElementById('sender-name1').textContent = 'noah :)';
-
-            // Voice response is from whoever shared the challenge (DYNAMIC)
-            document.getElementById('avatar2').src = c.sharer_avatar || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
-            document.getElementById('sender-name2').textContent = c.sharer_name;
-
-            audioUrl = c.challenge_audio_url;
-            startCountdown(new Date(c.expires_at));
-            initWaveform();
-            initAudio();
         }
 
         function startCountdown(expiresAt) {
