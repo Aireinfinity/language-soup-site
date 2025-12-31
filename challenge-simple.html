@@ -25,28 +25,27 @@
             margin: 0 auto;
         }
 
-        .logo {
-            text-align: center;
-            margin-bottom: 24px;
-            padding-top: 8px;
-        }
-
-        .logo img {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 8px;
-        }
-
-        .logo h2 {
-            font-size: 18px;
-            font-weight: 800;
-            color: #2c2c3e;
-            margin: 0;
-        }
-
         .header {
             text-align: center;
             margin-bottom: 20px;
+            position: relative;
+        }
+
+        .home-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 14px;
+            color: #00aedf;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .home-link:hover {
+            background: rgba(0, 174, 223, 0.1);
         }
 
         .header h1 {
@@ -266,17 +265,93 @@
         .success-msg.show {
             display: block;
         }
+
+        .social-section {
+            max-width: 500px;
+            margin: 40px auto 20px;
+            text-align: center;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .social-section h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #2c2c3e;
+            margin-bottom: 8px;
+        }
+
+        .social-section p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: #f8f8f8;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            transform: translateX(4px);
+            background: #f0f0f0;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .social-icon.instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .social-icon.linkedin {
+            background: #0077b5;
+        }
+
+        .social-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .social-label {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2c2c3e;
+            margin-bottom: 2px;
+        }
+
+        .social-subtitle {
+            font-size: 13px;
+            color: #666;
+        }
     </style>
 </head>
 
 <body>
-    <div class="logo">
-        <img src="https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png"
-            alt="Language Soup">
-        <h2>Language Soup</h2>
-    </div>
-
     <div class="header">
+        <a href="https://language-soup.com" class="home-link">← Back to Home</a>
         <h1 id="challenge-header">Loading...</h1>
         <div class="countdown" id="countdown">--:--:--</div>
     </div>
@@ -326,6 +401,26 @@
 
         <div class="success-msg" id="success-msg">
             ✅ You're on the list! Check your email or DM @languagesoup on Instagram if you don't hear from me!
+        </div>
+    </div>
+
+    <div class="social-section">
+        <h3>Curious to learn more?</h3>
+        <div class="social-links">
+            <a href="https://instagram.com/languagesoup" target="_blank" class="social-link">
+                <div class="social-icon instagram">📸</div>
+                <div class="social-text">
+                    <div class="social-label">Instagram</div>
+                    <div class="social-subtitle">Follow for language memes</div>
+                </div>
+            </a>
+            <a href="https://linkedin.com/in/noahaire" target="_blank" class="social-link">
+                <div class="social-icon linkedin">💼</div>
+                <div class="social-text">
+                    <div class="social-label">LinkedIn</div>
+                    <div class="social-subtitle">We're building in public!</div>
+                </div>
+            </a>
         </div>
     </div>
 
