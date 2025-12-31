@@ -460,8 +460,11 @@
         async function loadChallenge() {
             try {
                 console.log('Loading challenge...');
-                const urlParams = new URLSearchParams(window.location.search);
-                const shareLinkId = urlParams.get('id');
+
+                // Get ID from path (/c/e81f58ae) instead of query string
+                const path = window.location.pathname;
+                const shareLinkId = path.split('/c/')[1] || new URLSearchParams(window.location.search).get('id');
+
                 console.log('Share link ID:', shareLinkId);
 
                 if (!shareLinkId) {

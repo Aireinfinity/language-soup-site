@@ -1,2 +1,2 @@
 # Netlify redirects for challenge sharing
-/c/*  /challenge-simple.html?id=:splat  200
+/c/*  /challenge-simple.html  200

@@ -1,0 +1,13 @@
+# Test different redirect syntaxes for Netlify
+
+# Option 1: Using placeholder
+/c/:id  /challenge-simple.html?id=:id  200
+
+# Option 2: Using splat
+/c/*  /challenge-simple.html?id=:splat  200
+
+# Option 3: Simple rewrite without query param (let JS handle it from path)
+/c/:id  /challenge-simple.html  200
+
+# The issue: Netlify redirects don't automatically pass placeholders to query strings
+# Solution: Use client-side routing or rewrite to the file and parse path in JS
