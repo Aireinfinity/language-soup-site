@@ -33,9 +33,13 @@ export default async (request, context) => {
         // Inject dynamic OG tags
         const ogTitle = `🔥 ${challenge.sharer_name} challenged you in ${challenge.group_language.toLowerCase()}!`;
         const ogDescription = challenge.challenge_content || 'Join me on Language Soup and respond to this challenge!';
-        const ogImage = challenge.sharer_avatar || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
 
-        // Replace existing OG tags
+        // Optimize image for WhatsApp/Instagram (Square, <300KB)
+        // Using 600x600 at 75% quality ensures high res but small file size
+        const rawImage = challenge.sharer_avatar || 'https://uspegyneclgkscxwmomn.supabase.co/storage/v1/object/public/avatars/soup-avatars/soup_blue.png';
+        const ogImage = `${rawImage}?width=600&height=600&resize=cover&quality=75&format=jpeg`;
+
+        // Replace existing OG tags with comprehensive metadata
         html = html.replace(
             /<meta property="og:title"[^>]*>/,
             `<meta property="og:title" content="${ogTitle}">`
@@ -46,7 +50,7 @@ export default async (request, context) => {
         );
         html = html.replace(
             /<meta property="og:image"[^>]*>/,
-            `<meta property="og:image" content="${ogImage}">`
+            `<meta property="og:image" content="${ogImage}">\n    <meta property="og:image:type" content="image/jpeg">\n    <meta property="og:image:width" content="600">\n    <meta property="og:image:height" content="600">\n    <meta property="og:type" content="website">\n    <meta property="og:site_name" content="Language Soup">`
         );
 
         // Also update Twitter Card tags
