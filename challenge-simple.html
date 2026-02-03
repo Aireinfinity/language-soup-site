@@ -720,11 +720,14 @@
             // Try to open the app
             window.location.href = deepLink;
 
-            // Fallback: If app doesn't open within 2 seconds, show a message
+            // Fallback: If app doesn't open within 1.5 seconds, scroll to download buttons
             setTimeout(() => {
-                // The page will still be visible if the app didn't open
-                // User can then use the download buttons
-            }, 2000);
+                // Scroll to download section
+                document.querySelector('.download').scrollIntoView({ behavior: 'smooth' });
+
+                // Update the download heading to prompt them
+                document.querySelector('.download h2').textContent = "Don't have the app yet? Download it! 👇";
+            }, 1500);
         }
 
         loadChallenge();
