@@ -708,26 +708,37 @@
 
         function openInApp() {
             if (!groupId) {
-                alert('Unable to open in app. Please try downloading the app instead.');
+                showDownloadPrompt();
                 return;
             }
 
             // Construct deep link URL
-            // Format: languagesoup://chat/{groupId}
             const deepLink = `languagesoup://chat/${groupId}`;
             console.log('Opening deep link:', deepLink);
 
-            // Try to open the app
-            window.location.href = deepLink;
+            // Use iframe approach to avoid Safari "invalid link" error
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = deepLink;
+            document.body.appendChild(iframe);
 
-            // Fallback: If app doesn't open within 1.5 seconds, scroll to download buttons
+            // Clean up iframe after attempt
             setTimeout(() => {
-                // Scroll to download section
-                document.querySelector('.download').scrollIntoView({ behavior: 'smooth' });
+                document.body.removeChild(iframe);
+            }, 100);
 
-                // Update the download heading to prompt them
-                document.querySelector('.download h2').textContent = "Don't have the app yet? Download it! 👇";
+            // Fallback: If app doesn't open within 1.5 seconds, show download prompt
+            setTimeout(() => {
+                showDownloadPrompt();
             }, 1500);
+        }
+
+        function showDownloadPrompt() {
+            // Scroll to download section
+            document.querySelector('.download').scrollIntoView({ behavior: 'smooth' });
+
+            // Update the download heading
+            document.querySelector('.download h2').textContent = "Oops! You don't have the app yet 👇";
         }
 
         loadChallenge();
