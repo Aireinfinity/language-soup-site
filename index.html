@@ -1107,7 +1107,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email">email (so i can send u the app link)</label>
+                    <label for="email">email</label>
                     <input type="email" id="email" placeholder="your@email.com" required>
                 </div>
 
@@ -1256,20 +1256,8 @@
                     document.getElementById('appLink').href = 'https://testflight.apple.com/join/N7UnDFv5';
                     document.getElementById('appLink').textContent = 'Download iOS App →';
                 } else {
-                    // Android - pending approval
-                    const appInfoDiv = document.getElementById('appInfo');
-                    appInfoDiv.innerHTML = `
-                        <p style="margin-bottom: 10px; font-size: 0.9em; color: #2c2c3e; font-weight: 700;">🤖 Android Beta Access</p>
-                        <p style="margin-bottom: 12px; font-size: 0.85em; color: #2c2c3e; line-height: 1.5;">
-                            You're on the list! I'll add you to the beta group manually and send you the download link within 24 hours.
-                        </p>
-                        <p style="margin-bottom: 12px; font-size: 0.85em; color: #2c2c3e; line-height: 1.5;">
-                            Check your email or DM me on Instagram <a href="https://instagram.com/languagesoup" target="_blank" style="color: #00aedf; font-weight: 700;">@languagesoup</a> if you don't hear from me!
-                        </p>
-                        <div style="padding: 12px; background: #00aedf; border-radius: 12px; color: #fef6e4; font-size: 0.85em; font-weight: 600;">
-                            💡 You'll get the official Play Store link once I add you to the beta group
-                        </div>
-                    `;
+                    document.getElementById('appLink').href = 'https://play.google.com/store/apps/details?id=com.aireinfinity.languagesoup';
+                    document.getElementById('appLink').textContent = 'Download Android App →';
                 }
 
                 document.getElementById('appInfo').style.display = 'block';

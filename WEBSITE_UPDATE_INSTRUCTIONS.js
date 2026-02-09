@@ -68,7 +68,10 @@ document.getElementById('joinForm').addEventListener('submit', async function (e
             ? 'https://testflight.apple.com/join/N7UnDFv5'
             : 'https://play.google.com/store/apps/details?id=com.aireinfinity.languagesoup';
 
+        const appText = device === 'iOS' ? 'Download iOS App →' : 'Download Android App →';
+
         document.getElementById('appLink').href = appLink;
+        document.getElementById('appLink').textContent = appText;
         document.getElementById('appInfo').style.display = 'block';
         document.getElementById('appInfo').scrollIntoView({ behavior: 'smooth' });
 
