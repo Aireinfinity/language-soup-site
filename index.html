@@ -1256,8 +1256,20 @@
                     document.getElementById('appLink').href = 'https://testflight.apple.com/join/N7UnDFv5';
                     document.getElementById('appLink').textContent = 'Download iOS App →';
                 } else {
-                    document.getElementById('appLink').href = 'https://play.google.com/store/apps/details?id=com.aireinfinity.languagesoup';
-                    document.getElementById('appLink').textContent = 'Download Android App →';
+                    // Android - Pending Play Store Approval
+                    const appInfoDiv = document.getElementById('appInfo');
+                    appInfoDiv.innerHTML = `
+                        <p style="margin-bottom: 10px; font-size: 0.9em; color: #2c2c3e; font-weight: 700;">🤖 Android Beta Access</p>
+                        <p style="margin-bottom: 12px; font-size: 0.85em; color: #2c2c3e; line-height: 1.5;">
+                            I'm currently waiting for Google Play to approve the open testing link! 
+                        </p>
+                        <p style="margin-bottom: 12px; font-size: 0.85em; color: #2c2c3e; line-height: 1.5;">
+                            I'll add you to the **closed beta** manually and email you the download link within 24 hours. 🥣
+                        </p>
+                        <div style="padding: 12px; background: #00aedf; border-radius: 12px; color: #fef6e4; font-size: 0.85em; font-weight: 600;">
+                            💡 Follow <a href="https://instagram.com/languagesoup" target="_blank" style="color: #fff; text-decoration: underline;">@languagesoup</a> for updates!
+                        </div>
+                    `;
                 }
 
                 document.getElementById('appInfo').style.display = 'block';
