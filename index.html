@@ -1,1288 +1,920 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta property="og:title" content="Language Soup 🍜 - Actually Speak Languages" />
-    <meta property="og:description"
-        content="Join 100+ language learners in daily voice challenges. Fun, casual, and you actually SPEAK. Not a classroom." />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Language Soup — The first language social media" />
+    <meta property="og:description" content="The first language social media. Actually speak. Daily voice challenges in small groups. Closed beta." />
     <meta property="og:image" content="https://www.language-soup.com/images/preview.jpg" />
     <meta property="og:url" content="https://www.language-soup.com/" />
     <meta property="og:type" content="website" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Language Soup 🍜</title>
+    <title>Language Soup — the first language social media</title>
     <link rel="icon" type="image/png" href="images/icon.png" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --soup-blue: #00adef;
+            --soup-pink: #ec008b;
+            --soup-teal: #19b091;
+            --soup-cream: #FDF5E6;
+            --soup-dark: #1a1a1a;
         }
 
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Nunito', sans-serif;
-            background-color: #fef6e4;
+            background: var(--soup-cream);
+            color: var(--soup-dark);
             min-height: 100vh;
-            padding: 16px 12px;
-            color: #2c2c3e;
+            line-height: 1.4;
+            overflow-x: hidden;
         }
 
-        .container {
+        /* —— Full-bleed hero (blue) —— */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 48px 24px 56px;
+            background: linear-gradient(180deg, var(--soup-blue) 0%, #0088c4 100%);
+            color: var(--soup-cream);
+        }
+        .hero-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .hero-icon {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+        }
+        .hero h1 {
+            font-family: 'Source Serif Pro', serif;
+            font-size: clamp(2.5rem, 10vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 0.95;
+            margin: 0;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+        }
+        .hero .tagline {
+            font-size: clamp(1.1rem, 3.5vw, 1.35rem);
+            font-weight: 700;
             max-width: 420px;
+            opacity: 0.98;
+        }
+
+        /* —— Strip: souper count —— */
+        .strip-count {
+            background: var(--soup-dark);
+            color: var(--soup-cream);
+            text-align: center;
+            padding: 20px 24px;
+            font-weight: 800;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+        .strip-count span { color: var(--soup-teal); }
+
+        /* —— Early download (don't bury the lead) —— */
+        .cta-early {
+            padding: 28px 24px 32px;
+            text-align: center;
+            background: var(--soup-cream);
+        }
+        .cta-early .btn-ios {
+            display: inline-block;
+            width: 100%;
+            max-width: 340px;
+            padding: 20px 32px;
+            background: var(--soup-teal);
+            color: var(--soup-cream);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 24px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            font-family: inherit;
+            text-transform: lowercase;
+            box-shadow: 0 10px 36px rgba(25, 176, 145, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-early .btn-ios:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(25, 176, 145, 0.5);
+        }
+        .cta-early-android { margin-top: 14px; }
+        .cta-early-android a {
+            font-size: 0.95rem;
+            color: var(--soup-dark);
+            opacity: 0.85;
+            text-decoration: underline;
+            font-weight: 700;
+        }
+        .cta-early-android a:hover { opacity: 1; }
+
+        /* —— Founder block: full-bleed cream, big avatar, soups around face —— */
+        .founder {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            align-items: center;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 48px 32px 56px;
+            overflow: visible;
+        }
+        .founder-avatar-wrap {
+            justify-self: center;
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto;
+            overflow: visible;
+        }
+        .founder-avatar-wrap .founder-avatar,
+        .founder-avatar-wrap .founder-avatar-placeholder {
+            position: relative;
+            z-index: 1;
+        }
+        .soup-float {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 0;
+            transition: transform 0.2s ease;
+        }
+        .soup-float:hover { transform: scale(1.15); }
+        .soup-float.s1 { top: -4px;  left: -12px; }
+        .soup-float.s2 { top: 8px;   left: -20px; }
+        .soup-float.s3 { top: 50%;  left: -24px; transform: translateY(-50%); }
+        .soup-float.s4 { bottom: 20%; left: -16px; }
+        .soup-float.s5 { bottom: -8px; left: 8%; }
+        .soup-float.s6 { bottom: 12px; left: -18px; }
+        .soup-float.s7 { top: 28%;  left: -22px; transform: translateY(-50%); }
+        .founder-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--soup-teal);
+            box-shadow: 0 12px 40px rgba(25, 176, 145, 0.3);
+            background: var(--soup-cream);
+        }
+        .founder-avatar-placeholder {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: var(--soup-blue);
+            color: var(--soup-cream);
+            font-family: 'Source Serif Pro', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid var(--soup-teal);
+            box-shadow: 0 12px 40px rgba(0, 173, 239, 0.3);
+        }
+        .founder-name {
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+        .founder-tag {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--soup-dark);
+            opacity: 0.85;
+            margin-bottom: 14px;
+        }
+        .founder-bio {
+            font-size: 1.05rem;
+            line-height: 1.55;
+            color: var(--soup-dark);
+            opacity: 0.92;
+        }
+        .founder-link { margin-top: 16px; }
+        .founder-link a { color: var(--soup-blue); font-weight: 800; text-decoration: none; }
+        .founder-link a:hover { text-decoration: underline; }
+
+        /* —— Reel embed (near about me) —— */
+        .section-reel {
+            padding: 40px 24px 48px;
+            background: var(--soup-cream);
+            text-align: center;
+        }
+        .section-reel h2 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--soup-dark);
+            margin-bottom: 8px;
+        }
+        .section-reel .reel-lead {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--soup-dark);
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+        .reel-embed-wrap {
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+        }
+        .reel-embed-wrap iframe {
+            width: 100%;
+            min-height: 520px;
+            border: 0;
+            display: block;
+        }
+
+        /* —— Instagram strip (signups come from here) —— */
+        .strip-ig {
+            background: var(--soup-pink);
+            color: var(--soup-cream);
+            text-align: center;
+            padding: 32px 24px;
+        }
+        .strip-ig p {
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+        .btn-ig {
+            display: inline-block;
+            padding: 18px 36px;
+            background: var(--soup-cream);
+            color: var(--soup-pink);
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            font-family: inherit;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-ig:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+        }
+
+        /* —— CTA: download iOS —— */
+        .cta-section {
+            padding: 48px 24px 40px;
+            text-align: center;
+        }
+        .cta-section .lead {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--soup-dark);
+        }
+        .cta-section .cta-sub {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--soup-dark);
+            opacity: 0.85;
+            margin-bottom: 24px;
+        }
+        .form-wrap .optional { font-weight: 400; opacity: 0.7; font-size: 0.85em; }
+        .btn-ios {
+            display: inline-block;
+            width: 100%;
+            max-width: 340px;
+            padding: 22px 32px;
+            background: var(--soup-teal);
+            color: var(--soup-cream);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 24px;
+            font-size: 1.35rem;
+            font-weight: 800;
+            font-family: inherit;
+            text-transform: lowercase;
+            box-shadow: 0 10px 36px rgba(25, 176, 145, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-ios:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(25, 176, 145, 0.5);
+        }
+        .cta-android {
+            margin-top: 18px;
+        }
+        .cta-android a {
+            font-size: 0.95rem;
+            color: var(--soup-dark);
+            opacity: 0.85;
+            text-decoration: underline;
+            font-weight: 700;
+        }
+        .cta-android a:hover { opacity: 1; }
+
+        /* —— Android form —— */
+        .form-wrap {
+            display: none;
+            max-width: 400px;
+            margin: 24px auto 0;
+            background: var(--soup-blue);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 12px 40px rgba(0, 173, 239, 0.3);
+        }
+        .form-wrap.active { display: block; }
+        .form-wrap h3 { color: var(--soup-cream); font-size: 1.15rem; margin-bottom: 18px; text-align: center; }
+        .form-wrap label { display: block; color: var(--soup-cream); font-size: 0.9rem; margin-bottom: 6px; font-weight: 700; }
+        .form-wrap input { width: 100%; padding: 14px; border-radius: 14px; border: none; margin-bottom: 14px; font-family: inherit; font-size: 1rem; }
+        .form-wrap button {
+            width: 100%; padding: 16px; background: var(--soup-teal); color: var(--soup-cream);
+            border: none; border-radius: 16px; font-weight: 800; font-family: inherit; font-size: 1.05rem; cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .form-wrap button:hover { transform: translateY(-2px); }
+        #appInfo { display: none; margin-top: 20px; padding: 20px; background: var(--soup-cream); border-radius: 16px; text-align: center; font-size: 0.95rem; }
+        #appInfo.show { display: block; }
+        #appInfo a { color: var(--soup-teal); font-weight: 700; }
+
+        /* —— Quotes: bold cards —— */
+        .quotes {
+            padding: 40px 24px 48px;
+            background: var(--soup-dark);
+            color: var(--soup-cream);
+        }
+        .quotes h2 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-align: center;
+            margin-bottom: 28px;
+            opacity: 0.8;
+        }
+        .quotes-inner {
+            max-width: 560px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
-
-        /* Hero Section - WHAT IT IS */
-        .hero {
-            text-align: center;
-            padding: 20px 16px 24px;
+        .quote-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 24px 26px;
+            border-left: 6px solid var(--soup-blue);
         }
-
-        .hero h1 {
+        .quote-card .text {
             font-family: 'Source Serif Pro', serif;
-            font-size: 3em;
-            margin-bottom: 12px;
+            font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+            line-height: 1.5;
+            font-style: italic;
+        }
+        .quote-card .attr {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* —— Socials row —— */
+        .socials {
+            padding: 40px 24px 48px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        .socials-lead {
+            font-size: 0.9rem;
             font-weight: 700;
-            color: #2c2c3e;
-            line-height: 1;
-            letter-spacing: -0.02em;
+            color: var(--soup-dark);
+            opacity: 0.85;
         }
-
-        .hero .tagline {
-            font-size: 1.15em;
-            color: #2c2c3e;
-            margin-bottom: 16px;
-            font-weight: 700;
-            line-height: 1.4;
-        }
-
-        .hero .tagline .highlight {
-            color: #00aedf;
-            position: relative;
-        }
-
-        .hero .subtitle {
-            font-size: 0.95em;
-            color: #2c2c3e;
-            opacity: 0.75;
-            margin-bottom: 16px;
-            font-weight: 400;
-        }
-
-        .hero .stats {
-            background: #00aedf;
-            color: #fef6e4;
-            padding: 10px 18px;
-            border-radius: 30px;
+        .socials-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+        .socials a {
             display: inline-block;
-            font-weight: 700;
-            font-size: 0.85em;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
-            animation: float 3s ease-in-out infinite;
-            margin-bottom: 16px;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /* Video/Demo Section - SHOW WHAT IT IS */
-        .video-section {
-            background: white;
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            animation: slideUp 0.5s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .video-section h2 {
-            font-size: 1.3em;
-            margin-bottom: 14px;
-            color: #2c2c3e;
+            padding: 16px 28px;
+            background: var(--soup-cream);
+            color: var(--soup-dark);
+            text-decoration: none;
+            border-radius: 18px;
             font-weight: 800;
+            font-size: 1rem;
+            border: 3px solid var(--soup-dark);
+            transition: all 0.2s;
+        }
+        .socials a:hover {
+            background: var(--soup-dark);
+            color: var(--soup-cream);
+            transform: translateY(-2px);
+        }
+        .socials a.ig { border-color: var(--soup-pink); color: var(--soup-pink); }
+        .socials a.ig:hover { background: var(--soup-pink); color: var(--soup-cream); }
+        .socials a.tt { border-color: var(--soup-teal); color: var(--soup-teal); }
+        .socials a.tt:hover { background: var(--soup-teal); color: var(--soup-cream); }
+
+        /* —— Viral / reels (Instagram) —— */
+        .section-videos {
+            padding: 44px 24px 48px;
             text-align: center;
-            text-transform: lowercase;
+            background: var(--soup-cream);
+        }
+        .section-videos-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--soup-dark);
+            margin-bottom: 20px;
+        }
+        .btn-reels {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--soup-blue);
+            color: var(--soup-cream);
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            font-family: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+        }
+        .btn-reels:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0, 173, 239, 0.4);
         }
 
-        /* Video controls - Instagram style */
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 420px;
+        /* —— App screenshots (show, don't tell) —— */
+        .section-app {
+            padding: 40px 24px 48px;
+            background: var(--soup-cream);
+        }
+        .section-app h2 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--soup-dark);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .app-shots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            max-width: 900px;
             margin: 0 auto;
+            justify-items: center;
         }
-
-        .video-wrapper video {
+        .app-shots a {
+            display: block;
+            cursor: pointer;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+            border: 4px solid var(--soup-dark);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            width: 100%;
+            max-width: 200px;
+        }
+        .app-shots a:hover {
+            transform: scale(1.08);
+            box-shadow: 0 20px 48px rgba(0,0,0,0.18);
+        }
+        /* Only composite screenshots (data-crop="half") get left-half crop; others show full image so nothing is cut off */
+        .app-shots a img {
             width: 100%;
             height: auto;
-            border-radius: 20px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
             display: block;
+            object-fit: contain;
+            object-position: center;
+        }
+        .app-shots a[data-crop="half"] img {
+            width: 200%;
+            max-width: none;
+            object-fit: cover;
+            object-position: left center;
         }
 
-        .video-controls {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            display: flex;
-            gap: 8px;
-            z-index: 10;
+        /* —— Community (show people) —— */
+        .section-community {
+            padding: 44px 24px 48px;
+            text-align: center;
+            background: var(--soup-cream);
         }
-
-        .video-control-btn {
-            width: 36px;
-            height: 36px;
-            background: rgba(0, 0, 0, 0.6);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9em;
-            transition: all 0.2s;
-            backdrop-filter: blur(10px);
-            color: white;
+        .section-community h2 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--soup-dark);
+            margin-bottom: 8px;
         }
-
-        .video-control-btn:hover {
-            background: rgba(0, 0, 0, 0.8);
-            transform: scale(1.1);
-        }
-
-        .video-control-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Instagram embed container */
-        .video-container {
-            position: relative;
-            width: 100%;
-            margin-bottom: 0;
-        }
-
-        /* Make Instagram embed responsive and full */
-        .video-container blockquote {
-            margin: 0 !important;
-        }
-
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 9/16;
-            background: #00aedf;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #fef6e4;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .video-placeholder:hover {
-            transform: scale(1.02);
-        }
-
-        .video-placeholder .play-icon {
-            font-size: 4em;
-            margin-bottom: 12px;
-        }
-
-        .video-placeholder .play-text {
-            font-size: 1.1em;
+        .section-community .lead {
+            font-size: 1.05rem;
             font-weight: 700;
+            color: var(--soup-dark);
+            opacity: 0.9;
+            margin-bottom: 28px;
         }
-
-        /* Embedded iframe - uncomment and add your Instagram embed URL */
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Step-by-step styles */
-        .step-container {
+        .community-avatars {
             display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .step {
-            background: #fef6e4;
-            border-radius: 20px;
-            padding: 18px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            border-left: 5px solid #00aedf;
-        }
-
-        .step-number {
-            width: 48px;
-            height: 48px;
-            background: #00aedf;
-            color: #fef6e4;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
-            font-size: 1.5em;
-            font-weight: 800;
-            flex-shrink: 0;
+            gap: 20px;
+            max-width: 480px;
+            margin: 0 auto;
         }
-
-        .step-content {
-            flex: 1;
+        .community-avatars {
+            gap: 20px;
         }
-
-        .step-title {
-            font-weight: 800;
-            font-size: 1.05em;
-            color: #2c2c3e;
-            margin-bottom: 4px;
-            text-transform: lowercase;
-        }
-
-        .step-desc {
-            font-size: 0.9em;
-            color: #2c2c3e;
-            opacity: 0.75;
-            line-height: 1.4;
-        }
-
-        .demo-examples {
-            background: white;
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            animation: slideUp 0.5s ease-out;
-            animation-delay: 0.1s;
-        }
-
-        .demo-examples h2 {
-            font-size: 1.3em;
-            margin-bottom: 16px;
-            color: #2c2c3e;
-            font-weight: 800;
-            text-align: center;
-            text-transform: lowercase;
-        }
-
-        /* Voice Examples Section */
-        .voice-examples {
-            background: white;
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            animation: slideUp 0.5s ease-out;
-            animation-delay: 0.15s;
-        }
-
-        .voice-examples h2 {
-            font-size: 1.3em;
-            margin-bottom: 16px;
-            color: #2c2c3e;
-            font-weight: 800;
-            text-align: center;
-            text-transform: lowercase;
-        }
-
-        .voice-demo {
-            background: #2c2c3e;
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 12px;
-            animation: popIn 0.4s ease-out backwards;
-        }
-
-        .voice-examples .voice-demo:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-
-        .voice-examples .voice-demo:nth-child(3) {
-            animation-delay: 0.9s;
-        }
-
-        .voice-examples .voice-demo:nth-child(4) {
-            animation-delay: 1.5s;
-        }
-
-        .voice-examples .voice-demo:nth-child(5) {
-            animation-delay: 2.1s;
-        }
-
-        @keyframes popIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.8) translateY(20px);
-            }
-
-            60% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .voice-demo {
-            background: #2c2c3e;
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-
-        .voice-demo:last-child {
-            margin-bottom: 0;
-        }
-
-        .voice-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .profile-emoji {
-            width: 36px;
-            height: 36px;
-            background: #fef6e4;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2em;
-            flex-shrink: 0;
-        }
-
-        .voice-info {
-            flex: 1;
-        }
-
-        .voice-name {
-            color: #fef6e4;
-            font-weight: 700;
-            font-size: 0.9em;
-        }
-
-        .voice-time {
-            color: #fef6e4;
-            opacity: 0.6;
-            font-size: 0.75em;
-        }
-
-        .voice-message {
-            background: #00aedf;
-            border-radius: 16px;
-            padding: 12px;
-            color: #fef6e4;
-            font-size: 0.9em;
-            line-height: 1.4;
-            margin-bottom: 10px;
-        }
-
-        .voice-player {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #fef6e4;
-            border-radius: 30px;
-            padding: 8px 12px;
-        }
-
-        .play-button {
-            width: 32px;
-            height: 32px;
-            background: #00aedf;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-            flex-shrink: 0;
-        }
-
-        .waveform {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 2px;
-            height: 24px;
-        }
-
-        .wave-bar {
-            width: 3px;
-            background: #00aedf;
-            border-radius: 2px;
-            animation: wave 1.2s ease-in-out infinite;
-        }
-
-        .wave-bar:nth-child(1) {
-            height: 8px;
-            animation-delay: 0s;
-        }
-
-        .wave-bar:nth-child(2) {
-            height: 16px;
-            animation-delay: 0.05s;
-        }
-
-        .wave-bar:nth-child(3) {
-            height: 12px;
-            animation-delay: 0.1s;
-        }
-
-        .wave-bar:nth-child(4) {
-            height: 20px;
-            animation-delay: 0.15s;
-        }
-
-        .wave-bar:nth-child(5) {
-            height: 10px;
-            animation-delay: 0.2s;
-        }
-
-        .wave-bar:nth-child(6) {
-            height: 16px;
-            animation-delay: 0.25s;
-        }
-
-        .wave-bar:nth-child(7) {
-            height: 14px;
-            animation-delay: 0.3s;
-        }
-
-        .wave-bar:nth-child(8) {
-            height: 18px;
-            animation-delay: 0.35s;
-        }
-
-        .wave-bar:nth-child(9) {
-            height: 11px;
-            animation-delay: 0.4s;
-        }
-
-        .wave-bar:nth-child(10) {
-            height: 15px;
-            animation-delay: 0.45s;
-        }
-
-        .wave-bar:nth-child(11) {
-            height: 13px;
-            animation-delay: 0.5s;
-        }
-
-        .wave-bar:nth-child(12) {
-            height: 19px;
-            animation-delay: 0.55s;
-        }
-
-        .wave-bar:nth-child(13) {
-            height: 9px;
-            animation-delay: 0.6s;
-        }
-
-        .wave-bar:nth-child(14) {
-            height: 17px;
-            animation-delay: 0.65s;
-        }
-
-        .wave-bar:nth-child(15) {
-            height: 12px;
-            animation-delay: 0.7s;
-        }
-
-        .wave-bar:nth-child(16) {
-            height: 20px;
-            animation-delay: 0.75s;
-        }
-
-        .wave-bar:nth-child(17) {
-            height: 14px;
-            animation-delay: 0.8s;
-        }
-
-        .wave-bar:nth-child(18) {
-            height: 16px;
-            animation-delay: 0.85s;
-        }
-
-        .wave-bar:nth-child(19) {
-            height: 10px;
-            animation-delay: 0.9s;
-        }
-
-        .wave-bar:nth-child(20) {
-            height: 18px;
-            animation-delay: 0.95s;
-        }
-
-        @keyframes wave {
-
-            0%,
-            100% {
-                transform: scaleY(0.5);
-            }
-
-            50% {
-                transform: scaleY(1);
-            }
-        }
-
-        .voice-duration {
-            color: #2c2c3e;
-            font-size: 0.75em;
-            font-weight: 600;
-        }
-
-        /* Quick benefits */
-        .benefits {
-            background: white;
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            animation: slideUp 0.5s ease-out;
-            animation-delay: 0.6s;
-        }
-
-        .benefits h2 {
-            font-size: 1.3em;
-            margin-bottom: 14px;
-            color: #2c2c3e;
-            font-weight: 800;
-            text-align: center;
-            text-transform: lowercase;
-        }
-
-        .benefit-grid {
-            display: grid;
-            gap: 12px;
-        }
-
-        .benefit-item {
-            background: #fef6e4;
-            padding: 14px;
-            border-radius: 16px;
-            border-left: 4px solid #00aedf;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .benefit-emoji {
-            font-size: 1.8em;
-            flex-shrink: 0;
-        }
-
-        .benefit-text {
-            font-size: 0.95em;
-            line-height: 1.4;
-            font-weight: 600;
-        }
-
-        /* CTA Section - GET THEM TO SIGN UP */
-        .cta-section {
-            background: #19b091;
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 6px 20px rgba(25, 176, 145, 0.4);
-            animation: slideUp 0.5s ease-out;
-            animation-delay: 0.65s;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            color: #fef6e4;
-            font-size: 1.5em;
-            margin-bottom: 12px;
-            font-weight: 800;
-        }
-
-        .cta-section p {
-            color: #fef6e4;
-            font-size: 0.95em;
-            margin-bottom: 20px;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            width: 100%;
-            padding: 16px;
-            background: #fef6e4;
-            color: #19b091;
-            border: none;
-            border-radius: 16px;
-            font-size: 1.15em;
-            font-weight: 800;
+        .community-avatars a {
+            display: block;
             cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            text-transform: lowercase;
-            font-family: 'Nunito', sans-serif;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-
-        .cta-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        .community-avatars a:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.15);
         }
-
-        .cta-button:active {
-            transform: translateY(0) scale(0.98);
-        }
-
-        /* Form Modal/Section */
-        .form-modal {
-            display: none;
-            background: #00aedf;
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 4px 16px rgba(0, 174, 223, 0.3);
-            animation: slideUp 0.3s ease-out;
-            margin-top: 16px;
-        }
-
-        .form-modal.active {
+        .community-avatars .soup-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
             display: block;
         }
 
-        .form-modal h2 {
-            color: #fef6e4;
-            text-align: center;
-            margin-bottom: 16px;
-            font-size: 1.4em;
-            font-weight: 800;
-            text-transform: lowercase;
-        }
-
-        .form-modal h3 {
-            color: #fef6e4;
-            margin-bottom: 14px;
-            font-size: 0.95em;
-            font-weight: 600;
-            text-transform: lowercase;
-        }
-
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: #fef6e4;
-            font-size: 0.85em;
-            text-transform: lowercase;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: none;
-            border-radius: 14px;
-            font-family: 'Nunito', sans-serif;
-            font-size: 0.95em;
-            background-color: #fef6e4;
-            color: #2c2c3e;
-            transition: all 0.2s;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(254, 246, 228, 0.4);
-            transform: scale(1.01);
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-            color: #2c2c3e;
-            opacity: 0.5;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 70px;
-            font-family: 'Nunito', sans-serif;
-        }
-
-        select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%232c2c3e' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-            padding-right: 40px;
-        }
-
-        .join-button {
-            width: 100%;
-            padding: 14px;
-            background: #19b091;
-            color: #fef6e4;
-            border: none;
-            border-radius: 14px;
-            font-size: 1.05em;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-top: 8px;
-            box-shadow: 0 3px 10px rgba(25, 176, 145, 0.3);
-            text-transform: lowercase;
-            font-family: 'Nunito', sans-serif;
-        }
-
-        .join-button:hover {
-            transform: translateY(-2px) scale(1.01);
-            box-shadow: 0 5px 14px rgba(25, 176, 145, 0.4);
-        }
-
-        .join-button:active {
-            transform: translateY(0) scale(0.99);
-        }
-
-        /* Fallback WhatsApp link */
-        .whatsapp-fallback {
-            display: none;
-            margin-top: 16px;
-            padding: 16px;
-            background: #fef6e4;
-            border-radius: 14px;
-            text-align: center;
-            animation: slideUp 0.3s ease-out;
-        }
-
-        .whatsapp-fallback.show {
-            display: block;
-        }
-
-        .whatsapp-fallback p {
-            margin-bottom: 10px;
-            font-size: 0.9em;
-            color: #2c2c3e;
-        }
-
-        .whatsapp-link {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #19b091;
-            color: #fef6e4;
-            text-decoration: none;
-            border-radius: 14px;
-            font-weight: 800;
-            transition: all 0.2s;
-            text-transform: lowercase;
-        }
-
-        .whatsapp-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(25, 176, 145, 0.3);
-        }
-
-        /* Footer */
+        /* —— Footer —— */
         footer {
-            padding: 20px;
             text-align: center;
-            color: #2c2c3e;
-            font-size: 0.85em;
+            padding: 28px 24px;
+            font-size: 0.95rem;
+            color: var(--soup-dark);
+            opacity: 0.85;
+        }
+        footer a { color: var(--soup-blue); text-decoration: none; font-weight: 700; }
+        footer a:hover { text-decoration: underline; }
+
+        /* —— Lightbox (pop up on same page) —— */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox-img-wrap {
+            max-width: 95vw;
+            max-height: 90vh;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+            background: var(--soup-dark);
+        }
+        .lightbox-img-wrap img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 90vh;
+            display: block;
+        }
+        .lightbox--cropped .lightbox-img-wrap {
+            max-width: min(95vw, 340px);
+        }
+        .lightbox--cropped .lightbox-img-wrap img {
+            width: 200%;
+            max-width: none;
+            object-fit: cover;
+            object-position: left center;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: var(--soup-cream);
+            color: var(--soup-dark);
+            font-size: 1.5rem;
+            font-weight: 800;
+            border-radius: 50%;
+            cursor: pointer;
+            line-height: 1;
         }
 
-        footer p {
-            margin-bottom: 6px;
-            text-transform: lowercase;
+        @media (min-width: 600px) {
+            .founder { grid-template-columns: auto 1fr; text-align: left; }
+            .founder-avatar-wrap { justify-self: start; }
         }
 
-        footer a {
-            color: #00aedf;
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Mobile optimization */
-        @media (max-width: 480px) {
-            body {
-                padding: 12px 8px;
-            }
-
-            .hero h1 {
-                font-size: 2.5em;
-            }
-
-            .video-section,
-            .demo-examples,
-            .benefits,
-            .cta-section,
-            .form-modal {
-                padding: 18px;
-            }
-
-            h2 {
-                font-size: 1.2em;
-            }
+        /* —— Mobile: tap targets, safe area, no overflow —— */
+        @media (max-width: 599px) {
+            .hero { padding: 32px 20px 44px; min-height: 45vh; }
+            .hero-icon { width: 56px; height: 56px; }
+            .strip-count { padding: 16px 20px; font-size: 1rem; }
+            .founder { padding: 32px 20px 44px; }
+            .founder-avatar-wrap { width: 200px; height: 200px; }
+            .section-app, .section-reel, .section-community { padding: 32px 20px 40px; }
+            .app-shots { gap: 16px; }
+            .app-shots a { max-width: 160px; }
+            .btn-ios, .btn-ig, .btn-reels { min-height: 48px; padding: 16px 28px; }
+            .socials a { min-height: 48px; padding: 14px 24px; }
+            .reel-embed-wrap { max-width: 100%; margin: 0 0; border-radius: 16px; }
+            .lightbox { padding: 16px; align-items: center; }
+            .lightbox-close { top: 12px; right: 12px; width: 40px; height: 40px; }
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <!-- 1. WHAT IT IS -->
-        <div class="hero">
-            <h1>Language Soup 🍜</h1>
-            <p class="tagline">we outgrew whatsapp! 🎉<br>join our <span class="highlight">beta app</span> instead.</p>
-            <div class="stats">
-                100+ learners • daily challenges • actually speaking
-            </div>
+    <header class="hero">
+        <div class="hero-brand">
+            <img src="images/ls-icon-bowl.png" alt="" class="hero-icon" />
+            <h1>Language Soup</h1>
         </div>
+        <p class="tagline">the first language social media</p>
+    </header>
 
-        <!-- 2. SHOW WHAT IT IS - Video -->
-        <h2
-            style="font-size: 1.3em; margin-bottom: 14px; color: #2c2c3e; font-weight: 800; text-align: center; text-transform: lowercase;">
-            watch how it works ↓</h2>
-        <div class="video-wrapper">
-            <video id="demoVideo" autoplay muted loop playsinline>
-                <source src="videos/challengevideo.mp4" type="video/mp4">
-                <source src="videos/challengevideo.mov" type="video/quicktime">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-controls">
-                <button class="video-control-btn" id="playPauseBtn" onclick="togglePlayPause()"
-                    title="Play/Pause">⏸</button>
-                <button class="video-control-btn" id="muteBtn" onclick="toggleMute()" title="Mute/Unmute">🔇</button>
-            </div>
+    <div class="strip-count"><span id="souperCount">…</span> soupers in the soup</div>
+
+    <section class="cta-early">
+        <a href="https://testflight.apple.com/join/N7UnDFv5" target="_blank" rel="noopener" class="btn-ios">download for iOS →</a>
+        <p class="cta-early-android"><a href="#" onclick="showAndroidForm(); return false;">android? we'll add you to the beta</a></p>
+    </section>
+
+    <section class="section-app">
+        <h2>the app</h2>
+        <div class="app-shots">
+            <a href="images/app1.png" class="lightbox-trigger" title="tap to enlarge"><img src="images/app1.png" alt="Language Soup app: today's challenge" /></a>
+            <a href="images/app2.png" class="lightbox-trigger" title="tap to enlarge"><img src="images/app2.png" alt="Language Soup app: group voice chat" /></a>
+            <a href="images/app3.png" class="lightbox-trigger" title="tap to enlarge"><img src="images/app3.png" alt="Language Soup app: your soup" /></a>
         </div>
+    </section>
 
-        <!-- 2b. HOW IT WORKS - 3 STEPS -->
-        <div class="demo-examples">
-            <h2>here's what u actually do:</h2>
-
-            <div class="step-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <div class="step-title">wait for daily challenge</div>
-                        <div class="step-desc">shows up in your whatsapp group every day</div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <div class="step-title">record your response</div>
-                        <div class="step-desc">say it in your target language + english</div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <div class="step-title">send & listen to others</div>
-                        <div class="step-desc">hear how everyone else did it!</div>
-                    </div>
-                </div>
-            </div>
+    <section class="founder">
+        <div class="founder-avatar-wrap">
+            <img src="images/avatars/cereal.png" alt="" class="soup-float s1" />
+            <img src="images/avatars/tomato_soup.png" alt="" class="soup-float s2" />
+            <img src="images/avatars/salad.png" alt="" class="soup-float s3" />
+            <img src="images/avatars/acai.png" alt="" class="soup-float s4" />
+            <img src="images/avatars/chicken_soup.png" alt="" class="soup-float s5" />
+            <img src="images/avatars/water_soup.png" alt="" class="soup-float s6" />
+            <img src="images/avatars/bathtub_soup.png" alt="" class="soup-float s7" />
+            <img id="noahAvatar" class="founder-avatar" src="" alt="Noah" />
+            <div id="noahPlaceholder" class="founder-avatar-placeholder" style="display: none;">N</div>
         </div>
-
-        <!-- Voice Memo Examples -->
-        <div class="voice-examples">
-            <h2>what it looks like in action 🎤</h2>
-
-            <div class="voice-demo">
-                <div class="voice-header">
-                    <div class="profile-emoji">🇫🇷</div>
-                    <div class="voice-info">
-                        <div class="voice-name">daily challenge</div>
-                        <div class="voice-time">today at 2:47 PM</div>
-                    </div>
-                </div>
-                <div class="voice-message">
-                    <strong>#challenge</strong><br><br>
-                    what are three things you would bring with you on a desert island?<br><br>
-                    qu'est-ce que c'est trois choses que tu apporteras à une île deserte?
-                </div>
-            </div>
-
-            <div class="voice-demo">
-                <div class="voice-header">
-                    <div class="profile-emoji">🇧🇷</div>
-                    <div class="voice-info">
-                        <div class="voice-name">sarah</div>
-                        <div class="voice-time">today at 2:52 PM</div>
-                    </div>
-                </div>
-                <div class="voice-player">
-                    <div class="play-button">▶</div>
-                    <div class="waveform">
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                    </div>
-                    <div class="voice-duration">0:08</div>
-                </div>
-            </div>
-
-            <div class="voice-demo">
-                <div class="voice-header">
-                    <div class="profile-emoji">🇺🇸</div>
-                    <div class="voice-info">
-                        <div class="voice-name">marcus</div>
-                        <div class="voice-time">today at 3:04 PM</div>
-                    </div>
-                </div>
-                <div class="voice-player">
-                    <div class="play-button">▶</div>
-                    <div class="waveform">
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                    </div>
-                    <div class="voice-duration">0:07</div>
-                </div>
-            </div>
-
-            <div class="voice-demo">
-                <div class="voice-header">
-                    <div class="profile-emoji">🇫🇷</div>
-                    <div class="voice-info">
-                        <div class="voice-name">alex</div>
-                        <div class="voice-time">today at 3:15 PM</div>
-                    </div>
-                </div>
-                <div class="voice-player">
-                    <div class="play-button">▶</div>
-                    <div class="waveform">
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                    </div>
-                    <div class="voice-duration">0:11</div>
-                </div>
-            </div>
+        <div>
+            <p class="founder-name">hi im noah :)</p>
+            <p class="founder-tag">in the app i'm Founder Daddy. building the first language social media app where you actually speak.</p>
+            <p class="founder-bio">i was fed up with what was out there. wanted to send voice memos to friends who spoke diff languages. so i made language soup. that delicious, messy feeling when ur mixing up all ur languages. join us, we're silly.</p>
+            <p class="founder-link">on <a href="https://www.linkedin.com/in/noahaire/" target="_blank" rel="noopener">linkedin</a> i post weekly, tuesday mornings. building in public, new soup updates.</p>
         </div>
+    </section>
 
-        <!-- Quick Benefits -->
-        <div class="benefits">
-            <h2>why it works</h2>
-            <div class="benefit-grid">
-                <div class="benefit-item">
-                    <div class="benefit-emoji">💬</div>
-                    <div class="benefit-text">speak every day (not just study)</div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-emoji">👥</div>
-                    <div class="benefit-text">small groups = no overwhelm</div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-emoji">🔥</div>
-                    <div class="benefit-text">community keeps u consistent</div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-emoji">😎</div>
-                    <div class="benefit-text">zero classroom energy</div>
-                </div>
-            </div>
+    <section class="section-reel">
+        <h2>what language soup is</h2>
+        <p class="reel-lead">watch this</p>
+        <div class="reel-embed-wrap">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTx1_AJjAxz/" data-instgrm-version="14" style="max-width: 540px; min-width: 326px; width: 99.375%; margin: 0 auto;"></blockquote>
         </div>
+    </section>
 
-        <!-- 3. GET THEM TO SIGN UP -->
-        <div class="cta-section">
-            <h2>ready to join? 🚀</h2>
-            <p>download the app and start speaking today.</p>
-            <button class="cta-button" onclick="showForm()">yes, let's go →</button>
-        </div>
+    <section class="strip-ig">
+        <p>most signups come from instagram.</p>
+        <a href="https://www.instagram.com/languagesoup/" target="_blank" rel="noopener" class="btn-ig">follow @languagesoup</a>
+    </section>
 
-        <!-- Form (appears after CTA click) -->
-        <div class="form-modal" id="formModal">
-            <h2>quick info & ur in 🎯</h2>
+    <section class="section-videos">
+        <h2 class="section-videos-title">see us in action</h2>
+        <a href="https://www.instagram.com/languagesoup/reels/" target="_blank" rel="noopener" class="btn-reels">watch reels on Instagram</a>
+    </section>
+
+    <section class="cta-section">
+        <p class="lead">download and start speaking.</p>
+        <p class="cta-sub">already on Duolingo or YouTube? add real speaking here.</p>
+        <a href="https://testflight.apple.com/join/N7UnDFv5" target="_blank" rel="noopener" class="btn-ios">download for iOS →</a>
+        <p class="cta-android"><a href="#" onclick="showAndroidForm(); return false;">android? we'll add you to the beta</a></p>
+        <div class="form-wrap" id="androidForm">
+            <h3>quick signup — we'll send you the link</h3>
             <form id="joinForm">
-                <div class="form-group">
-                    <label for="name">what's ur name?</label>
-                    <input type="text" id="name" placeholder="just first name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="languages">what language(s)?</label>
-                    <input type="text" id="languages" placeholder="spanish, french, etc" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="source">how'd u find us?</label>
-                    <select id="source" required>
-                        <option value="">pick one...</option>
-                        <option value="Friend">friend</option>
-                        <option value="Instagram">instagram</option>
-                        <option value="LinkedIn">linkedin</option>
-                        <option value="TikTok">tiktok</option>
-                        <option value="Other">other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="studying">what r u using to study rn?</label>
-                    <input type="text" id="studying" placeholder="duolingo? netflix? tutor?" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">email</label>
-                    <input type="email" id="email" placeholder="your@email.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="device">what device?</label>
-                    <select id="device" required>
-                        <option value="">pick one...</option>
-                        <option value="iOS">iOS (iPhone/iPad)</option>
-                        <option value="Android">Android</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="join-button">download the app 🍜</button>
+                <label for="name">name</label>
+                <input type="text" id="name" placeholder="first name" required />
+                <label for="email">email</label>
+                <input type="email" id="email" placeholder="you@email.com" required />
+                <label for="languages">what language(s)? <span class="optional">optional</span></label>
+                <input type="text" id="languages" placeholder="e.g. spanish, french" />
+                <label for="studying_with">using anything else? <span class="optional">optional</span></label>
+                <input type="text" id="studying_with" placeholder="e.g. Duolingo, YouTube" />
+                <input type="hidden" id="device" value="Android" />
+                <button type="submit" class="join-btn">add me to the beta</button>
             </form>
+            <div id="appInfo"></div>
+        </div>
+    </section>
 
-            <div id="appInfo"
-                style="display: none; margin-top: 16px; padding: 16px; background: #fef6e4; border-radius: 14px; text-align: center;">
-                <p style="margin-bottom: 10px; font-size: 0.9em; color: #2c2c3e; font-weight: 700;">📱 Download the app:
-                </p>
-                <p style="margin-bottom: 12px; font-size: 0.85em; color: #2c2c3e;">Support chat goes straight to Noah. I
-                    check it daily! 🥣</p>
-                <a id="appLink" href="#" target="_blank" class="whatsapp-link">Download Now →</a>
+    <section class="section-community">
+        <h2>the soup</h2>
+        <p class="lead">pick your soup. real people, real voice memos. 13+ languages.</p>
+        <div class="community-avatars">
+            <a href="images/avatars/cereal.png" class="lightbox-trigger" title="cereal soup"><img src="images/avatars/cereal.png" alt="cereal soup" class="soup-avatar" /></a>
+            <a href="images/avatars/tomato_soup.png" class="lightbox-trigger" title="tomato soup"><img src="images/avatars/tomato_soup.png" alt="tomato soup" class="soup-avatar" /></a>
+            <a href="images/avatars/salad.png" class="lightbox-trigger" title="salad soup"><img src="images/avatars/salad.png" alt="salad soup" class="soup-avatar" /></a>
+            <a href="images/avatars/acai.png" class="lightbox-trigger" title="acai soup"><img src="images/avatars/acai.png" alt="acai soup" class="soup-avatar" /></a>
+            <a href="images/avatars/chicken_soup.png" class="lightbox-trigger" title="chicken soup"><img src="images/avatars/chicken_soup.png" alt="chicken soup" class="soup-avatar" /></a>
+            <a href="images/avatars/water_soup.png" class="lightbox-trigger" title="ice soup"><img src="images/avatars/water_soup.png" alt="ice soup" class="soup-avatar" /></a>
+            <a href="images/avatars/bathtub_soup.png" class="lightbox-trigger" title="human soup"><img src="images/avatars/bathtub_soup.png" alt="human soup" class="soup-avatar" /></a>
+        </div>
+    </section>
+
+    <section class="quotes">
+        <h2>what people are saying</h2>
+        <div class="quotes-inner">
+            <div class="quote-card">
+                <p class="text">"like a dinner party, not a classroom."</p>
+                <p class="attr">— from our learners</p>
+            </div>
+            <div class="quote-card">
+                <p class="text">"group workout class vibe. nobody else dropped the plank."</p>
+                <p class="attr">— oshack</p>
+            </div>
+            <div class="quote-card">
+                <p class="text">"low stakes community. varying levels = not intimidating."</p>
+                <p class="attr">— christian</p>
             </div>
         </div>
+    </section>
 
-        <!-- Footer -->
-        <footer>
-            <p>follow us <a href="https://instagram.com/languagesoup" target="_blank">@languagesoup</a></p>
-            <p>made by noah • changing how we learn languages</p>
-        </footer>
+    <section class="socials">
+        <p class="socials-lead">we're most active on TikTok.</p>
+        <div class="socials-btns">
+            <a href="https://www.tiktok.com/@language.soup" target="_blank" rel="noopener" class="tt">TikTok</a>
+            <a href="https://www.instagram.com/languagesoup/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.linkedin.com/in/noahaire/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>made by noah · <a href="privacy.html">privacy</a></p>
+    </footer>
+
+    <div id="lightbox" class="lightbox" role="dialog" aria-label="Enlarge image">
+        <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+        <div class="lightbox-img-wrap">
+            <img id="lightboxImg" src="" alt="" />
+        </div>
     </div>
 
+    <script async src="//www.instagram.com/embed.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // Website v3.0 - App Migration - Cache Bust: 2024-12-24-v3
-        // Video play/pause toggle
-        function togglePlayPause() {
-            const video = document.getElementById('demoVideo');
-            const btn = document.getElementById('playPauseBtn');
-
-            if (video.paused) {
-                video.play();
-                btn.textContent = '⏸';
-            } else {
-                video.pause();
-                btn.textContent = '▶';
+        (function() {
+            var img = document.getElementById('noahAvatar');
+            var placeholder = document.getElementById('noahPlaceholder');
+            var src = (typeof window.NOAH_AVATAR_URL === 'string' && window.NOAH_AVATAR_URL) ? window.NOAH_AVATAR_URL : 'images/noah.png';
+            if (img) {
+                img.src = src;
+                img.onerror = function() {
+                    img.style.display = 'none';
+                    if (placeholder) placeholder.style.display = 'flex';
+                };
             }
+        })();
+
+        function showAndroidForm() {
+            var el = document.getElementById('androidForm');
+            if (el) { el.classList.add('active'); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
         }
 
-        // Video mute/unmute toggle
-        function toggleMute() {
-            const video = document.getElementById('demoVideo');
-            const btn = document.getElementById('muteBtn');
-
-            if (video.muted) {
-                video.muted = false;
-                btn.textContent = '🔊';
-            } else {
-                video.muted = true;
-                btn.textContent = '🔇';
-            }
-        }
-
-        // Supabase config
         var SUPABASE_URL = 'https://uspegyneclgkscxwmomn.supabase.co';
         var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzcGVneW5lY2xna3NjeHdtb21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3ODgwNzQsImV4cCI6MjA3OTM2NDA3NH0.FcJ_eSzkWCX-2b5kGHv8AcBvhcZe6aAAP6vG9vubiew';
-
         var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // Show form when CTA is clicked - v2.0
-        function showForm() {
-            console.log('showForm called');
-            const formModal = document.getElementById('formModal');
-            console.log('formModal element:', formModal);
-            if (formModal) {
-                formModal.classList.add('active');
-                formModal.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                console.log('Form should be visible now');
-            } else {
-                console.error('formModal element not found!');
-            }
-        }
-
-        // Form submission
-        document.getElementById('joinForm').addEventListener('submit', async function (e) {
+        document.getElementById('joinForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const languages = document.getElementById('languages').value;
-            const source = document.getElementById('source').value;
-            const studying = document.getElementById('studying').value;
-            const email = document.getElementById('email').value;
-            const device = document.getElementById('device').value;
-
-            const submitButton = e.target.querySelector('.join-button');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'submitting...';
-            submitButton.disabled = true;
-
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var langEl = document.getElementById('languages');
+            var studyEl = document.getElementById('studying_with');
+            var languages = (langEl && langEl.value.trim()) || '—';
+            var studying_with = (studyEl && studyEl.value.trim()) || '—';
+            var btn = e.target.querySelector('.join-btn');
+            var originalText = btn.textContent;
+            btn.textContent = 'adding you...';
+            btn.disabled = true;
             try {
-                const { data, error } = await supabase
-                    .from('signups')
-                    .insert([
-                        {
-                            name: name,
-                            languages: languages,
-                            source: source,
-                            studying_with: studying,
-                            email: email,
-                            device: device,
-                            submitted_at: new Date().toISOString()
-                        }
-                    ]);
-
-                if (error) {
-                    console.error('Error:', error);
-                    alert('Oops! Something went wrong. DM us on Instagram @languagesoup');
-                    submitButton.textContent = originalText;
-                    submitButton.disabled = false;
-                    return;
-                }
-
-                // Success - show app download link
-                submitButton.textContent = '✅ success!';
-
-                // Send email notification for Android signups
-                if (device === 'Android') {
-                    // Send notification using ntfy.sh (free push notification service)
-                    try {
-                        await fetch('https://ntfy.sh/languagesoup-android', {
-                            method: 'POST',
-                            body: `🤖 New Android Signup!\n\nName: ${name}\nEmail: ${email}\nLanguages: ${languages}\n\nAdd them to Play Console: https://play.google.com/console/u/0/developers/4951858078197663676/app/4973074958056204915/tracks/internal-testing`,
-                            headers: {
-                                'Title': 'New Android Beta Signup',
-                                'Priority': 'high',
-                                'Tags': 'android,beta'
-                            }
-                        });
-                    } catch (e) {
-                        console.log('Notification failed, but signup succeeded:', e);
-                    }
-                }
-
-                // Determine app link based on device
-                if (device === 'iOS') {
-                    document.getElementById('appLink').href = 'https://testflight.apple.com/join/N7UnDFv5';
-                    document.getElementById('appLink').textContent = 'Download iOS App →';
-                } else {
-                    // Android - Pending Play Store Approval
-                    const appInfoDiv = document.getElementById('appInfo');
-                    appInfoDiv.innerHTML = `
-                        <p style="margin-bottom: 10px; font-size: 0.9em; color: #2c2c3e; font-weight: 700;">🤖 Android Beta Access</p>
-                        <p style="margin-bottom: 12px; font-size: 0.85em; color: #2c2c3e; line-height: 1.5;">
-                            I'm currently waiting for Google Play to approve the open testing link! 
-                        </p>
-                        <p style="margin-bottom: 12px; font-size: 0.85em; color: #2c2c3e; line-height: 1.5;">
-                            I'll add you to the **closed beta** manually and email you the download link within 24 hours. 🥣
-                        </p>
-                        <div style="padding: 12px; background: #00aedf; border-radius: 12px; color: #fef6e4; font-size: 0.85em; font-weight: 600;">
-                            💡 Follow <a href="https://instagram.com/languagesoup" target="_blank" style="color: #fff; text-decoration: underline;">@languagesoup</a> for updates!
-                        </div>
-                    `;
-                }
-
-                document.getElementById('appInfo').style.display = 'block';
-                document.getElementById('appInfo').scrollIntoView({ behavior: 'smooth', block: 'center' });
-
+                var { error } = await supabase.from('signups').insert([{
+                    name: name,
+                    languages: languages,
+                    source: 'Website',
+                    studying_with: studying_with,
+                    email: email,
+                    device: 'Android',
+                    submitted_at: new Date().toISOString()
+                }]);
+                if (error) throw error;
+                btn.textContent = '✅ you\'re in!';
+                try {
+                    await fetch('https://ntfy.sh/languagesoup-android', {
+                        method: 'POST',
+                        body: '🤖 New Android Signup!\n\nName: ' + name + '\nEmail: ' + email + '\n\nAdd them to Play Console: https://play.google.com/console/u/0/developers/4951858078197663676/app/4973074958056204915/tracks/internal-testing',
+                        headers: { 'Title': 'New Android Beta Signup', 'Priority': 'high', 'Tags': 'android,beta' }
+                    });
+                } catch (n) {}
+                var info = document.getElementById('appInfo');
+                info.innerHTML = '<p>we\'re in closed beta right now. we\'ll add you and email the download link, usually within 24 hours. 🥣</p><p><a href="https://www.instagram.com/languagesoup/" target="_blank" rel="noopener">follow @languagesoup</a> for updates</p>';
+                info.classList.add('show');
             } catch (err) {
-                console.error('Error:', err);
-                alert('Something went wrong. Try again!');
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
+                console.error(err);
+                alert('something went wrong. try @languagesoup on instagram');
+                btn.textContent = originalText;
+                btn.disabled = false;
             }
         });
+
+        (function() {
+            var el = document.getElementById('souperCount');
+            var url = window.SOUP_COUNT_URL || 'https://uspegyneclgkscxwmomn.supabase.co/functions/v1/count-soupers';
+            var anonKey = window.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzcGVneW5lY2xna3NjeHdtb21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3ODgwNzQsImV4cCI6MjA3OTM2NDA3NH0.FcJ_eSzkWCX-2b5kGHv8AcBvhcZe6aAAP6vG9vubiew';
+            function setCount(n) {
+                if (el && (typeof n === 'number' || (typeof n === 'string' && n !== ''))) {
+                    var num = typeof n === 'string' ? parseInt(n, 10) : n;
+                    if (!isNaN(num)) el.textContent = num;
+                }
+            }
+            function update() {
+                if (!el) return;
+                fetch(url, {
+                    method: 'GET',
+                    headers: { 'Authorization': 'Bearer ' + anonKey }
+                })
+                    .then(function(r) {
+                        if (!r.ok) throw new Error('count-soupers not ok');
+                        return r.json();
+                    })
+                    .then(function(d) {
+                        if (d && (typeof d.count === 'number' || typeof d.count === 'string'))
+                            setCount(d.count);
+                    })
+                    .catch(function() {
+                        if (el.textContent === '…' || el.textContent === '') el.textContent = '150';
+                    });
+            }
+            update();
+            setInterval(update, 20000);
+            setTimeout(function() {
+                if (el && (el.textContent === '…' || el.textContent === '')) el.textContent = '150';
+            }, 5000);
+        })();
+
+        (function() {
+            var lb = document.getElementById('lightbox');
+            var lbImg = document.getElementById('lightboxImg');
+            var closeBtn = lb && lb.querySelector('.lightbox-close');
+            function openLightbox(src, alt, cropHalf) {
+                if (!lb || !lbImg) return;
+                lbImg.src = src;
+                lbImg.alt = alt || '';
+                lb.classList.toggle('lightbox--cropped', !!cropHalf);
+                lb.classList.add('active');
+            }
+            function closeLightbox() {
+                if (lb) lb.classList.remove('active');
+            }
+            document.querySelectorAll('.lightbox-trigger').forEach(function(a) {
+                a.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var img = a.querySelector('img');
+                    openLightbox(a.href, img ? img.alt : '', a.getAttribute('data-crop') === 'half');
+                });
+            });
+            if (lb) {
+                lb.addEventListener('click', function(e) { if (e.target === lb) closeLightbox(); });
+                if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+            }
+        })();
     </script>
 </body>
-
 </html>
